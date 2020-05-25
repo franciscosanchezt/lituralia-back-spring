@@ -1,13 +1,11 @@
 package com.campusdual.lituraliabackspring.controllers;
 
 import com.campusdual.lituraliabackspring.api.model.LibroDTO;
+import com.campusdual.lituraliabackspring.api.model.LibroListDTO;
 import com.campusdual.lituraliabackspring.services.LibroService;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,16 +24,16 @@ public class LibroController {
     LibroService service;
 
     @GetMapping
-    public ResponseEntity<List<LibroDTO>> getAllLibros() {
-        List<LibroDTO> libros = service.getAllLibros();
-        return new ResponseEntity<List<LibroDTO>>(libros, new HttpHeaders(), HttpStatus.OK);
+    public LibroListDTO getAllLibros() {
+        LibroListDTO libros = new LibroListDTO();
+        libros.getLibros().addAll(service.getAllLibros());
+        return libros;
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<LibroDTO> getEmployeeById(@PathVariable("id") Long id)
+    public LibroDTO getEmployeeById(@PathVariable("id") Long id)
         throws ResourceNotFoundException {
-        LibroDTO entity = service.getLibroById(id);
-        return new ResponseEntity<LibroDTO>(entity, new HttpHeaders(), HttpStatus.OK);
+        return service.getLibroById(id);
     }
 
     @PostMapping
