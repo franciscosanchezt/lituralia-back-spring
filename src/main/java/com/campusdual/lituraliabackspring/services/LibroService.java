@@ -1,18 +1,22 @@
 package com.campusdual.lituraliabackspring.services;
 
-import com.campusdual.lituraliabackspring.domain.Libro;
-import com.campusdual.lituraliabackspring.exception.RecordNotFoundException;
+import com.campusdual.lituraliabackspring.api.model.LibroDTO;
 import java.util.List;
+import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 
 public interface LibroService {
 
-    List<Libro> getAllLibros();
+    List<LibroDTO> getAllLibros();
 
-    Libro getLibroById(Long idLibro) throws RecordNotFoundException;
+    LibroDTO getLibroById(Long idLibro) throws ResourceNotFoundException;
 
-    Libro createOrUpdateLibro(Libro libro);
+    LibroDTO createLibro(LibroDTO libroDto);
 
-    void deleteLibro(Libro libro) throws RecordNotFoundException;
+    LibroDTO updateLibro(LibroDTO libroDto);
 
-    void deleteLibroById(Long idLibro) throws RecordNotFoundException;
+    LibroDTO updateLibro(Long idLibro, LibroDTO libroDto);
+
+    void deleteLibro(LibroDTO libroDto) throws ResourceNotFoundException;
+
+    void deleteLibroById(Long idLibro) throws ResourceNotFoundException;
 }
