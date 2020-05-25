@@ -7,18 +7,20 @@ import com.campusdual.lituraliabackspring.repositories.LibrosRepository;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
 public class LibroServiceImpl implements LibroService {
 
-    @Autowired
     LibroMapper mapper;
-    @Autowired
+
     LibrosRepository repository;
 
+    public LibroServiceImpl(LibroMapper mapper, LibrosRepository repository) {
+        this.mapper     = mapper;
+        this.repository = repository;
+    }
 
     @Override
     public List<LibroDTO> getAllLibros() {
