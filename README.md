@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/franciscosanchezt/lituralia-back-spring.svg?style=svg)](https://circleci.com/gh/franciscosanchezt/lituralia-back-spring)
+[![codecov](https://codecov.io/gh/franciscosanchezt/lituralia-back-spring/branch/master/graph/badge.svg)](https://codecov.io/gh/franciscosanchezt/lituralia-back-spring)
 # Lituralia Backend Spring
 
 _Backend del proyecto Lituralia desarrollado con Spring5_
