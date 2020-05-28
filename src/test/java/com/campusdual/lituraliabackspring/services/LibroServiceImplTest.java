@@ -106,15 +106,17 @@ class LibroServiceImplTest {
 
         //when
         LibroDTO savedDto = service.updateLibro(1L, libroDTO);
+        LibroDTO savedDto1 = service.updateLibro(libroDTO);
 
         //then
         assertEquals(libroDTO.getTitulo(), savedDto.getTitulo());
+        assertEquals(libroDTO.getTitulo(), savedDto1.getTitulo());
     }
 
     @Test
     void deleteLibroById() {
         Long id = 1L;
-        repository.deleteById(id);
+        service.deleteLibroById(id);
         verify(repository, times(1)).deleteById(anyLong());
     }
 }
