@@ -13,6 +13,8 @@ import com.campusdual.lituraliabackspring.domain.Libro;
 import com.campusdual.lituraliabackspring.repositories.LibrosRepository;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -71,6 +73,18 @@ class LibroServiceImplTest {
 
         //then
         assertEquals("Hamlet", libroDTO.getTitulo());
+
+    }
+
+    @Test()
+    void getLibroByIdNotFound() {
+        Optional<Libro> libroOptional = Optional.empty();
+
+        when(repository.findById(anyLong())).thenReturn(libroOptional);
+
+        Assertions.assertThrows(Exception.class, () -> {
+            LibroDTO libro = service.getLibroById(1L);
+        });
     }
 
     @Test
