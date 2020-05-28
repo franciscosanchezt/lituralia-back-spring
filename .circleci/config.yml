@@ -2,7 +2,9 @@
 #
 # Check https://circleci.com/docs/2.0/language-java/ for more details
 #
-version: 2
+version: 2.1
+orbs:
+  codecov: codecov/codecov@1.0.2
 jobs:
   build:
     docker:
@@ -31,9 +33,9 @@ jobs:
           - v1-dependencies-
 
         # Install deps for Circle CI
-      - run: mvn install -Dskiptests
+      - run: mvn clean install -Dskiptests
 
-      - run: mvn dependency:go-offline
+      - run: mvn dependency:resolve-plugins dependency:go-offline
 
       - save_cache:
           paths:
@@ -41,7 +43,7 @@ jobs:
           key: v1-dependencies-{{ checksum "pom.xml" }}
 
       # run tests! and gen code coverage
-      - run: mvn test
+      - run: mvn integration-test cobertura:cobertura
 
       - store_test_results:
           path: target/surefire-reports
