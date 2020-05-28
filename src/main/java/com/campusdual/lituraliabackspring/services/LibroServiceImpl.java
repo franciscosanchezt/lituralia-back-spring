@@ -5,7 +5,6 @@ import com.campusdual.lituraliabackspring.api.model.LibroDTO;
 import com.campusdual.lituraliabackspring.domain.Libro;
 import com.campusdual.lituraliabackspring.repositories.LibrosRepository;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
@@ -64,12 +63,6 @@ public class LibroServiceImpl implements LibroService {
 
     @Override
     public void deleteLibroById(Long idLibro) throws ResourceNotFoundException {
-        Optional<Libro> employee = repository.findById(idLibro);
-
-        if (employee.isPresent()) {
             repository.deleteById(idLibro);
-        } else {
-            throw new ResourceNotFoundException();
-        }
     }
 }
