@@ -27,7 +27,7 @@ class BookMapperTest {
         BookDTO bookDTO = mapper.bookToBookDTO(book1);
 
         //then
-        assertEquals(Long.valueOf(ID), bookDTO.getBookId());
+        assertEquals(Integer.valueOf(ID), bookDTO.getBookId());
         assertEquals(ISBN, bookDTO.getIsbn());
         assertEquals(TITLE, bookDTO.getTitle());
     }
@@ -45,7 +45,7 @@ class BookMapperTest {
         Book book = mapper.bookDTOToBook(bookDTO);
 
         //then
-        assertEquals(Long.valueOf(ID), book.getBookId());
+        assertEquals(Integer.valueOf(ID), book.getBookId());
         assertEquals(ISBN, book.getIsbn());
         assertEquals(TITLE, book.getTitle());
     }
