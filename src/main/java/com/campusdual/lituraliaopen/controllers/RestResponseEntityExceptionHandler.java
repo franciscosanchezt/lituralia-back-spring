@@ -1,4 +1,4 @@
-package com.campusdual.lituraliabackspring.controllers;
+package com.campusdual.lituraliaopen.controllers;
 
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.http.HttpHeaders;

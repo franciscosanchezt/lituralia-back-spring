@@ -1,6 +1,6 @@
-package com.campusdual.lituraliabackspring.domain;
+package com.campusdual.lituraliaopen.domain;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,6 +11,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Type;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -22,7 +23,7 @@ public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "book_id")
-    private Long bookId;
+    private Integer bookId;
 
     private String isbn;
 
@@ -30,10 +31,11 @@ public class Book {
 
     private String synopsis;
 
-    @Column(name = "publish_date")
-    private LocalDateTime publishDate;
+    @Column(name = "publish_date", columnDefinition = "DATE")
+    private LocalDate publishDate;
 
     @Lob
+    @Type(type = "org.hibernate.type.BinaryType")
     private byte[] cover;
 
     @Column(name = "publisher_id")

@@ -1,9 +1,9 @@
-package com.campusdual.lituraliabackspring.api.mapper;
+package com.campusdual.lituraliaopen.api.mapper;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import com.campusdual.lituraliabackspring.api.model.BookDTO;
-import com.campusdual.lituraliabackspring.domain.Book;
+import com.campusdual.lituraliaopen.api.model.BookDTO;
+import com.campusdual.lituraliaopen.domain.Book;
 import org.junit.jupiter.api.Test;
 
 class BookMapperTest {
@@ -12,7 +12,7 @@ class BookMapperTest {
 
     public static final String TITLE = "Hamlet";
     public static final String ISBN = "123456";
-    public static final long ID = 1L;
+    public static final int ID = 1;
 
     @Test
     void bookToBookDTO() {

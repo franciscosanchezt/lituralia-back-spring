@@ -1,8 +1,8 @@
-package com.campusdual.lituraliabackspring.repositories;
+package com.campusdual.lituraliaopen.repositories;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import com.campusdual.lituraliabackspring.domain.Book;
+import com.campusdual.lituraliaopen.domain.Book;
 import java.util.Optional;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;

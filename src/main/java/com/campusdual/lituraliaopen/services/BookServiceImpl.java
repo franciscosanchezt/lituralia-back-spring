@@ -1,9 +1,9 @@
-package com.campusdual.lituraliabackspring.services;
+package com.campusdual.lituraliaopen.services;
 
-import com.campusdual.lituraliabackspring.api.mapper.BookMapper;
-import com.campusdual.lituraliabackspring.api.model.BookDTO;
-import com.campusdual.lituraliabackspring.domain.Book;
-import com.campusdual.lituraliabackspring.repositories.BookRepository;
+import com.campusdual.lituraliaopen.api.mapper.BookMapper;
+import com.campusdual.lituraliaopen.api.model.BookDTO;
+import com.campusdual.lituraliaopen.domain.Book;
+import com.campusdual.lituraliaopen.repositories.BookRepository;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
@@ -30,7 +30,7 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public BookDTO getBookById(Long book_id) {
+    public BookDTO getBookById(Integer book_id) {
         return bookRepository.findById(book_id)
                              .map(bookMapper::bookToBookDTO)
                              .orElseThrow(ResourceNotFoundException::new);
@@ -43,7 +43,7 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public BookDTO updateBook(Long book_id, BookDTO bookDto) {
+    public BookDTO updateBook(Integer book_id, BookDTO bookDto) {
         Book book = bookMapper.bookDTOToBook(bookDto);
         book.setBookId(book_id);
         Book entity = bookRepository.save(book);
@@ -62,7 +62,7 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public void deleteBookById(Long book_id) throws ResourceNotFoundException {
+    public void deleteBookById(Integer book_id) throws ResourceNotFoundException {
         bookRepository.deleteById(book_id);
     }
 }

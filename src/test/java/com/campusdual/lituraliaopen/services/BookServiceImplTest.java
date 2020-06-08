@@ -1,16 +1,16 @@
-package com.campusdual.lituraliabackspring.services;
+package com.campusdual.lituraliaopen.services;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyLong;
+import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import com.campusdual.lituraliabackspring.api.mapper.BookMapper;
-import com.campusdual.lituraliabackspring.api.model.BookDTO;
-import com.campusdual.lituraliabackspring.domain.Book;
-import com.campusdual.lituraliabackspring.repositories.BookRepository;
+import com.campusdual.lituraliaopen.api.mapper.BookMapper;
+import com.campusdual.lituraliaopen.api.model.BookDTO;
+import com.campusdual.lituraliaopen.domain.Book;
+import com.campusdual.lituraliaopen.repositories.BookRepository;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -39,12 +39,12 @@ class BookServiceImplTest {
     void getAllBooks() {
         //given
         Book book1 = Book.builder()
-                         .bookId(1L)
+                         .bookId(1)
                          .isbn("123456")
                          .title("Hamlet")
                          .build();
         Book book2 = Book.builder()
-                         .bookId(2L)
+                         .bookId(2)
                          .isbn("123457")
                          .title("MacBeth")
                          .build();
@@ -62,14 +62,14 @@ class BookServiceImplTest {
     void getBookById() {
         //given
         Book book1 = Book.builder()
-                         .bookId(1L)
+                         .bookId(1)
                          .isbn("123456")
                          .title("Hamlet")
                          .build();
-        when(bookRepository.findById(anyLong())).thenReturn(java.util.Optional.ofNullable(book1));
+        when(bookRepository.findById(anyInt())).thenReturn(java.util.Optional.ofNullable(book1));
 
         //when
-        BookDTO bookDTO = bookService.getBookById(1L);
+        BookDTO bookDTO = bookService.getBookById(1);
 
         //then
         assertEquals("Hamlet", bookDTO.getTitle());
@@ -80,10 +80,10 @@ class BookServiceImplTest {
     void getBookByIdNotFound() {
         Optional<Book> bookOptional = Optional.empty();
 
-        when(bookRepository.findById(anyLong())).thenReturn(bookOptional);
+        when(bookRepository.findById(anyInt())).thenReturn(bookOptional);
 
         Assertions.assertThrows(Exception.class, () -> {
-            BookDTO book = bookService.getBookById(1L);
+            BookDTO book = bookService.getBookById(1);
         });
     }
 
@@ -95,7 +95,7 @@ class BookServiceImplTest {
 
         Book savedBook = new Book();
         savedBook.setTitle(bookDTO.getTitle());
-        savedBook.setBookId(1L);
+        savedBook.setBookId(1);
 
         when(bookRepository.save(any(Book.class))).thenReturn(savedBook);
 
@@ -114,12 +114,12 @@ class BookServiceImplTest {
 
         Book savedBook = new Book();
         savedBook.setTitle(bookDTO.getTitle());
-        savedBook.setBookId(1L);
+        savedBook.setBookId(1);
 
         when(bookRepository.save(any(Book.class))).thenReturn(savedBook);
 
         //when
-        BookDTO savedDto = bookService.updateBook(1L, bookDTO);
+        BookDTO savedDto = bookService.updateBook(1, bookDTO);
         BookDTO savedDto1 = bookService.updateBook(bookDTO);
 
         //then
@@ -129,8 +129,8 @@ class BookServiceImplTest {
 
     @Test
     void deleteBookById() {
-        Long id = 1L;
+        Integer id = 1;
         bookService.deleteBookById(id);
-        verify(bookRepository, times(1)).deleteById(anyLong());
+        verify(bookRepository, times(1)).deleteById(anyInt());
     }
 }
