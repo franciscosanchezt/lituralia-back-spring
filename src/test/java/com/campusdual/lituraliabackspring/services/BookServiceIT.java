@@ -5,8 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import com.campusdual.lituraliabackspring.api.mapper.LibroMapper;
 import com.campusdual.lituraliabackspring.api.model.LibroDTO;
-import com.campusdual.lituraliabackspring.domain.Libro;
-import com.campusdual.lituraliabackspring.repositories.LibrosRepository;
+import com.campusdual.lituraliabackspring.domain.Book;
+import com.campusdual.lituraliabackspring.repositories.BookRepository;
 import javax.transaction.Transactional;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -16,14 +16,14 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
-class LibroServiceIT {
+class BookServiceIT {
 
     public static final String TITULO = "HAMLET";
     @Autowired
-    LibroService service;
+    BookService service;
 
     @Autowired
-    LibrosRepository repository;
+    BookRepository repository;
 
     @Autowired
     LibroMapper mapper;
@@ -32,16 +32,16 @@ class LibroServiceIT {
     @Test
     void updateLibro() {
         //given
-        Iterable<Libro> libros = repository.findAll();
-        Libro libro = libros.iterator().next();
-        LibroDTO libroDTO = mapper.libroToLibroDTO(libro);
+        Iterable<Book> libros = repository.findAll();
+        Book book = libros.iterator().next();
+        LibroDTO libroDTO = mapper.libroToLibroDTO(book);
 
         //when
         libroDTO.setTitulo(TITULO);
-        LibroDTO libroGuardado = service.updateLibro(libroDTO);
+        LibroDTO libroGuardado = service.updateBook(libroDTO);
 
         //then
         assertEquals(TITULO, libroGuardado.getTitulo());
-        assertEquals(libro.getIsbn(), libroGuardado.getIsbn());
+        assertEquals(book.getIsbn(), libroGuardado.getIsbn());
     }
 }
