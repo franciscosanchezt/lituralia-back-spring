@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 @Data
-public class LibroListDTO {
+public class BookListDTO {
 
-    List<LibroDTO> libros = new ArrayList<>();
+    List<BookDTO> books = new ArrayList<>();
 }

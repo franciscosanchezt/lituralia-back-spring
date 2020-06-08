@@ -1,7 +1,7 @@
 package com.campusdual.lituraliabackspring.services;
 
-import com.campusdual.lituraliabackspring.api.mapper.LibroMapper;
-import com.campusdual.lituraliabackspring.api.model.LibroDTO;
+import com.campusdual.lituraliabackspring.api.mapper.BookMapper;
+import com.campusdual.lituraliabackspring.api.model.BookDTO;
 import com.campusdual.lituraliabackspring.domain.Book;
 import com.campusdual.lituraliabackspring.repositories.BookRepository;
 import java.util.List;
@@ -12,53 +12,53 @@ import org.springframework.stereotype.Service;
 @Service
 public class BookServiceImpl implements BookService {
 
-    LibroMapper bookMapper;
+    BookMapper bookMapper;
 
     BookRepository bookRepository;
 
-    public BookServiceImpl(LibroMapper bookMapper, BookRepository bookRepository) {
+    public BookServiceImpl(BookMapper bookMapper, BookRepository bookRepository) {
         this.bookMapper     = bookMapper;
         this.bookRepository = bookRepository;
     }
 
     @Override
-    public List<LibroDTO> getAllBooks() {
+    public List<BookDTO> getAllBooks() {
         return bookRepository.findAll()
                              .stream()
-                             .map(bookMapper::libroToLibroDTO)
+                             .map(bookMapper::bookToBookDTO)
                              .collect(Collectors.toList());
     }
 
     @Override
-    public LibroDTO getBookById(Long book_id) {
+    public BookDTO getBookById(Long book_id) {
         return bookRepository.findById(book_id)
-                             .map(bookMapper::libroToLibroDTO)
+                             .map(bookMapper::bookToBookDTO)
                              .orElseThrow(ResourceNotFoundException::new);
     }
 
     @Override
-    public LibroDTO createBook(LibroDTO libroDto) {
-        Book entity = bookRepository.save(bookMapper.libroDTOToLibro(libroDto));
-        return bookMapper.libroToLibroDTO(entity);
+    public BookDTO createBook(BookDTO bookDto) {
+        Book entity = bookRepository.save(bookMapper.bookDTOToBook(bookDto));
+        return bookMapper.bookToBookDTO(entity);
     }
 
     @Override
-    public LibroDTO updateBook(Long book_id, LibroDTO libroDto) {
-        Book book = bookMapper.libroDTOToLibro(libroDto);
+    public BookDTO updateBook(Long book_id, BookDTO bookDto) {
+        Book book = bookMapper.bookDTOToBook(bookDto);
         book.setBookId(book_id);
         Book entity = bookRepository.save(book);
-        return bookMapper.libroToLibroDTO(entity);
+        return bookMapper.bookToBookDTO(entity);
     }
 
     @Override
-    public LibroDTO updateBook(LibroDTO libroDto) {
-        return updateBook(libroDto.getIdLibro(), libroDto);
+    public BookDTO updateBook(BookDTO bookDto) {
+        return updateBook(bookDto.getBookId(), bookDto);
     }
 
 
     @Override
-    public void deleteBook(LibroDTO libro) throws ResourceNotFoundException {
-        deleteBookById(libro.getIdLibro());
+    public void deleteBook(BookDTO book) throws ResourceNotFoundException {
+        deleteBookById(book.getBookId());
     }
 
     @Override

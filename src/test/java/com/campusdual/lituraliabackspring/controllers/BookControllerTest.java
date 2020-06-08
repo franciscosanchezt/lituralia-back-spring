@@ -14,7 +14,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import com.campusdual.lituraliabackspring.api.model.LibroDTO;
+import com.campusdual.lituraliabackspring.api.model.BookDTO;
 import com.campusdual.lituraliabackspring.services.BookService;
 import java.util.Arrays;
 import org.junit.jupiter.api.BeforeEach;
@@ -29,7 +29,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 class BookControllerTest {
 
-    public static final String REST_URL = "/libros";
+    public static final String REST_URL = "/books";
     public static final String HAMLET = "Hamlet";
     public static final String HAMLET_ISBN = "123456";
     @Mock
@@ -49,63 +49,63 @@ class BookControllerTest {
     }
 
     @Test
-    void getAllLibros() throws Exception {
+    void getAllBooks() throws Exception {
         //given
-        LibroDTO libro1 = LibroDTO.builder()
-                                  .idLibro(1L)
-                                  .isbn("123456")
-                                  .titulo(HAMLET)
-                                  .build();
-        LibroDTO libro2 = LibroDTO.builder()
-                                  .idLibro(2L)
-                                  .isbn("123457")
-                                  .titulo("MacBeth")
-                                  .build();
+        BookDTO book1 = BookDTO.builder()
+                               .bookId(1L)
+                               .isbn("123456")
+                               .title(HAMLET)
+                               .build();
+        BookDTO book2 = BookDTO.builder()
+                               .bookId(2L)
+                               .isbn("123457")
+                               .title("MacBeth")
+                               .build();
 
-        when(service.getAllBooks()).thenReturn(Arrays.asList(libro1, libro2));
+        when(service.getAllBooks()).thenReturn(Arrays.asList(book1, book2));
 
         //when
         mockMvc.perform(get(REST_URL)
                             .accept(MediaType.APPLICATION_JSON)
                             .contentType(MediaType.APPLICATION_JSON))
                .andExpect(status().isOk())
-               .andExpect(jsonPath("$.libros", hasSize(2)));
+               .andExpect(jsonPath("$.books", hasSize(2)));
     }
 
     @Test
     void getEmployeeById() throws Exception {
         //given
-        LibroDTO libro1 = LibroDTO.builder()
-                                  .idLibro(1L)
-                                  .isbn(HAMLET_ISBN)
-                                  .titulo(HAMLET)
-                                  .build();
+        BookDTO book1 = BookDTO.builder()
+                               .bookId(1L)
+                               .isbn(HAMLET_ISBN)
+                               .title(HAMLET)
+                               .build();
 
-        when(service.getBookById(anyLong())).thenReturn(libro1);
+        when(service.getBookById(anyLong())).thenReturn(book1);
 
         //when
         mockMvc.perform(get(REST_URL + "/1")
                             .accept(MediaType.APPLICATION_JSON)
                             .contentType(MediaType.APPLICATION_JSON))
                .andExpect(status().isOk())
-               .andExpect(jsonPath("$.titulo", equalTo(HAMLET)))
+               .andExpect(jsonPath("$.title", equalTo(HAMLET)))
                .andExpect(jsonPath("$.isbn", equalTo(HAMLET_ISBN)));
     }
 
     @Test
-    void createLibro() throws Exception {
+    void createBook() throws Exception {
         //given
-        LibroDTO libro1 = LibroDTO.builder()
-                                  .idLibro(1L)
-                                  .isbn(HAMLET_ISBN)
-                                  .titulo(HAMLET)
-                                  .build();
+        BookDTO book1 = BookDTO.builder()
+                               .bookId(1L)
+                               .isbn(HAMLET_ISBN)
+                               .title(HAMLET)
+                               .build();
 
-        LibroDTO returnDTO = LibroDTO.builder()
-                                     .idLibro(1L)
-                                     .isbn(HAMLET_ISBN)
-                                     .titulo(HAMLET)
-                                     .build();
+        BookDTO returnDTO = BookDTO.builder()
+                                   .bookId(1L)
+                                   .isbn(HAMLET_ISBN)
+                                   .title(HAMLET)
+                                   .build();
 
         when(service.createBook(any())).thenReturn(returnDTO);
 
@@ -113,41 +113,41 @@ class BookControllerTest {
         mockMvc.perform(post(REST_URL)
                             .accept(MediaType.APPLICATION_JSON)
                             .contentType(MediaType.APPLICATION_JSON)
-                            .content(asJsonString(libro1)))
+                            .content(asJsonString(book1)))
                .andExpect(status().isCreated())
-               .andExpect(jsonPath("$.titulo", equalTo(HAMLET)))
+               .andExpect(jsonPath("$.title", equalTo(HAMLET)))
                .andExpect(jsonPath("$.isbn", equalTo(HAMLET_ISBN)));
     }
 
     @Test
-    void updateLibro() throws Exception {
+    void updateBook() throws Exception {
         //given
-        LibroDTO libro1 = LibroDTO.builder()
-                                  .idLibro(1L)
-                                  .isbn(HAMLET_ISBN)
-                                  .titulo(HAMLET)
-                                  .build();
+        BookDTO book1 = BookDTO.builder()
+                               .bookId(1L)
+                               .isbn(HAMLET_ISBN)
+                               .title(HAMLET)
+                               .build();
 
-        LibroDTO returnDTO = LibroDTO.builder()
-                                     .idLibro(1L)
-                                     .isbn(HAMLET_ISBN)
-                                     .titulo(HAMLET)
-                                     .build();
+        BookDTO returnDTO = BookDTO.builder()
+                                   .bookId(1L)
+                                   .isbn(HAMLET_ISBN)
+                                   .title(HAMLET)
+                                   .build();
 
-        when(service.updateBook(anyLong(), any(LibroDTO.class))).thenReturn(returnDTO);
+        when(service.updateBook(anyLong(), any(BookDTO.class))).thenReturn(returnDTO);
 
         //when/then
         mockMvc.perform(put(REST_URL + "/1")
                             .accept(MediaType.APPLICATION_JSON)
                             .contentType(MediaType.APPLICATION_JSON)
-                            .content(asJsonString(libro1)))
+                            .content(asJsonString(book1)))
                .andExpect(status().isOk())
-               .andExpect(jsonPath("$.titulo", equalTo(HAMLET)))
+               .andExpect(jsonPath("$.title", equalTo(HAMLET)))
                .andExpect(jsonPath("$.isbn", equalTo(HAMLET_ISBN)));
     }
 
     @Test
-    void deleteLibro() throws Exception {
+    void deleteBook() throws Exception {
         mockMvc.perform(delete(REST_URL + "/1")
                             .contentType(MediaType.APPLICATION_JSON))
                .andExpect(status().isOk());

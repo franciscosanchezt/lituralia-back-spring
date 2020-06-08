@@ -1,12 +1,12 @@
-create table libros
+create table books
 (
-    id_libro          IDENTITY not null
-        constraint libros_pk
-            primary key,
-    isbn              varchar(13),
-    titulo            varchar,
-    sinopsis          varchar,
-    fecha_publicacion datetime,
-    portada           text,
-    id_editorial      integer
+    book_id      integer identity,
+    isbn         varchar(13),
+    title        varchar,
+    synopsis     varchar,
+    publish_date datetime,
+    cover        text,
+    publisher_id integer,
+    constraint books_pkey
+        primary key (book_id)
 );
