@@ -1,10 +1,10 @@
-package com.campusdual.lituraliabackspring.controllers;
+package com.campusdual.lituraliaopen.controllers;
 
-import static com.campusdual.lituraliabackspring.controllers.AbstractRestControllerTest.asJsonString;
+import static com.campusdual.lituraliaopen.controllers.AbstractRestControllerTest.asJsonString;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.hasSize;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyLong;
+import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
@@ -14,8 +14,8 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import com.campusdual.lituraliabackspring.api.model.BookDTO;
-import com.campusdual.lituraliabackspring.services.BookService;
+import com.campusdual.lituraliaopen.api.model.BookDTO;
+import com.campusdual.lituraliaopen.services.BookService;
 import java.util.Arrays;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -52,12 +52,12 @@ class BookControllerTest {
     void getAllBooks() throws Exception {
         //given
         BookDTO book1 = BookDTO.builder()
-                               .bookId(1L)
+                               .bookId(1)
                                .isbn("123456")
                                .title(HAMLET)
                                .build();
         BookDTO book2 = BookDTO.builder()
-                               .bookId(2L)
+                               .bookId(2)
                                .isbn("123457")
                                .title("MacBeth")
                                .build();
@@ -76,12 +76,12 @@ class BookControllerTest {
     void getEmployeeById() throws Exception {
         //given
         BookDTO book1 = BookDTO.builder()
-                               .bookId(1L)
+                               .bookId(1)
                                .isbn(HAMLET_ISBN)
                                .title(HAMLET)
                                .build();
 
-        when(service.getBookById(anyLong())).thenReturn(book1);
+        when(service.getBookById(anyInt())).thenReturn(book1);
 
         //when
         mockMvc.perform(get(REST_URL + "/1")
@@ -96,13 +96,13 @@ class BookControllerTest {
     void createBook() throws Exception {
         //given
         BookDTO book1 = BookDTO.builder()
-                               .bookId(1L)
+                               .bookId(1)
                                .isbn(HAMLET_ISBN)
                                .title(HAMLET)
                                .build();
 
         BookDTO returnDTO = BookDTO.builder()
-                                   .bookId(1L)
+                                   .bookId(1)
                                    .isbn(HAMLET_ISBN)
                                    .title(HAMLET)
                                    .build();
@@ -123,18 +123,18 @@ class BookControllerTest {
     void updateBook() throws Exception {
         //given
         BookDTO book1 = BookDTO.builder()
-                               .bookId(1L)
+                               .bookId(1)
                                .isbn(HAMLET_ISBN)
                                .title(HAMLET)
                                .build();
 
         BookDTO returnDTO = BookDTO.builder()
-                                   .bookId(1L)
+                                   .bookId(1)
                                    .isbn(HAMLET_ISBN)
                                    .title(HAMLET)
                                    .build();
 
-        when(service.updateBook(anyLong(), any(BookDTO.class))).thenReturn(returnDTO);
+        when(service.updateBook(anyInt(), any(BookDTO.class))).thenReturn(returnDTO);
 
         //when/then
         mockMvc.perform(put(REST_URL + "/1")
@@ -152,13 +152,13 @@ class BookControllerTest {
                             .contentType(MediaType.APPLICATION_JSON))
                .andExpect(status().isOk());
 
-        verify(service).deleteBookById(anyLong());
+        verify(service).deleteBookById(anyInt());
     }
 
     @Test
     public void testNotFoundException() throws Exception {
 
-        when(service.getBookById(anyLong())).thenThrow(ResourceNotFoundException.class);
+        when(service.getBookById(anyInt())).thenThrow(ResourceNotFoundException.class);
 
         mockMvc.perform(get(REST_URL + "/222")
                             .accept(MediaType.APPLICATION_JSON)

@@ -1,4 +1,4 @@
-package com.campusdual.lituraliabackspring.controllers;
+package com.campusdual.lituraliaopen.controllers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 

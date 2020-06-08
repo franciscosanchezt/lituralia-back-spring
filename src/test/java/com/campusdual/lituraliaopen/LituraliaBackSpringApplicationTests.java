@@ -1,4 +1,4 @@
-package com.campusdual.lituraliabackspring;
+package com.campusdual.lituraliaopen;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

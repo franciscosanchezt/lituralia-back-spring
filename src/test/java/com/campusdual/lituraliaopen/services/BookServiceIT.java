@@ -1,12 +1,12 @@
-package com.campusdual.lituraliabackspring.services;
+package com.campusdual.lituraliaopen.services;
 
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import com.campusdual.lituraliabackspring.api.mapper.BookMapper;
-import com.campusdual.lituraliabackspring.api.model.BookDTO;
-import com.campusdual.lituraliabackspring.domain.Book;
-import com.campusdual.lituraliabackspring.repositories.BookRepository;
+import com.campusdual.lituraliaopen.api.mapper.BookMapper;
+import com.campusdual.lituraliaopen.api.model.BookDTO;
+import com.campusdual.lituraliaopen.domain.Book;
+import com.campusdual.lituraliaopen.repositories.BookRepository;
 import javax.transaction.Transactional;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

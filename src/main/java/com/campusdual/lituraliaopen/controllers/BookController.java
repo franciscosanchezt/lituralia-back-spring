@@ -1,8 +1,8 @@
-package com.campusdual.lituraliabackspring.controllers;
+package com.campusdual.lituraliaopen.controllers;
 
-import com.campusdual.lituraliabackspring.api.model.BookDTO;
-import com.campusdual.lituraliabackspring.api.model.BookListDTO;
-import com.campusdual.lituraliabackspring.services.BookService;
+import com.campusdual.lituraliaopen.api.model.BookDTO;
+import com.campusdual.lituraliaopen.api.model.BookListDTO;
+import com.campusdual.lituraliaopen.services.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.http.HttpStatus;
@@ -31,7 +31,7 @@ public class BookController {
     }
 
     @GetMapping("/{id}")
-    public BookDTO getEmployeeById(@PathVariable("id") Long id)
+    public BookDTO getEmployeeById(@PathVariable("id") Integer id)
         throws ResourceNotFoundException {
         return bookService.getBookById(id);
     }
@@ -44,13 +44,13 @@ public class BookController {
 
     @PutMapping({"/{id}"})
     @ResponseStatus(HttpStatus.OK)
-    public BookDTO updateBook(@PathVariable Long id, @RequestBody BookDTO customerDTO) {
+    public BookDTO updateBook(@PathVariable Integer id, @RequestBody BookDTO customerDTO) {
         return bookService.updateBook(id, customerDTO);
     }
 
     @DeleteMapping({"/{id}"})
     @ResponseStatus(HttpStatus.OK)
-    public void deleteBook(@PathVariable Long id) {
+    public void deleteBook(@PathVariable Integer id) {
         bookService.deleteBookById(id);
     }
 }

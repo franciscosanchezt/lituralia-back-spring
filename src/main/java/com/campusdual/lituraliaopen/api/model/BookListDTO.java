@@ -1,4 +1,4 @@
-package com.campusdual.lituraliabackspring.api.model;
+package com.campusdual.lituraliaopen.api.model;
 
 import java.util.ArrayList;
 import java.util.List;
