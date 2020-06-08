@@ -7,8 +7,8 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import com.campusdual.lituraliabackspring.api.mapper.LibroMapper;
-import com.campusdual.lituraliabackspring.api.model.LibroDTO;
+import com.campusdual.lituraliabackspring.api.mapper.BookMapper;
+import com.campusdual.lituraliabackspring.api.model.BookDTO;
 import com.campusdual.lituraliabackspring.domain.Book;
 import com.campusdual.lituraliabackspring.repositories.BookRepository;
 import java.util.Arrays;
@@ -25,7 +25,7 @@ class BookServiceImplTest {
     @Mock
     BookRepository bookRepository;
 
-    LibroMapper mapper = LibroMapper.INSTANCE;
+    BookMapper mapper = BookMapper.INSTANCE;
 
     BookService bookService;
 
@@ -36,7 +36,7 @@ class BookServiceImplTest {
     }
 
     @Test
-    void getAllLibros() {
+    void getAllBooks() {
         //given
         Book book1 = Book.builder()
                          .bookId(1L)
@@ -52,14 +52,14 @@ class BookServiceImplTest {
         when(bookRepository.findAll()).thenReturn(Arrays.asList(book1, book2));
 
         //when
-        List<LibroDTO> libroDTOs = bookService.getAllBooks();
+        List<BookDTO> bookDTOS = bookService.getAllBooks();
 
         //then
-        assertEquals(2, libroDTOs.size());
+        assertEquals(2, bookDTOS.size());
     }
 
     @Test
-    void getLibroById() {
+    void getBookById() {
         //given
         Book book1 = Book.builder()
                          .bookId(1L)
@@ -69,66 +69,66 @@ class BookServiceImplTest {
         when(bookRepository.findById(anyLong())).thenReturn(java.util.Optional.ofNullable(book1));
 
         //when
-        LibroDTO libroDTO = bookService.getBookById(1L);
+        BookDTO bookDTO = bookService.getBookById(1L);
 
         //then
-        assertEquals("Hamlet", libroDTO.getTitulo());
+        assertEquals("Hamlet", bookDTO.getTitle());
 
     }
 
     @Test()
-    void getLibroByIdNotFound() {
-        Optional<Book> libroOptional = Optional.empty();
+    void getBookByIdNotFound() {
+        Optional<Book> bookOptional = Optional.empty();
 
-        when(bookRepository.findById(anyLong())).thenReturn(libroOptional);
+        when(bookRepository.findById(anyLong())).thenReturn(bookOptional);
 
         Assertions.assertThrows(Exception.class, () -> {
-            LibroDTO libro = bookService.getBookById(1L);
+            BookDTO book = bookService.getBookById(1L);
         });
     }
 
     @Test
-    void createLibro() {
+    void createBook() {
         //given
-        LibroDTO libroDTO = new LibroDTO();
-        libroDTO.setTitulo("Hamlet");
+        BookDTO bookDTO = new BookDTO();
+        bookDTO.setTitle("Hamlet");
 
         Book savedBook = new Book();
-        savedBook.setTitle(libroDTO.getTitulo());
+        savedBook.setTitle(bookDTO.getTitle());
         savedBook.setBookId(1L);
 
         when(bookRepository.save(any(Book.class))).thenReturn(savedBook);
 
         //when
-        LibroDTO savedDto = bookService.createBook(libroDTO);
+        BookDTO savedDto = bookService.createBook(bookDTO);
 
         //then
-        assertEquals(libroDTO.getTitulo(), savedDto.getTitulo());
+        assertEquals(bookDTO.getTitle(), savedDto.getTitle());
     }
 
     @Test
-    void updateLibro() {
+    void updateBook() {
         //given
-        LibroDTO libroDTO = new LibroDTO();
-        libroDTO.setTitulo("Hamlet");
+        BookDTO bookDTO = new BookDTO();
+        bookDTO.setTitle("Hamlet");
 
         Book savedBook = new Book();
-        savedBook.setTitle(libroDTO.getTitulo());
+        savedBook.setTitle(bookDTO.getTitle());
         savedBook.setBookId(1L);
 
         when(bookRepository.save(any(Book.class))).thenReturn(savedBook);
 
         //when
-        LibroDTO savedDto = bookService.updateBook(1L, libroDTO);
-        LibroDTO savedDto1 = bookService.updateBook(libroDTO);
+        BookDTO savedDto = bookService.updateBook(1L, bookDTO);
+        BookDTO savedDto1 = bookService.updateBook(bookDTO);
 
         //then
-        assertEquals(libroDTO.getTitulo(), savedDto.getTitulo());
-        assertEquals(libroDTO.getTitulo(), savedDto1.getTitulo());
+        assertEquals(bookDTO.getTitle(), savedDto.getTitle());
+        assertEquals(bookDTO.getTitle(), savedDto1.getTitle());
     }
 
     @Test
-    void deleteLibroById() {
+    void deleteBookById() {
         Long id = 1L;
         bookService.deleteBookById(id);
         verify(bookRepository, times(1)).deleteById(anyLong());

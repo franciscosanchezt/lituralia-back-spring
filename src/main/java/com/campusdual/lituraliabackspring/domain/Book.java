@@ -1,6 +1,6 @@
 package com.campusdual.lituraliabackspring.domain;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -31,7 +31,7 @@ public class Book {
     private String synopsis;
 
     @Column(name = "publish_date")
-    private LocalDate publishDate;
+    private LocalDateTime publishDate;
 
     @Lob
     private byte[] cover;

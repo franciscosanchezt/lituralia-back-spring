@@ -1,7 +1,7 @@
 package com.campusdual.lituraliabackspring.controllers;
 
-import com.campusdual.lituraliabackspring.api.model.LibroDTO;
-import com.campusdual.lituraliabackspring.api.model.LibroListDTO;
+import com.campusdual.lituraliabackspring.api.model.BookDTO;
+import com.campusdual.lituraliabackspring.api.model.BookListDTO;
 import com.campusdual.lituraliabackspring.services.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
@@ -24,33 +24,33 @@ public class BookController {
     BookService bookService;
 
     @GetMapping
-    public LibroListDTO getAllLibros() {
-        LibroListDTO libros = new LibroListDTO();
-        libros.getLibros().addAll(bookService.getAllBooks());
-        return libros;
+    public BookListDTO getAllBooks() {
+        BookListDTO Books = new BookListDTO();
+        Books.getBooks().addAll(bookService.getAllBooks());
+        return Books;
     }
 
     @GetMapping("/{id}")
-    public LibroDTO getEmployeeById(@PathVariable("id") Long id)
+    public BookDTO getEmployeeById(@PathVariable("id") Long id)
         throws ResourceNotFoundException {
         return bookService.getBookById(id);
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public LibroDTO createLibro(@RequestBody LibroDTO libroDto) {
-        return bookService.createBook(libroDto);
+    public BookDTO createBook(@RequestBody BookDTO bookDto) {
+        return bookService.createBook(bookDto);
     }
 
     @PutMapping({"/{id}"})
     @ResponseStatus(HttpStatus.OK)
-    public LibroDTO updateLibro(@PathVariable Long id, @RequestBody LibroDTO customerDTO) {
+    public BookDTO updateBook(@PathVariable Long id, @RequestBody BookDTO customerDTO) {
         return bookService.updateBook(id, customerDTO);
     }
 
     @DeleteMapping({"/{id}"})
     @ResponseStatus(HttpStatus.OK)
-    public void deleteLibro(@PathVariable Long id) {
+    public void deleteBook(@PathVariable Long id) {
         bookService.deleteBookById(id);
     }
 }

@@ -1,22 +1,22 @@
 package com.campusdual.lituraliabackspring.services;
 
-import com.campusdual.lituraliabackspring.api.model.LibroDTO;
+import com.campusdual.lituraliabackspring.api.model.BookDTO;
 import java.util.List;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 
 public interface BookService {
 
-    List<LibroDTO> getAllBooks();
+    List<BookDTO> getAllBooks();
 
-    LibroDTO getBookById(Long book_id) throws ResourceNotFoundException;
+    BookDTO getBookById(Long book_id) throws ResourceNotFoundException;
 
-    LibroDTO createBook(LibroDTO libroDto);
+    BookDTO createBook(BookDTO bookDto);
 
-    LibroDTO updateBook(LibroDTO libroDto);
+    BookDTO updateBook(BookDTO bookDto);
 
-    LibroDTO updateBook(Long book_id, LibroDTO libroDto);
+    BookDTO updateBook(Long book_id, BookDTO bookDto);
 
-    void deleteBook(LibroDTO libroDto) throws ResourceNotFoundException;
+    void deleteBook(BookDTO bookDto) throws ResourceNotFoundException;
 
     void deleteBookById(Long book_id) throws ResourceNotFoundException;
 }

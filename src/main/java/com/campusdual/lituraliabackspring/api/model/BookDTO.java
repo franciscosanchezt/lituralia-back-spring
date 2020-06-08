@@ -1,6 +1,6 @@
 package com.campusdual.lituraliabackspring.api.model;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,13 +11,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 @Data
-public class LibroDTO {
+public class BookDTO {
 
-    private Long idLibro;
+    private Long bookId;
     private String isbn;
-    private String titulo;
-    private String sinopsis;
-    private LocalDate fechaPublicacion;
-    private byte[] portada;
-    private int idEditorial;
+    private String title;
+    private String synopsis;
+    private LocalDateTime publishDate;
+    private byte[] cover;
+    private int publisherId;
 }

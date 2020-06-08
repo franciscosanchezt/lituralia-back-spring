@@ -30,14 +30,14 @@ class BookRepositoryIT {
     }
 
     @Test
-    void findByTitulo() {
-        Optional<Book> libroOptional = repository.findByTitle("Lilting");
-        assertEquals("Lilting", libroOptional.get().getTitle());
+    void findByTitle() {
+        Optional<Book> bookOptional = repository.findByTitle("Die Hard");
+        assertEquals("Die Hard", bookOptional.get().getTitle());
     }
 
     @Test
-    void findByTituloFail() {
-        Optional<Book> libroOptional = repository.findByTitle("ADSAADSDASD");
-        assert (!libroOptional.isPresent());
+    void findByTitleFail() {
+        Optional<Book> bookOptional = repository.findByTitle("ADSAADSDASD");
+        assert (!bookOptional.isPresent());
     }
 }
