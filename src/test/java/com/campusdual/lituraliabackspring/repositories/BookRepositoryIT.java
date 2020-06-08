@@ -2,7 +2,7 @@ package com.campusdual.lituraliabackspring.repositories;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import com.campusdual.lituraliabackspring.domain.Libro;
+import com.campusdual.lituraliabackspring.domain.Book;
 import java.util.Optional;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -14,10 +14,10 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
-class LibrosRepositoryIT {
+class BookRepositoryIT {
 
     @Autowired
-    LibrosRepository repository;
+    BookRepository repository;
 
     @BeforeAll
     static void beforeAll() {
@@ -31,13 +31,13 @@ class LibrosRepositoryIT {
 
     @Test
     void findByTitulo() {
-        Optional<Libro> libroOptional = repository.findByTitulo("Lilting");
-        assertEquals("Lilting", libroOptional.get().getTitulo());
+        Optional<Book> libroOptional = repository.findByTitle("Lilting");
+        assertEquals("Lilting", libroOptional.get().getTitle());
     }
 
     @Test
     void findByTituloFail() {
-        Optional<Libro> libroOptional = repository.findByTitulo("ADSAADSDASD");
+        Optional<Book> libroOptional = repository.findByTitle("ADSAADSDASD");
         assert (!libroOptional.isPresent());
     }
 }

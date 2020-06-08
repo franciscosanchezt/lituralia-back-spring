@@ -1,6 +1,7 @@
 package com.campusdual.lituraliabackspring.domain;
 
 import java.time.LocalDate;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,20 +16,26 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 @Data
-@Entity(name = "libros")
-public class Libro {
+@Entity(name = "books")
+public class Book {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idLibro;
+    @Column(name = "book_id")
+    private Long bookId;
 
     private String isbn;
-    private String titulo;
-    private String sinopsis;
-    private LocalDate fechaPublicacion;
+
+    private String title;
+
+    private String synopsis;
+
+    @Column(name = "publish_date")
+    private LocalDate publishDate;
+
     @Lob
-    private byte[] portada;
-    private int idEditorial;
+    private byte[] cover;
 
-
+    @Column(name = "publisher_id")
+    private int publisherId;
 }

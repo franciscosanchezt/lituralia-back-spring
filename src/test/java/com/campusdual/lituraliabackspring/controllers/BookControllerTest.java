@@ -15,7 +15,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import com.campusdual.lituraliabackspring.api.model.LibroDTO;
-import com.campusdual.lituraliabackspring.services.LibroService;
+import com.campusdual.lituraliabackspring.services.BookService;
 import java.util.Arrays;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -27,16 +27,16 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-class LibroControllerTest {
+class BookControllerTest {
 
     public static final String REST_URL = "/libros";
     public static final String HAMLET = "Hamlet";
     public static final String HAMLET_ISBN = "123456";
     @Mock
-    LibroService service;
+    BookService service;
 
     @InjectMocks
-    LibroController controller;
+    BookController controller;
 
     MockMvc mockMvc;
 
@@ -62,7 +62,7 @@ class LibroControllerTest {
                                   .titulo("MacBeth")
                                   .build();
 
-        when(service.getAllLibros()).thenReturn(Arrays.asList(libro1, libro2));
+        when(service.getAllBooks()).thenReturn(Arrays.asList(libro1, libro2));
 
         //when
         mockMvc.perform(get(REST_URL)
@@ -81,7 +81,7 @@ class LibroControllerTest {
                                   .titulo(HAMLET)
                                   .build();
 
-        when(service.getLibroById(anyLong())).thenReturn(libro1);
+        when(service.getBookById(anyLong())).thenReturn(libro1);
 
         //when
         mockMvc.perform(get(REST_URL + "/1")
@@ -107,7 +107,7 @@ class LibroControllerTest {
                                      .titulo(HAMLET)
                                      .build();
 
-        when(service.createLibro(any())).thenReturn(returnDTO);
+        when(service.createBook(any())).thenReturn(returnDTO);
 
         //when/then
         mockMvc.perform(post(REST_URL)
@@ -134,7 +134,7 @@ class LibroControllerTest {
                                      .titulo(HAMLET)
                                      .build();
 
-        when(service.updateLibro(anyLong(), any(LibroDTO.class))).thenReturn(returnDTO);
+        when(service.updateBook(anyLong(), any(LibroDTO.class))).thenReturn(returnDTO);
 
         //when/then
         mockMvc.perform(put(REST_URL + "/1")
@@ -152,13 +152,13 @@ class LibroControllerTest {
                             .contentType(MediaType.APPLICATION_JSON))
                .andExpect(status().isOk());
 
-        verify(service).deleteLibroById(anyLong());
+        verify(service).deleteBookById(anyLong());
     }
 
     @Test
     public void testNotFoundException() throws Exception {
 
-        when(service.getLibroById(anyLong())).thenThrow(ResourceNotFoundException.class);
+        when(service.getBookById(anyLong())).thenThrow(ResourceNotFoundException.class);
 
         mockMvc.perform(get(REST_URL + "/222")
                             .accept(MediaType.APPLICATION_JSON)
