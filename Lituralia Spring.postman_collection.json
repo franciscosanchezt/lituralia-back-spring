@@ -9,13 +9,13 @@
       "name": "libros",
       "item": [
         {
-          "name": "libros -C",
+          "name": "books -C",
           "request": {
             "method": "POST",
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n        \"isbn\": \"272907930-9\",\r\n        \"titulo\": \"Necronomicon\",\r\n        \"sinopsis\": \"Sic semper infestus\",\r\n        \"fechaPublicacion\": \"1555-02-19\",\r\n        \"portada\": \"ZGF0YTppbWFnZS9wbmc7YmFzZTY0LGlWQk9SdzBLR2dvQUFBQU5TVWhFVWdBQUFCQUFBQUFRQ0FZQUFBQWY4LzloQUFBQUJHZEJUVUVBQUsvSU53V0s2UUFBQUJsMFJWaDBVMjltZEhkaGNtVUFRV1J2WW1VZ1NXMWhaMlZTWldGa2VYSEpaVHdBQUFLYVNVUkJWRGpMclpOZFNGTmhHTWRQRjE1RWRPTzk0RTIzMGtYUjZzSVpabDRWa1JpVk1kT0xpcUM2c01ncjA4aFFRVXFVbkJGSmJScUtwYTZ5cncyYnptMTYybGR1WTJkdWJqdmJiRi9PaitXWnV1MzhlOCtoZFJOR1VBLzhlRG53L1AvdjgzRmVDZ0QxTDFELzFZQmhtQktDd3VWeUtaeE9wOExoY0l6WjdmYXgrZmw1aGMxbVUxaXRWb1haYkM3NXpjRHRkcGNTWVdCeGNSR0pSQUxMeThzaXlXUlNQT1B4dUVnMEdnVXhCVTNUZ2JtNXVWTFJnSWpMaVpoZldWbEJQTXppeTV0aFRENTlpUEcyMjNqWmNsMUUxZDZJeWY0dW1DWkdTRTRRc1ZnTVJxT1JOeGdNNVVMWkZrR2N5V1RFeEFlbkR2NFJWVWNqVXFtVWFESXpNMk9oU0RuckdvMEdQTThqUzB3K3l0dWh2Rm1MUnhmSzBYVmFJdElycThEZ3JUclFmZWZoVjlYaG0wa3B0alE5UGIxR0taWEtVQ1FTUVRxZFJqYWJGYy90N1cwUm9iSThZYjBjaWRrYnlLUm1zYVMrQ0pkdUNGTlRVMTZxdTd0N0dEOURLSTFNSDRKaGZuQUNRV00vWWxvWk1xc0tyTnFia1RBMHdUdFFqVS95aG5lVVZDcXR6QnNJZlpHMXdlUHh3Ty8zdytmelFkaU01L1UxYkNXSHNMblVoTTNJWTZ6YW1zQ3h6V0RrWld0VVlXSGg0Znp0Z2xnUUJZTkJzQ3lMUUNBZ2ZpOTh1SWZ2M25ady9xdElzdzNnZkxYZzNOVXczWkdrcUlLQ2drTmtsWlpjTGllV0t3akM0VEJDb1JCWSt5UUNFNWNRMHRSam5aR0JXemlKdExjR0d5NGlidG1mZVg2MitCeEZZcmRnTWpvNjZpUkdzRmdzNGd5QzlDQjhJeldrMUQ1c2VLckFNY2RoNnBIQzJuRU10amJwMWd0WmNkV3ZQNUhFTHNJZXJWWTdRbmJMQzMySDNsOGhQVC9EK2xjSk9HY2x6TDFITVNhL3kydmVqci82TEN2YXUrTmowdXYxUlRxZEx1dFIxV01yZWg4YnpBblFQV1ZRUFduTnFkWHFvcjkramJPZEIxb2QvUlZSdXZPSWYrRHl2ak03NWYwQU9FTUt2cm4raWUwQUFBQUFTVVZPUks1Q1lJST0=\",\r\n        \"idEditorial\": 7\r\n}",
+              "raw": "{\r\n        \"isbn\": \"272907930-9\",\r\n        \"title\": \"Necronomicon\",\r\n        \"synopsis\": \"Sic semper infestus\",\r\n        \"publish_date\": \"1555-02-19\",\r\n        \"cover\": \"ZGF0YTppbWFnZS9wbmc7YmFzZTY0LGlWQk9SdzBLR2dvQUFBQU5TVWhFVWdBQUFCQUFBQUFRQ0FZQUFBQWY4LzloQUFBQUJHZEJUVUVBQUsvSU53V0s2UUFBQUJsMFJWaDBVMjltZEhkaGNtVUFRV1J2WW1VZ1NXMWhaMlZTWldGa2VYSEpaVHdBQUFLYVNVUkJWRGpMclpOZFNGTmhHTWRQRjE1RWRPTzk0RTIzMGtYUjZzSVpabDRWa1JpVk1kT0xpcUM2c01ncjA4aFFRVXFVbkJGSmJScUtwYTZ5cncyYnptMTYybGR1WTJkdWJqdmJiRi9PaitXWnV1MzhlOCtoZFJOR1VBLzhlRG53L1AvdjgzRmVDZ0QxTDFELzFZQmhtQktDd3VWeUtaeE9wOExoY0l6WjdmYXgrZmw1aGMxbVUxaXRWb1haYkM3NXpjRHRkcGNTWVdCeGNSR0pSQUxMeThzaXlXUlNQT1B4dUVnMEdnVXhCVTNUZ2JtNXVWTFJnSWpMaVpoZldWbEJQTXppeTV0aFRENTlpUEcyMjNqWmNsMUUxZDZJeWY0dW1DWkdTRTRRc1ZnTVJxT1JOeGdNNVVMWkZrR2N5V1RFeEFlbkR2NFJWVWNqVXFtVWFESXpNMk9oU0RuckdvMEdQTThqUzB3K3l0dWh2Rm1MUnhmSzBYVmFJdElycThEZ3JUclFmZWZoVjlYaG0wa3B0alE5UGIxR0taWEtVQ1FTUVRxZFJqYWJGYy90N1cwUm9iSThZYjBjaWRrYnlLUm1zYVMrQ0pkdUNGTlRVMTZxdTd0N0dEOURLSTFNSDRKaGZuQUNRV00vWWxvWk1xc0tyTnFia1RBMHdUdFFqVS95aG5lVVZDcXR6QnNJZlpHMXdlUHh3Ty8zdytmelFkaU01L1UxYkNXSHNMblVoTTNJWTZ6YW1zQ3h6V0RrWld0VVlXSGg0Znp0Z2xnUUJZTkJzQ3lMUUNBZ2ZpOTh1SWZ2M25ady9xdElzdzNnZkxYZzNOVXczWkdrcUlLQ2drTmtsWlpjTGllV0t3akM0VEJDb1JCWSt5UUNFNWNRMHRSam5aR0JXemlKdExjR0d5NGlidG1mZVg2MitCeEZZcmRnTWpvNjZpUkdzRmdzNGd5QzlDQjhJeldrMUQ1c2VLckFNY2RoNnBIQzJuRU10amJwMWd0WmNkV3ZQNUhFTHNJZXJWWTdRbmJMQzMySDNsOGhQVC9EK2xjSk9HY2x6TDFITVNhL3kydmVqci82TEN2YXUrTmowdXYxUlRxZEx1dFIxV01yZWg4YnpBblFQV1ZRUFduTnFkWHFvcjkramJPZEIxb2QvUlZSdXZPSWYrRHl2ak03NWYwQU9FTUt2cm4raWUwQUFBQUFTVVZPUks1Q1lJST0=\",\r\n        \"publisher_id\": 7\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -23,49 +23,49 @@
               }
             },
             "url": {
-              "raw": "localhost:8080/libros",
+              "raw": "localhost:8080/books",
               "host": [
                 "localhost"
               ],
               "port": "8080",
               "path": [
-                "libros"
+                "books"
               ]
             }
           },
           "response": []
         },
         {
-          "name": "libros -R",
+          "name": "books -R",
           "request": {
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "localhost:8080/libros",
+              "raw": "localhost:8080/books",
               "host": [
                 "localhost"
               ],
               "port": "8080",
               "path": [
-                "libros"
+                "books"
               ]
             }
           },
           "response": []
         },
         {
-          "name": "libro -R",
+          "name": "books-R",
           "request": {
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "localhost:8080/libros/4",
+              "raw": "localhost:8080/books/4",
               "host": [
                 "localhost"
               ],
               "port": "8080",
               "path": [
-                "libros",
+                "books",
                 "4"
               ]
             }
@@ -73,13 +73,13 @@
           "response": []
         },
         {
-          "name": "libros -U",
+          "name": "books-U",
           "request": {
             "method": "PUT",
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n\t\"id\": 4,\r\n        \"isbn\": \"272907930-9\",\r\n        \"titulo\": \"NECRONOMICON\",\r\n        \"sinopsis\": \"Sic semper infestus\",\r\n        \"fechaPublicacion\": \"1555-02-19\",\r\n        \"portada\": \"ZGF0YTppbWFnZS9wbmc7YmFzZTY0LGlWQk9SdzBLR2dvQUFBQU5TVWhFVWdBQUFCQUFBQUFRQ0FZQUFBQWY4LzloQUFBQUJHZEJUVUVBQUsvSU53V0s2UUFBQUJsMFJWaDBVMjltZEhkaGNtVUFRV1J2WW1VZ1NXMWhaMlZTWldGa2VYSEpaVHdBQUFLYVNVUkJWRGpMclpOZFNGTmhHTWRQRjE1RWRPTzk0RTIzMGtYUjZzSVpabDRWa1JpVk1kT0xpcUM2c01ncjA4aFFRVXFVbkJGSmJScUtwYTZ5cncyYnptMTYybGR1WTJkdWJqdmJiRi9PaitXWnV1MzhlOCtoZFJOR1VBLzhlRG53L1AvdjgzRmVDZ0QxTDFELzFZQmhtQktDd3VWeUtaeE9wOExoY0l6WjdmYXgrZmw1aGMxbVUxaXRWb1haYkM3NXpjRHRkcGNTWVdCeGNSR0pSQUxMeThzaXlXUlNQT1B4dUVnMEdnVXhCVTNUZ2JtNXVWTFJnSWpMaVpoZldWbEJQTXppeTV0aFRENTlpUEcyMjNqWmNsMUUxZDZJeWY0dW1DWkdTRTRRc1ZnTVJxT1JOeGdNNVVMWkZrR2N5V1RFeEFlbkR2NFJWVWNqVXFtVWFESXpNMk9oU0RuckdvMEdQTThqUzB3K3l0dWh2Rm1MUnhmSzBYVmFJdElycThEZ3JUclFmZWZoVjlYaG0wa3B0alE5UGIxR0taWEtVQ1FTUVRxZFJqYWJGYy90N1cwUm9iSThZYjBjaWRrYnlLUm1zYVMrQ0pkdUNGTlRVMTZxdTd0N0dEOURLSTFNSDRKaGZuQUNRV00vWWxvWk1xc0tyTnFia1RBMHdUdFFqVS95aG5lVVZDcXR6QnNJZlpHMXdlUHh3Ty8zdytmelFkaU01L1UxYkNXSHNMblVoTTNJWTZ6YW1zQ3h6V0RrWld0VVlXSGg0Znp0Z2xnUUJZTkJzQ3lMUUNBZ2ZpOTh1SWZ2M25ady9xdElzdzNnZkxYZzNOVXczWkdrcUlLQ2drTmtsWlpjTGllV0t3akM0VEJDb1JCWSt5UUNFNWNRMHRSam5aR0JXemlKdExjR0d5NGlidG1mZVg2MitCeEZZcmRnTWpvNjZpUkdzRmdzNGd5QzlDQjhJeldrMUQ1c2VLckFNY2RoNnBIQzJuRU10amJwMWd0WmNkV3ZQNUhFTHNJZXJWWTdRbmJMQzMySDNsOGhQVC9EK2xjSk9HY2x6TDFITVNhL3kydmVqci82TEN2YXUrTmowdXYxUlRxZEx1dFIxV01yZWg4YnpBblFQV1ZRUFduTnFkWHFvcjkramJPZEIxb2QvUlZSdXZPSWYrRHl2ak03NWYwQU9FTUt2cm4raWUwQUFBQUFTVVZPUks1Q1lJST0=\",\r\n        \"idEditorial\": 7\r\n}",
+              "raw": "{\r\n\t\"id\": 4,\r\n        \"isbn\": \"272907930-9\",\r\n        \"tutle\": \"NECRONOMICON\",\r\n        \"synopsis\": \"Sic semper infestus\",\r\n        \"publish_Date\": \"1555-02-19\",\r\n        \"cover\": \"ZGF0YTppbWFnZS9wbmc7YmFzZTY0LGlWQk9SdzBLR2dvQUFBQU5TVWhFVWdBQUFCQUFBQUFRQ0FZQUFBQWY4LzloQUFBQUJHZEJUVUVBQUsvSU53V0s2UUFBQUJsMFJWaDBVMjltZEhkaGNtVUFRV1J2WW1VZ1NXMWhaMlZTWldGa2VYSEpaVHdBQUFLYVNVUkJWRGpMclpOZFNGTmhHTWRQRjE1RWRPTzk0RTIzMGtYUjZzSVpabDRWa1JpVk1kT0xpcUM2c01ncjA4aFFRVXFVbkJGSmJScUtwYTZ5cncyYnptMTYybGR1WTJkdWJqdmJiRi9PaitXWnV1MzhlOCtoZFJOR1VBLzhlRG53L1AvdjgzRmVDZ0QxTDFELzFZQmhtQktDd3VWeUtaeE9wOExoY0l6WjdmYXgrZmw1aGMxbVUxaXRWb1haYkM3NXpjRHRkcGNTWVdCeGNSR0pSQUxMeThzaXlXUlNQT1B4dUVnMEdnVXhCVTNUZ2JtNXVWTFJnSWpMaVpoZldWbEJQTXppeTV0aFRENTlpUEcyMjNqWmNsMUUxZDZJeWY0dW1DWkdTRTRRc1ZnTVJxT1JOeGdNNVVMWkZrR2N5V1RFeEFlbkR2NFJWVWNqVXFtVWFESXpNMk9oU0RuckdvMEdQTThqUzB3K3l0dWh2Rm1MUnhmSzBYVmFJdElycThEZ3JUclFmZWZoVjlYaG0wa3B0alE5UGIxR0taWEtVQ1FTUVRxZFJqYWJGYy90N1cwUm9iSThZYjBjaWRrYnlLUm1zYVMrQ0pkdUNGTlRVMTZxdTd0N0dEOURLSTFNSDRKaGZuQUNRV00vWWxvWk1xc0tyTnFia1RBMHdUdFFqVS95aG5lVVZDcXR6QnNJZlpHMXdlUHh3Ty8zdytmelFkaU01L1UxYkNXSHNMblVoTTNJWTZ6YW1zQ3h6V0RrWld0VVlXSGg0Znp0Z2xnUUJZTkJzQ3lMUUNBZ2ZpOTh1SWZ2M25ady9xdElzdzNnZkxYZzNOVXczWkdrcUlLQ2drTmtsWlpjTGllV0t3akM0VEJDb1JCWSt5UUNFNWNRMHRSam5aR0JXemlKdExjR0d5NGlidG1mZVg2MitCeEZZcmRnTWpvNjZpUkdzRmdzNGd5QzlDQjhJeldrMUQ1c2VLckFNY2RoNnBIQzJuRU10amJwMWd0WmNkV3ZQNUhFTHNJZXJWWTdRbmJMQzMySDNsOGhQVC9EK2xjSk9HY2x6TDFITVNhL3kydmVqci82TEN2YXUrTmowdXYxUlRxZEx1dFIxV01yZWg4YnpBblFQV1ZRUFduTnFkWHFvcjkramJPZEIxb2QvUlZSdXZPSWYrRHl2ak03NWYwQU9FTUt2cm4raWUwQUFBQUFTVVZPUks1Q1lJST0=\",\r\n        \"publisher_id\": 7\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -87,13 +87,13 @@
               }
             },
             "url": {
-              "raw": "localhost:8080/libros/4",
+              "raw": "localhost:8080/books/4",
               "host": [
                 "localhost"
               ],
               "port": "8080",
               "path": [
-                "libros",
+                "books",
                 "4"
               ]
             }
@@ -101,18 +101,18 @@
           "response": []
         },
         {
-          "name": "libros -D",
+          "name": "books-D",
           "request": {
             "method": "DELETE",
             "header": [],
             "url": {
-              "raw": "localhost:8080/libros/4",
+              "raw": "localhost:8080/books/4",
               "host": [
                 "localhost"
               ],
               "port": "8080",
               "path": [
-                "libros",
+                "books",
                 "4"
               ]
             }
