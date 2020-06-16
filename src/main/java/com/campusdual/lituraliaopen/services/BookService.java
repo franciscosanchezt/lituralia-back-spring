@@ -10,6 +10,12 @@ public interface BookService {
 
     BookDTO getBookById(Integer book_id) throws ResourceNotFoundException;
 
+    List<BookDTO> getAllBooksByTitleContainingOrderByTitle(String likeTitle);
+
+    List<BookDTO> getBooksByTitleContaining(String titleLike) throws ResourceNotFoundException;
+
+    List<BookDTO> getBooksBySearchTerm(String searchTerm) throws ResourceNotFoundException;
+
     BookDTO createBook(BookDTO bookDto);
 
     BookDTO updateBook(BookDTO bookDto);

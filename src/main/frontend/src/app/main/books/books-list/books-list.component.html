@@ -1,0 +1,75 @@
+Book Catalog
+<div class="row ">
+  <div class="col-md-4">
+    <label for="pageSizeBox" class="">Page Size:</label>
+    <select id="pageSizeBox" class="custom-select custom-select-sm w-75" [(ngModel)]="selectedSize"
+            (ngModelChange)="changePageSize($event)">
+      <option *ngFor="let size of pageSizes" [value]="size.value">{{size.viewValue}}</option>
+    </select>
+  </div>
+  <!-- Search form -->
+  <div class="col-md-8 ">
+    <form class="form-inline  form-sm active-cyan-2">
+      <input class="form-control form-control-sm w-75 mr-1 ml-auto"
+             type="text"
+             placeholder="Search"
+             aria-label="Search"
+             #searchBox
+             id="search-box"
+             (input)="search(searchBox.value)">
+      <mdb-icon class="mr-3" fas icon="search" aria-hidden="true"></mdb-icon>
+    </form>
+  </div>
+</div>
+
+<div class="table-responsive row">
+  <!--Table-->
+  <table id="tablePreview" class="table table-hover">
+    <!--Table head-->
+    <thead>
+    <tr>
+      <th>Book ID</th>
+      <th>ISBN</th>
+      <th>Title</th>
+      <th>Publish Date</th>
+      <th>Publisher ID</th>
+    </tr>
+    </thead>
+    <!--Table head-->
+    <!--Table body-->
+    <tbody>
+    <tr *ngFor="let book of books ">
+      <th scope="row">{{book.bookId}}</th>
+      <td>{{book.isbn}}</td>
+      <td>{{book.title}}</td>
+      <td>{{book.publishDate}}</td>
+      <td>{{book.publisherId}}</td>
+    </tr>
+    </tbody>
+    <!--Table body-->
+  </table>
+  <!--Table-->
+</div>
+<div class="row d-flex justify-content-center">
+  <nav>
+    <ul class="pagination pg-blue">
+      <li class="page-item">
+        <a class="page-link" aria-label="Previous" mdbWavesEffect (click)="navigateTo(pagingStatus.pageNumber-1)">
+          <span aria-hidden="true">&laquo;</span>
+          <span class="sr-only">Previous</span>
+        </a>
+      </li>
+      <li *ngFor="let page of activePages" class="page-item" [class.active]="pagingStatus.pageNumber===page">
+        <a *ngIf="isNumeric(page); else threeDots" class="page-link" mdbWavesEffect
+           (click)="navigateTo(page)">{{page}}</a>
+        <ng-template #threeDots><span class="page-link">{{page}}</span></ng-template>
+      </li>
+      <li class="page-item">
+        <a class="page-link" aria-label="Next" mdbWavesEffect (click)="navigateTo(pagingStatus.pageNumber+1)">
+          <span aria-hidden="true">&raquo;</span>
+          <span class="sr-only">Next</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>

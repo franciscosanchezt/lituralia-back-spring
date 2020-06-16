@@ -1,5 +1,6 @@
 package com.campusdual.lituraliaopen.api.model;
 
+import com.campusdual.lituraliaopen.api.Paging;
 import java.util.ArrayList;
 import java.util.List;
 import lombok.AllArgsConstructor;
@@ -13,5 +14,6 @@ import lombok.NoArgsConstructor;
 @Data
 public class BookListDTO {
 
-    List<BookDTO> books = new ArrayList<>();
+    private List<BookDTO> books = new ArrayList<>();
+    private Paging paging;
 }
