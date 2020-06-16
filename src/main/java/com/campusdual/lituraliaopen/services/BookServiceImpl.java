@@ -30,6 +30,30 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
+    public List<BookDTO> getAllBooksByTitleContainingOrderByTitle(String likeTitle) {
+        return bookRepository.findByTitleContainingOrderByTitle(likeTitle)
+                             .stream()
+                             .map(bookMapper::bookToBookDTO)
+                             .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<BookDTO> getBooksByTitleContaining(String titleLike) throws ResourceNotFoundException {
+        return bookRepository.findByTitleContainingOrderByTitle(titleLike)
+                             .stream()
+                             .map(bookMapper::bookToBookDTO)
+                             .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<BookDTO> getBooksBySearchTerm(String searchTerm) throws ResourceNotFoundException {
+        return bookRepository.findBySearchTerm(searchTerm)
+                             .stream()
+                             .map(bookMapper::bookToBookDTO)
+                             .collect(Collectors.toList());
+    }
+
+    @Override
     public BookDTO getBookById(Integer book_id) {
         return bookRepository.findById(book_id)
                              .map(bookMapper::bookToBookDTO)
