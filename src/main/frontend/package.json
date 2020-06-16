@@ -1,6 +1,6 @@
 {
-  "name": "ngx",
-  "version": "0.0.1",
+  "name": "lituralia-frontend",
+  "version": "0.0.2",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --port 4201 -o --host localhost",
