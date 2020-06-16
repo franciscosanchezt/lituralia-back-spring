@@ -1,0 +1,91 @@
+<!--Navbar-->
+<mdb-navbar class="col" SideClass="navbar navbar-expand-md navbar-dark green" [containerInside]="false">
+
+  <!-- Navbar brand -->
+  <mdb-navbar-brand>
+    <a class="navbar-brand" routerLink="/">
+      <mdb-icon fas icon="bookmark" size="3x"></mdb-icon>
+    </a>
+  </mdb-navbar-brand>
+
+  <!-- Collapsible content -->
+  <links>
+
+    <!-- Links Left-->
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link waves-light" mdbWavesEffect routerLink="/main/books">
+          <mdb-icon fas icon="home" size="2x"></mdb-icon>
+          Books
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link waves-light" mdbWavesEffect routerLink="/authors">
+          <mdb-icon fas icon="users" size="2x"></mdb-icon>
+          Authors
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link waves-light" mdbWavesEffect routerLink="/genre">
+          <mdb-icon fas icon="genderless" size="2x"></mdb-icon>
+          Genre
+        </a>
+      </li>
+    </ul>
+
+    <!-- Links Right-->
+    <ul class="navbar-nav ml-auto">
+      <ng-container>
+
+        <!-- Dropdown -->
+        <li class="nav-item dropdown" dropdown>
+          <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light">
+            <mdb-icon fas icon="user" size="2x"></mdb-icon>
+            <div class="d-none d-lg-inline"> [Username] <span
+              class="caret"></span></div>
+          </a>
+          <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
+            <a class="dropdown-item waves-light" mdbWavesEffect (click)="test()">
+              <mdb-icon fas icon="fingerprint" size="2x"></mdb-icon>
+              [Username]
+            </a>
+            <a class="dropdown-item waves-light" mdbWavesEffect>
+              <mdb-icon fas icon="at" size="2x"></mdb-icon>
+              [Email]
+            </a>
+            <a class="dropdown-item waves-light" mdbWavesEffect routerLink="/perfil">
+              <mdb-icon fas icon="user-edit" size="2x"></mdb-icon>
+              Mi Perfil
+            </a>
+            <a class="dropdown-item waves-light" mdbWavesEffect routerLink="/producto">
+              <mdb-icon fas icon="edit" size="2x"></mdb-icon>
+              Admin
+            </a>
+            <a class="dropdown-item waves-light" mdbWavesEffect (click)="logout()">
+              <mdb-icon fas icon="sign-out-alt" size="2x"></mdb-icon>
+              Logout
+            </a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link waves-light" mdbWavesEffect
+             data-toggle="modal" data-target="#basicExample" (click)="dialogService.loginDialog()">
+            <mdb-icon fas icon="sign-in-alt" size="2x"></mdb-icon>
+            Login
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link waves-light" mdbWavesEffect
+             data-toggle="modal" data-target="#basicExample" (click)="dialogService.signupDialog()">
+            <mdb-icon fas icon="address-card" size="2x"></mdb-icon>
+            Registro
+          </a>
+        </li>
+      </ng-container>
+    </ul>
+  </links>
+  <!-- Collapsible content -->
+
+
+</mdb-navbar>
+<!--/.Navbar-->
