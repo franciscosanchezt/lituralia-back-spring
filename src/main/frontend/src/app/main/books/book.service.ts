@@ -5,13 +5,14 @@ import {Book} from "./book";
 import {catchError, map, tap} from "rxjs/operators";
 import {PagedList} from "../../shared/paged-list";
 import {Paging} from "../../shared/paging";
+import {environment} from "../../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class BookService {
 
-  private booksUrl: string = 'http://localhost:8080/books';
+  private booksUrl: string = environment.apiUrl + '/books';
   private httpOptions = {headers: new HttpHeaders({'Content-Type': 'application/json'})};
 
   constructor(private http: HttpClient) {

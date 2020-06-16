@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-@CrossOrigin(origins = "http://localhost:4201", maxAge = 3600)
+@CrossOrigin(origins = "*", allowedHeaders = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/books")
 public class BookController {

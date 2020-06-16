@@ -108,7 +108,7 @@
       <resource>
         <directory>src/main/resources</directory>
         <excludes>
-<!--          <exclude>webapp/</exclude>-->
+          <!--          <exclude>webapp/</exclude>-->
         </excludes>
       </resource>
     </resources>
@@ -119,7 +119,6 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
       </plugin>
-
       <!--mapstruct plugin-->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -192,7 +191,6 @@
   </build>
 
 
-
   <profiles>
     <profile>
       <id>build_frontend</id>
@@ -201,6 +199,19 @@
       </activation>
       <build>
         <plugins>
+
+          <plugin>
+            <artifactId>maven-clean-plugin</artifactId>
+            <version>3.1.0</version>
+            <configuration>
+              <filesets>
+                <fileset>
+                  <directory>src/main/resources/static/</directory>
+                </fileset>
+              </filesets>
+            </configuration>
+          </plugin>
+
           <plugin>
             <groupId>com.github.eirslett</groupId>
             <artifactId>frontend-maven-plugin</artifactId>
@@ -234,7 +245,8 @@
                   <goal>npm</goal>
                 </goals>
                 <configuration>
-                  <arguments>run build</arguments>
+                  <arguments>run build --prod</arguments>
+                  <!--                  <arguments>run build</arguments>-->
                 </configuration>
               </execution>
               <!--              <execution>-->
