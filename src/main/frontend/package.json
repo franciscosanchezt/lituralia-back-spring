@@ -5,9 +5,6 @@
     "ng": "ng",
     "start": "ng serve --port 4201 -o --host localhost",
     "build": "ng build",
-    "postbuild": "npm run deploy",
-    "predeploy": "rimraf ../resources/static/ && mkdirp ../resources/static",
-    "deploy": "copyfiles -f dist/** ../resources/static",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
