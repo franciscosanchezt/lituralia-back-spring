@@ -1,5 +1,5 @@
-[![CircleCI](https://circleci.com/gh/franciscosanchezt/lituralia-open/tree/develop.svg?style=shield)](https://circleci.com/gh/franciscosanchezt/lituralia-back-spring)
-[![codecov](https://codecov.io/gh/franciscosanchezt/lituralia-open/branch/master/graph/badge.svg)](https://codecov.io/gh/franciscosanchezt/lituralia-back-spring)
+[![CircleCI](https://circleci.com/gh/franciscosanchezt/lituralia-open.svg?style=shield)](https://circleci.com/gh/franciscosanchezt/lituralia-open)
+[![codecov](https://codecov.io/gh/franciscosanchezt/lituralia-open/branch/master/graph/badge.svg)](https://codecov.io/gh/franciscosanchezt/lituralia-open)
 
 # Lituralia Spring Angular
 
