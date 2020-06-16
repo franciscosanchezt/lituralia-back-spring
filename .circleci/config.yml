@@ -44,9 +44,12 @@ jobs:
             - ~/.m2
           key: v1-dependencies-{{ checksum "pom.xml" }}
 
-      - store_test_results:
-          path: target/surefire-reports
+      -store_artifacts:
+        path: /target/lituralia-open-*.jar
 
-      - run:
-          name: Send to CodeCov
-          command: bash <(curl -s https://codecov.io/bash)
+        - store_test_results:
+            path: target/surefire-reports
+
+        - run:
+            name: Send to CodeCov
+            command: bash <(curl -s https://codecov.io/bash)

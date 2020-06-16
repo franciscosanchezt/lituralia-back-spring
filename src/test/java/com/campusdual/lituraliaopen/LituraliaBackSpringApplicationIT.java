@@ -7,7 +7,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
-class LituraliaBackSpringApplicationTests {
+class LituraliaBackSpringApplicationIT {
 
     @Test
     void contextLoads() {
