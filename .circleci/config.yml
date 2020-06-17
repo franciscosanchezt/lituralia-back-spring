@@ -37,7 +37,7 @@ jobs:
 
       - run: mvn dependency:resolve-plugins dependency:go-offline
 
-      - run: mvn integration-test jacoco:report
+      - run: mvn integration-test jacoco:report -P !build_frontend
 
       - save_cache:
           paths:

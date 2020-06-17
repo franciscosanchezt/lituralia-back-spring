@@ -187,6 +187,23 @@
         <artifactId>maven-site-plugin</artifactId>
         <version>3.7.1</version>
       </plugin>
+
+      <plugin>
+        <groupId>com.heroku.sdk</groupId>
+        <artifactId>heroku-maven-plugin</artifactId>
+        <version>3.0.2</version>
+        <configuration>
+          <appName>lituralia-open</appName>
+          <includeTarget>false</includeTarget>
+          <includes>
+            <include>target/${project.build.finalName}.jar</include>
+          </includes>
+          <jdkVersion>${java.version}</jdkVersion>
+          <processTypes>
+            <web>java $JAVA_OPTS -Dserver.port=$PORT -jar target/${project.build.finalName}.jar</web>
+          </processTypes>
+        </configuration>
+      </plugin>
     </plugins>
   </build>
 
