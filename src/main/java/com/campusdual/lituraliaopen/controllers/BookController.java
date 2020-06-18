@@ -1,7 +1,7 @@
 package com.campusdual.lituraliaopen.controllers;
 
+import com.campusdual.lituraliaopen.api.Paging;
 import com.campusdual.lituraliaopen.api.model.BookService;
-import com.campusdual.lituraliaopen.api.model.Paging;
 import com.campusdual.lituraliaopen.api.model.dtos.BookDTO;
 import com.campusdual.lituraliaopen.api.model.dtos.ListDTO;
 import java.util.List;

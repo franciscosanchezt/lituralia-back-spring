@@ -1,6 +1,6 @@
 package com.campusdual.lituraliaopen.controllers;
 
-import com.campusdual.lituraliaopen.api.model.Paging;
+import com.campusdual.lituraliaopen.api.Paging;
 import com.campusdual.lituraliaopen.api.model.PublisherService;
 import com.campusdual.lituraliaopen.api.model.dtos.ListDTO;
 import com.campusdual.lituraliaopen.api.model.dtos.PublisherDTO;
