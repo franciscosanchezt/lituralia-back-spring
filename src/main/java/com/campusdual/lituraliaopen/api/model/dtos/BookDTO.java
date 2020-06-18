@@ -19,5 +19,5 @@ public class BookDTO {
     private String synopsis;
     private LocalDate publishDate;
     private String cover;
-    private int publisherId;
+    private Integer publisher;
 }

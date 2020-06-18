@@ -1,6 +1,7 @@
 package com.campusdual.lituraliaopen.api.model.dtos;
 
 
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,5 +18,7 @@ public class PublisherDTO {
     private String publisherName;
     private String publisherDesc;
     private String publisherLogo;
+    private List<Integer> books;
+
 
 }
