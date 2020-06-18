@@ -33,7 +33,7 @@ public class Publisher {
     @Column(name = "publisher_logo")
     private String publisherLogo;
 
-    @OneToMany(mappedBy = "publisher", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "publisher", fetch = FetchType.LAZY)
     private List<Book> books;
 
 }

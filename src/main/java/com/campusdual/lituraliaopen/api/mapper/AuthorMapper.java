@@ -5,7 +5,7 @@ import com.campusdual.lituraliaopen.domain.Author;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", uses = {BookMapper.class})
 public interface AuthorMapper {
 
     AuthorMapper INSTANCE = Mappers.getMapper(AuthorMapper.class);
@@ -13,4 +13,10 @@ public interface AuthorMapper {
     AuthorDTO authorToAuthorDTO(Author author);
 
     Author authorDTOToAuthor(AuthorDTO authorDto);
+
+    Author idToAuthor(Integer id);
+
+    default Integer authorToId(Author author) {
+        return author.getAuthorId();
+    }
 }

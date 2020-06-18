@@ -5,7 +5,7 @@ import com.campusdual.lituraliaopen.domain.Book;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
-@Mapper(componentModel = "spring", uses = {PublisherMapper.class})
+@Mapper(componentModel = "spring", uses = {PublisherMapper.class, GenreMapper.class, AuthorMapper.class})
 public interface BookMapper {
 
     BookMapper INSTANCE = Mappers.getMapper(BookMapper.class);
