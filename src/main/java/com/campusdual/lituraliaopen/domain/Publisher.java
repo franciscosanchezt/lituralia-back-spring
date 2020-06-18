@@ -1,6 +1,6 @@
 package com.campusdual.lituraliaopen.domain;
 
-import java.time.LocalDate;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,25 +15,19 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 @Data
-@Entity(name = "books")
-public class Book {
+@Entity(name = "publishers")
+public class Publisher {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "book_id")
-    private Integer bookId;
-
-    private String isbn;
-
-    private String title;
-
-    private String synopsis;
-
-    @Column(name = "publish_date", columnDefinition = "DATE")
-    private LocalDate publishDate;
-
-    private String cover;
-
     @Column(name = "publisher_id")
-    private int publisherId;
+    private Integer publisherId;
+
+    @Column(name = "publisher_name")
+    private String publisherName;
+    @Column(name = "publisher_desc")
+    private String publisherDesc;
+    @Column(name = "publisher_logo")
+    private String publisherLogo;
+
 }

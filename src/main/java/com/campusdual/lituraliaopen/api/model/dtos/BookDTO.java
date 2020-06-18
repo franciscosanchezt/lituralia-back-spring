@@ -1,4 +1,4 @@
-package com.campusdual.lituraliaopen.api.model;
+package com.campusdual.lituraliaopen.api.model.dtos;
 
 import java.time.LocalDate;
 import lombok.AllArgsConstructor;
@@ -18,6 +18,6 @@ public class BookDTO {
     private String title;
     private String synopsis;
     private LocalDate publishDate;
-    private byte[] cover;
+    private String cover;
     private int publisherId;
 }

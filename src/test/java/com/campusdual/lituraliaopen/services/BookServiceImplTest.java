@@ -8,7 +8,8 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import com.campusdual.lituraliaopen.api.mapper.BookMapper;
-import com.campusdual.lituraliaopen.api.model.BookDTO;
+import com.campusdual.lituraliaopen.api.model.BookService;
+import com.campusdual.lituraliaopen.api.model.dtos.BookDTO;
 import com.campusdual.lituraliaopen.domain.Book;
 import com.campusdual.lituraliaopen.repositories.BookRepository;
 import java.util.Arrays;

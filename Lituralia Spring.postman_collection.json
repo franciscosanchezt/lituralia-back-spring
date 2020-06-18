@@ -6,7 +6,7 @@
   },
   "item": [
     {
-      "name": "libros",
+      "name": "books",
       "item": [
         {
           "name": "books -C",
@@ -15,7 +15,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n        \"isbn\": \"272907930-9\",\r\n        \"title\": \"Necronomicon\",\r\n        \"synopsis\": \"Sic semper infestus\",\r\n        \"publish_date\": \"1555-02-19\",\r\n        \"cover\": \"ZGF0YTppbWFnZS9wbmc7YmFzZTY0LGlWQk9SdzBLR2dvQUFBQU5TVWhFVWdBQUFCQUFBQUFRQ0FZQUFBQWY4LzloQUFBQUJHZEJUVUVBQUsvSU53V0s2UUFBQUJsMFJWaDBVMjltZEhkaGNtVUFRV1J2WW1VZ1NXMWhaMlZTWldGa2VYSEpaVHdBQUFLYVNVUkJWRGpMclpOZFNGTmhHTWRQRjE1RWRPTzk0RTIzMGtYUjZzSVpabDRWa1JpVk1kT0xpcUM2c01ncjA4aFFRVXFVbkJGSmJScUtwYTZ5cncyYnptMTYybGR1WTJkdWJqdmJiRi9PaitXWnV1MzhlOCtoZFJOR1VBLzhlRG53L1AvdjgzRmVDZ0QxTDFELzFZQmhtQktDd3VWeUtaeE9wOExoY0l6WjdmYXgrZmw1aGMxbVUxaXRWb1haYkM3NXpjRHRkcGNTWVdCeGNSR0pSQUxMeThzaXlXUlNQT1B4dUVnMEdnVXhCVTNUZ2JtNXVWTFJnSWpMaVpoZldWbEJQTXppeTV0aFRENTlpUEcyMjNqWmNsMUUxZDZJeWY0dW1DWkdTRTRRc1ZnTVJxT1JOeGdNNVVMWkZrR2N5V1RFeEFlbkR2NFJWVWNqVXFtVWFESXpNMk9oU0RuckdvMEdQTThqUzB3K3l0dWh2Rm1MUnhmSzBYVmFJdElycThEZ3JUclFmZWZoVjlYaG0wa3B0alE5UGIxR0taWEtVQ1FTUVRxZFJqYWJGYy90N1cwUm9iSThZYjBjaWRrYnlLUm1zYVMrQ0pkdUNGTlRVMTZxdTd0N0dEOURLSTFNSDRKaGZuQUNRV00vWWxvWk1xc0tyTnFia1RBMHdUdFFqVS95aG5lVVZDcXR6QnNJZlpHMXdlUHh3Ty8zdytmelFkaU01L1UxYkNXSHNMblVoTTNJWTZ6YW1zQ3h6V0RrWld0VVlXSGg0Znp0Z2xnUUJZTkJzQ3lMUUNBZ2ZpOTh1SWZ2M25ady9xdElzdzNnZkxYZzNOVXczWkdrcUlLQ2drTmtsWlpjTGllV0t3akM0VEJDb1JCWSt5UUNFNWNRMHRSam5aR0JXemlKdExjR0d5NGlidG1mZVg2MitCeEZZcmRnTWpvNjZpUkdzRmdzNGd5QzlDQjhJeldrMUQ1c2VLckFNY2RoNnBIQzJuRU10amJwMWd0WmNkV3ZQNUhFTHNJZXJWWTdRbmJMQzMySDNsOGhQVC9EK2xjSk9HY2x6TDFITVNhL3kydmVqci82TEN2YXUrTmowdXYxUlRxZEx1dFIxV01yZWg4YnpBblFQV1ZRUFduTnFkWHFvcjkramJPZEIxb2QvUlZSdXZPSWYrRHl2ak03NWYwQU9FTUt2cm4raWUwQUFBQUFTVVZPUks1Q1lJST0=\",\r\n        \"publisher_id\": 7\r\n}",
+              "raw": "{\r\n        \"isbn\": \"272907930-9\",\r\n        \"title\": \"Necronomicon\",\r\n        \"synopsis\": \"Sic semper infestus\",\r\n        \"publishDate\": \"1555-02-19\",\r\n        \"cover\": \"ZGF0YTppbWFnZS9wbmc7YmFzZTY0LGlWQk9SdzBLR2dvQUFBQU5TVWhFVWdBQUFCQUFBQUFRQ0FZQUFBQWY4LzloQUFBQUJHZEJUVUVBQUsvSU53V0s2UUFBQUJsMFJWaDBVMjltZEhkaGNtVUFRV1J2WW1VZ1NXMWhaMlZTWldGa2VYSEpaVHdBQUFLYVNVUkJWRGpMclpOZFNGTmhHTWRQRjE1RWRPTzk0RTIzMGtYUjZzSVpabDRWa1JpVk1kT0xpcUM2c01ncjA4aFFRVXFVbkJGSmJScUtwYTZ5cncyYnptMTYybGR1WTJkdWJqdmJiRi9PaitXWnV1MzhlOCtoZFJOR1VBLzhlRG53L1AvdjgzRmVDZ0QxTDFELzFZQmhtQktDd3VWeUtaeE9wOExoY0l6WjdmYXgrZmw1aGMxbVUxaXRWb1haYkM3NXpjRHRkcGNTWVdCeGNSR0pSQUxMeThzaXlXUlNQT1B4dUVnMEdnVXhCVTNUZ2JtNXVWTFJnSWpMaVpoZldWbEJQTXppeTV0aFRENTlpUEcyMjNqWmNsMUUxZDZJeWY0dW1DWkdTRTRRc1ZnTVJxT1JOeGdNNVVMWkZrR2N5V1RFeEFlbkR2NFJWVWNqVXFtVWFESXpNMk9oU0RuckdvMEdQTThqUzB3K3l0dWh2Rm1MUnhmSzBYVmFJdElycThEZ3JUclFmZWZoVjlYaG0wa3B0alE5UGIxR0taWEtVQ1FTUVRxZFJqYWJGYy90N1cwUm9iSThZYjBjaWRrYnlLUm1zYVMrQ0pkdUNGTlRVMTZxdTd0N0dEOURLSTFNSDRKaGZuQUNRV00vWWxvWk1xc0tyTnFia1RBMHdUdFFqVS95aG5lVVZDcXR6QnNJZlpHMXdlUHh3Ty8zdytmelFkaU01L1UxYkNXSHNMblVoTTNJWTZ6YW1zQ3h6V0RrWld0VVlXSGg0Znp0Z2xnUUJZTkJzQ3lMUUNBZ2ZpOTh1SWZ2M25ady9xdElzdzNnZkxYZzNOVXczWkdrcUlLQ2drTmtsWlpjTGllV0t3akM0VEJDb1JCWSt5UUNFNWNRMHRSam5aR0JXemlKdExjR0d5NGlidG1mZVg2MitCeEZZcmRnTWpvNjZpUkdzRmdzNGd5QzlDQjhJeldrMUQ1c2VLckFNY2RoNnBIQzJuRU10amJwMWd0WmNkV3ZQNUhFTHNJZXJWWTdRbmJMQzMySDNsOGhQVC9EK2xjSk9HY2x6TDFITVNhL3kydmVqci82TEN2YXUrTmowdXYxUlRxZEx1dFIxV01yZWg4YnpBblFQV1ZRUFduTnFkWHFvcjkramJPZEIxb2QvUlZSdXZPSWYrRHl2ak03NWYwQU9FTUt2cm4raWUwQUFBQUFTVVZPUks1Q1lJST0=\",\r\n        \"publisherId\": 7\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -79,7 +79,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n\t\"id\": 4,\r\n        \"isbn\": \"272907930-9\",\r\n        \"tutle\": \"NECRONOMICON\",\r\n        \"synopsis\": \"Sic semper infestus\",\r\n        \"publish_Date\": \"1555-02-19\",\r\n        \"cover\": \"ZGF0YTppbWFnZS9wbmc7YmFzZTY0LGlWQk9SdzBLR2dvQUFBQU5TVWhFVWdBQUFCQUFBQUFRQ0FZQUFBQWY4LzloQUFBQUJHZEJUVUVBQUsvSU53V0s2UUFBQUJsMFJWaDBVMjltZEhkaGNtVUFRV1J2WW1VZ1NXMWhaMlZTWldGa2VYSEpaVHdBQUFLYVNVUkJWRGpMclpOZFNGTmhHTWRQRjE1RWRPTzk0RTIzMGtYUjZzSVpabDRWa1JpVk1kT0xpcUM2c01ncjA4aFFRVXFVbkJGSmJScUtwYTZ5cncyYnptMTYybGR1WTJkdWJqdmJiRi9PaitXWnV1MzhlOCtoZFJOR1VBLzhlRG53L1AvdjgzRmVDZ0QxTDFELzFZQmhtQktDd3VWeUtaeE9wOExoY0l6WjdmYXgrZmw1aGMxbVUxaXRWb1haYkM3NXpjRHRkcGNTWVdCeGNSR0pSQUxMeThzaXlXUlNQT1B4dUVnMEdnVXhCVTNUZ2JtNXVWTFJnSWpMaVpoZldWbEJQTXppeTV0aFRENTlpUEcyMjNqWmNsMUUxZDZJeWY0dW1DWkdTRTRRc1ZnTVJxT1JOeGdNNVVMWkZrR2N5V1RFeEFlbkR2NFJWVWNqVXFtVWFESXpNMk9oU0RuckdvMEdQTThqUzB3K3l0dWh2Rm1MUnhmSzBYVmFJdElycThEZ3JUclFmZWZoVjlYaG0wa3B0alE5UGIxR0taWEtVQ1FTUVRxZFJqYWJGYy90N1cwUm9iSThZYjBjaWRrYnlLUm1zYVMrQ0pkdUNGTlRVMTZxdTd0N0dEOURLSTFNSDRKaGZuQUNRV00vWWxvWk1xc0tyTnFia1RBMHdUdFFqVS95aG5lVVZDcXR6QnNJZlpHMXdlUHh3Ty8zdytmelFkaU01L1UxYkNXSHNMblVoTTNJWTZ6YW1zQ3h6V0RrWld0VVlXSGg0Znp0Z2xnUUJZTkJzQ3lMUUNBZ2ZpOTh1SWZ2M25ady9xdElzdzNnZkxYZzNOVXczWkdrcUlLQ2drTmtsWlpjTGllV0t3akM0VEJDb1JCWSt5UUNFNWNRMHRSam5aR0JXemlKdExjR0d5NGlidG1mZVg2MitCeEZZcmRnTWpvNjZpUkdzRmdzNGd5QzlDQjhJeldrMUQ1c2VLckFNY2RoNnBIQzJuRU10amJwMWd0WmNkV3ZQNUhFTHNJZXJWWTdRbmJMQzMySDNsOGhQVC9EK2xjSk9HY2x6TDFITVNhL3kydmVqci82TEN2YXUrTmowdXYxUlRxZEx1dFIxV01yZWg4YnpBblFQV1ZRUFduTnFkWHFvcjkramJPZEIxb2QvUlZSdXZPSWYrRHl2ak03NWYwQU9FTUt2cm4raWUwQUFBQUFTVVZPUks1Q1lJST0=\",\r\n        \"publisher_id\": 7\r\n}",
+              "raw": "{\r\n        \"isbn\": \"272907930-X\",\r\n        \"title\": \"NECRONOMICON 2\",\r\n        \"synopsis\": \"Sic semper infestus 2\",\r\n        \"publishDate\": \"1555-02-19\",\r\n        \"cover\": \"ZGF0YTppbWFnZS9wbmc7YmFzZTY0LGlWQk9SdzBLR2dvQUFBQU5TVWhFVWdBQUFCQUFBQUFRQ0FZQUFBQWY4LzloQUFBQUJHZEJUVUVBQUsvSU53V0s2UUFBQUJsMFJWaDBVMjltZEhkaGNtVUFRV1J2WW1VZ1NXMWhaMlZTWldGa2VYSEpaVHdBQUFLYVNVUkJWRGpMclpOZFNGTmhHTWRQRjE1RWRPTzk0RTIzMGtYUjZzSVpabDRWa1JpVk1kT0xpcUM2c01ncjA4aFFRVXFVbkJGSmJScUtwYTZ5cncyYnptMTYybGR1WTJkdWJqdmJiRi9PaitXWnV1MzhlOCtoZFJOR1VBLzhlRG53L1AvdjgzRmVDZ0QxTDFELzFZQmhtQktDd3VWeUtaeE9wOExoY0l6WjdmYXgrZmw1aGMxbVUxaXRWb1haYkM3NXpjRHRkcGNTWVdCeGNSR0pSQUxMeThzaXlXUlNQT1B4dUVnMEdnVXhCVTNUZ2JtNXVWTFJnSWpMaVpoZldWbEJQTXppeTV0aFRENTlpUEcyMjNqWmNsMUUxZDZJeWY0dW1DWkdTRTRRc1ZnTVJxT1JOeGdNNVVMWkZrR2N5V1RFeEFlbkR2NFJWVWNqVXFtVWFESXpNMk9oU0RuckdvMEdQTThqUzB3K3l0dWh2Rm1MUnhmSzBYVmFJdElycThEZ3JUclFmZWZoVjlYaG0wa3B0alE5UGIxR0taWEtVQ1FTUVRxZFJqYWJGYy90N1cwUm9iSThZYjBjaWRrYnlLUm1zYVMrQ0pkdUNGTlRVMTZxdTd0N0dEOURLSTFNSDRKaGZuQUNRV00vWWxvWk1xc0tyTnFia1RBMHdUdFFqVS95aG5lVVZDcXR6QnNJZlpHMXdlUHh3Ty8zdytmelFkaU01L1UxYkNXSHNMblVoTTNJWTZ6YW1zQ3h6V0RrWld0VVlXSGg0Znp0Z2xnUUJZTkJzQ3lMUUNBZ2ZpOTh1SWZ2M25ady9xdElzdzNnZkxYZzNOVXczWkdrcUlLQ2drTmtsWlpjTGllV0t3akM0VEJDb1JCWSt5UUNFNWNRMHRSam5aR0JXemlKdExjR0d5NGlidG1mZVg2MitCeEZZcmRnTWpvNjZpUkdzRmdzNGd5QzlDQjhJeldrMUQ1c2VLckFNY2RoNnBIQzJuRU10amJwMWd0WmNkV3ZQNUhFTHNJZXJWWTdRbmJMQzMySDNsOGhQVC9EK2xjSk9HY2x6TDFITVNhL3kydmVqci82TEN2YXUrTmowdXYxUlRxZEx1dFIxV01yZWg4YnpBblFQV1ZRUFduTnFkWHFvcjkramJPZEIxb2QvUlZSdXZPSWYrRHl2ak03NWYwQU9FTUt2cm4raWUwQUFBQUFTVVZPUks1Q1lJST0=\",\r\n        \"publisherId\": 7\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -87,14 +87,14 @@
               }
             },
             "url": {
-              "raw": "localhost:8080/books/4",
+              "raw": "localhost:8080/books/402",
               "host": [
                 "localhost"
               ],
               "port": "8080",
               "path": [
                 "books",
-                "4"
+                "402"
               ]
             }
           },
@@ -114,6 +114,123 @@
               "path": [
                 "books",
                 "4"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "protocolProfileBehavior": {}
+    },
+    {
+      "name": "publishers",
+      "item": [
+        {
+          "name": "publishers  -C",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"publisherName\": \"Demo Publisher\",\r\n    \"publisherDesc\": \"Demo Publisher\",\r\n    \"publisherLogo\": \"iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAJSSURBVDjLzZNdSNNhFMYXs4tuBLuKqAsvoqJMrSgJKr+WH2sZJFpsCLk/thAxhzorSm8cfhBIdxWCCIIgBiKGSpFSKVaihlo05kcLpbTtTaebbvv/emddFBgI3fTCc3Pgec55znleDaD5F2j+DwG1otQo8U1ChBEqs4qQtVgEiwpF4Po1sa6YxVpenvBfviJ8l7LF6vmsRe+5DNOGgCTkSHjp6YaBARgbA4cDJicJ9T1nsaUFd3MzS01NeB48xNXQgOtuJctnUrxLCaezwgJvaXwEnZ3Q1gYTEzA6Cu3thMrKcFkszCkKbrOZBZOJYYOBDzU1OIpLEPEnXWGBWLXc+lqttYPsxuwsG6+/n1B2NnN6PV8yM/kuMZWczPvqaqaUAkTsiXnPwficjR1Iv1HS75NQVSV0dMD8PIyMoBqNLEqiR4p40tNx2u1MX1UQR4473Qfi4v64QsBSELmen98VtNlgcBDGx1Hl6EKnw5uWxkJdHTOS7Dl8zOnefyRm0zP6jaZIX05u13q57aeA3IE3KQl/fT3j5gxeZewMPk2OUHt02k8SFZvmYPXCxciVdH3v2u07qK2tBGpr+ajoeVeSgK/rHupkNyutVt4UxgR7UyKKNg3HcmLqnqVTZx1r1lJ8N6z0Je5QVyWZ+wawRYE9WlpKpCdVO/XXhImjCYek3yHpdyY8tjr8mN+fp3IX4fqW4ir9uryNZpAkf7kGt8SsRYusf96SwIvc3VVDyr7AnC2arze341S28cwQEezWaW9t+dO8zN1bITtO/7qCK0wO138A9zXJPLDAEBEAAAAASUVORK5CYII=\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:8080/publishers",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "publishers"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "publishers -R",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:8080/publishers",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "publishers"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "publishers-R",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:8080/publishers/23",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "publishers",
+                "23"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "publishers -U",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"publisherName\": \"Demo Publisher M\",\r\n    \"publisherDesc\": \"Demo Publisher M\",\r\n    \"publisherLogo\": \"iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAJSSURBVDjLzZNdSNNhFMYXs4tuBLuKqAsvoqJMrSgJKr+WH2sZJFpsCLk/thAxhzorSm8cfhBIdxWCCIIgBiKGSpFSKVaihlo05kcLpbTtTaebbvv/emddFBgI3fTCc3Pgec55znleDaD5F2j+DwG1otQo8U1ChBEqs4qQtVgEiwpF4Po1sa6YxVpenvBfviJ8l7LF6vmsRe+5DNOGgCTkSHjp6YaBARgbA4cDJicJ9T1nsaUFd3MzS01NeB48xNXQgOtuJctnUrxLCaezwgJvaXwEnZ3Q1gYTEzA6Cu3thMrKcFkszCkKbrOZBZOJYYOBDzU1OIpLEPEnXWGBWLXc+lqttYPsxuwsG6+/n1B2NnN6PV8yM/kuMZWczPvqaqaUAkTsiXnPwficjR1Iv1HS75NQVSV0dMD8PIyMoBqNLEqiR4p40tNx2u1MX1UQR4473Qfi4v64QsBSELmen98VtNlgcBDGx1Hl6EKnw5uWxkJdHTOS7Dl8zOnefyRm0zP6jaZIX05u13q57aeA3IE3KQl/fT3j5gxeZewMPk2OUHt02k8SFZvmYPXCxciVdH3v2u07qK2tBGpr+ajoeVeSgK/rHupkNyutVt4UxgR7UyKKNg3HcmLqnqVTZx1r1lJ8N6z0Je5QVyWZ+wawRYE9WlpKpCdVO/XXhImjCYek3yHpdyY8tjr8mN+fp3IX4fqW4ir9uryNZpAkf7kGt8SsRYusf96SwIvc3VVDyr7AnC2arze341S28cwQEezWaW9t+dO8zN1bITtO/7qCK0wO138A9zXJPLDAEBEAAAAASUVORK5CYII=\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:8080/publishers/23",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "publishers",
+                "23"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "publishers -D",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "localhost:8080/publishers/22",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "publishers",
+                "22"
               ]
             }
           },

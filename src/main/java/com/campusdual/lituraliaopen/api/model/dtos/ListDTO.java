@@ -1,6 +1,6 @@
-package com.campusdual.lituraliaopen.api.model;
+package com.campusdual.lituraliaopen.api.model.dtos;
 
-import com.campusdual.lituraliaopen.api.Paging;
+import com.campusdual.lituraliaopen.api.model.Paging;
 import java.util.ArrayList;
 import java.util.List;
 import lombok.AllArgsConstructor;
@@ -12,8 +12,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 @Data
-public class BookListDTO {
+public class ListDTO<T> {
 
-    private List<BookDTO> books = new ArrayList<>();
+    private List<T> data = new ArrayList<>();
     private Paging paging;
 }

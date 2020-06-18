@@ -1,7 +1,8 @@
 package com.campusdual.lituraliaopen.services;
 
 import com.campusdual.lituraliaopen.api.mapper.BookMapper;
-import com.campusdual.lituraliaopen.api.model.BookDTO;
+import com.campusdual.lituraliaopen.api.model.BookService;
+import com.campusdual.lituraliaopen.api.model.dtos.BookDTO;
 import com.campusdual.lituraliaopen.domain.Book;
 import com.campusdual.lituraliaopen.repositories.BookRepository;
 import java.util.List;
@@ -24,22 +25,6 @@ public class BookServiceImpl implements BookService {
     @Override
     public List<BookDTO> getAllBooks() {
         return bookRepository.findAll()
-                             .stream()
-                             .map(bookMapper::bookToBookDTO)
-                             .collect(Collectors.toList());
-    }
-
-    @Override
-    public List<BookDTO> getAllBooksByTitleContainingOrderByTitle(String likeTitle) {
-        return bookRepository.findByTitleContainingOrderByTitle(likeTitle)
-                             .stream()
-                             .map(bookMapper::bookToBookDTO)
-                             .collect(Collectors.toList());
-    }
-
-    @Override
-    public List<BookDTO> getBooksByTitleContaining(String titleLike) throws ResourceNotFoundException {
-        return bookRepository.findByTitleContainingOrderByTitle(titleLike)
                              .stream()
                              .map(bookMapper::bookToBookDTO)
                              .collect(Collectors.toList());
@@ -77,12 +62,6 @@ public class BookServiceImpl implements BookService {
     @Override
     public BookDTO updateBook(BookDTO bookDto) {
         return updateBook(bookDto.getBookId(), bookDto);
-    }
-
-
-    @Override
-    public void deleteBook(BookDTO book) throws ResourceNotFoundException {
-        deleteBookById(book.getBookId());
     }
 
     @Override

@@ -2,7 +2,7 @@ package com.campusdual.lituraliaopen.api.mapper;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import com.campusdual.lituraliaopen.api.model.BookDTO;
+import com.campusdual.lituraliaopen.api.model.dtos.BookDTO;
 import com.campusdual.lituraliaopen.domain.Book;
 import org.junit.jupiter.api.Test;
 

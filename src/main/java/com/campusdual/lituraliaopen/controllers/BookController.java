@@ -1,9 +1,9 @@
 package com.campusdual.lituraliaopen.controllers;
 
-import com.campusdual.lituraliaopen.api.Paging;
-import com.campusdual.lituraliaopen.api.model.BookDTO;
-import com.campusdual.lituraliaopen.api.model.BookListDTO;
-import com.campusdual.lituraliaopen.services.BookService;
+import com.campusdual.lituraliaopen.api.model.BookService;
+import com.campusdual.lituraliaopen.api.model.Paging;
+import com.campusdual.lituraliaopen.api.model.dtos.BookDTO;
+import com.campusdual.lituraliaopen.api.model.dtos.ListDTO;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,10 +30,10 @@ public class BookController {
     BookService bookService;
 
     @GetMapping
-    public BookListDTO getAllBooks(@RequestParam(required = false, defaultValue = "1") Integer pageNumber,
-                                   @RequestParam(required = false, defaultValue = "10") Integer pageSize,
-                                   @RequestParam(required = false, defaultValue = "") String searchTerm) {
-        BookListDTO books = new BookListDTO();
+    public ListDTO<BookDTO> getAllBooks(@RequestParam(required = false, defaultValue = "1") Integer pageNumber,
+                                        @RequestParam(required = false, defaultValue = "10") Integer pageSize,
+                                        @RequestParam(required = false, defaultValue = "") String searchTerm) {
+        ListDTO<BookDTO> books = new ListDTO<>();
 
         List<BookDTO> allBooks;
         if (searchTerm.isEmpty() || searchTerm.equals("null")) {
@@ -42,11 +42,11 @@ public class BookController {
             allBooks = bookService.getBooksBySearchTerm(searchTerm);
         }
         if (pageNumber < 1) {
-            books.getBooks().addAll(allBooks);
+            books.getData().addAll(allBooks);
             books.setPaging(Paging.builder()
                                   .pageNumber(1)
                                   .numberOfPages(1)
-                                  .pageSize(books.getBooks().size())
+                                  .pageSize(books.getData().size())
                                   .build());
         } else {
             int maxPage = (allBooks.size() / pageSize) + (allBooks.size() % pageSize == 0 ? 0 : 1);
@@ -54,10 +54,10 @@ public class BookController {
             pageSize   = Math.max(pageSize, 10);
             pageNumber = Math.min(pageNumber, maxPage);
             pageNumber = Math.max(pageNumber, 1);
-            books.getBooks().addAll(allBooks.stream()
-                                            .skip(Math.max(0, pageSize * (pageNumber - 1)))
-                                            .limit(pageSize)
-                                            .collect(Collectors.toList()));
+            books.getData().addAll(allBooks.stream()
+                                           .skip(Math.max(0, pageSize * (pageNumber - 1)))
+                                           .limit(pageSize)
+                                           .collect(Collectors.toList()));
             books.setPaging(Paging.builder()
                                   .pageNumber(pageNumber)
                                   .numberOfPages(maxPage)

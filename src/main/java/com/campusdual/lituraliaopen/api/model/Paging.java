@@ -1,4 +1,4 @@
-package com.campusdual.lituraliaopen.api;
+package com.campusdual.lituraliaopen.api.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
