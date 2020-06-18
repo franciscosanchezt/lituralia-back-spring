@@ -1,7 +1,7 @@
 package com.campusdual.lituraliaopen.domain;
 
 import java.time.LocalDate;
-import java.util.Set;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -50,7 +50,7 @@ public class Book {
         joinColumns = @JoinColumn(name = "book_id"),
         inverseJoinColumns = @JoinColumn(name = "genre_id")
     )
-    Set<Genre> genres;
+    List<Genre> genres;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
@@ -58,5 +58,5 @@ public class Book {
         joinColumns = @JoinColumn(name = "book_id"),
         inverseJoinColumns = @JoinColumn(name = "author_id")
     )
-    Set<Author> authors;
+    List<Author> authors;
 }

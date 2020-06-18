@@ -19,4 +19,5 @@ public interface GenreMapper {
     default Integer genreToId(Genre genre) {
         return genre.getGenreId();
     }
+
 }
