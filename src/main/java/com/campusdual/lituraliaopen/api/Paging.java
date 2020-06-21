@@ -11,9 +11,9 @@ import lombok.NoArgsConstructor;
 @Builder
 public class Paging {
 
-    private int pageNumber;       //current page, starts at 1
-    private int numberOfPages;       //total pages
-    private int pageSize;   //elements per page
-    private String searchTerm;
+    private int pageNumber = 0;          //current page, starts at 1
+    private int numberOfPages = 1;       //total pages
+    private int pageSize = 0;            //elements per page
+    private String searchTerm = "";
 
 }
