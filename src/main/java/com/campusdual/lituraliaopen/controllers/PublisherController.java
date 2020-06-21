@@ -30,8 +30,8 @@ public class PublisherController {
     PublisherService publisherService;
 
     @GetMapping
-    public ListDTO<PublisherDTO> getAllPublishers(@RequestParam(required = false, defaultValue = "1") Integer pageNumber,
-                                                  @RequestParam(required = false, defaultValue = "10") Integer pageSize,
+    public ListDTO<PublisherDTO> getAllPublishers(@RequestParam(required = false, defaultValue = GlobalController.PAGINATION_DEFAULT_PAGE_NUM) Integer pageNumber,
+                                                  @RequestParam(required = false, defaultValue = GlobalController.PAGINATION_DEFAULT_PAGE_SIZE) Integer pageSize,
                                                   @RequestParam(required = false, defaultValue = "") String searchTerm) {
         ListDTO<PublisherDTO> publishers = new ListDTO<>();
 
@@ -42,9 +42,9 @@ public class PublisherController {
             allPublishers = publisherService.getPublishersBySearchTerm(searchTerm);
         }
         if (pageNumber < 1) {
-            publishers.getData().addAll(allPublishers);
+            publishers.setData(allPublishers);
             publishers.setPaging(Paging.builder()
-                                       .pageNumber(1)
+                                       .pageNumber(0)
                                        .numberOfPages(1)
                                        .pageSize(publishers.getData().size())
                                        .build());
@@ -54,10 +54,10 @@ public class PublisherController {
             pageSize   = Math.max(pageSize, 10);
             pageNumber = Math.min(pageNumber, maxPage);
             pageNumber = Math.max(pageNumber, 1);
-            publishers.getData().addAll(allPublishers.stream()
-                                                     .skip(Math.max(0, pageSize * (pageNumber - 1)))
-                                                     .limit(pageSize)
-                                                     .collect(Collectors.toList()));
+            publishers.setData(allPublishers.stream()
+                                            .skip(Math.max(0, pageSize * (pageNumber - 1)))
+                                            .limit(pageSize)
+                                            .collect(Collectors.toList()));
             publishers.setPaging(Paging.builder()
                                        .pageNumber(pageNumber)
                                        .numberOfPages(maxPage)

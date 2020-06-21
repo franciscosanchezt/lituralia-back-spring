@@ -3,6 +3,7 @@ package com.campusdual.lituraliaopen.controllers;
 import com.campusdual.lituraliaopen.api.Paging;
 import com.campusdual.lituraliaopen.api.model.BookService;
 import com.campusdual.lituraliaopen.api.model.PublisherService;
+import com.campusdual.lituraliaopen.api.model.dtos.AuthorDTO;
 import com.campusdual.lituraliaopen.api.model.dtos.BookDTO;
 import com.campusdual.lituraliaopen.api.model.dtos.GenreDTO;
 import com.campusdual.lituraliaopen.api.model.dtos.ListDTO;
@@ -50,7 +51,7 @@ public class BookController {
         if (pageNumber < 1) {
             books.setData(allBooks);
             books.setPaging(Paging.builder()
-                                  .pageNumber(1)
+                                  .pageNumber(0)
                                   .numberOfPages(1)
                                   .pageSize(allBooks.size())
                                   .build());
@@ -140,6 +141,30 @@ public class BookController {
     @ResponseStatus(HttpStatus.OK)
     public BookDTO deleteBookGenres(@PathVariable Integer id, @PathVariable Integer idGenre) {
         return bookService.deleteBookGenre(id, idGenre);
+    }
+
+    @GetMapping({"/{id}/authors/"})
+    @ResponseStatus(HttpStatus.OK)
+    public ListDTO<AuthorDTO> getBookAuthors(@PathVariable Integer id) {
+        return new ListDTO<>(bookService.getBookAuthors(id));
+    }
+
+    @PostMapping({"/{id}/authors/{idAuthor}"})
+    @ResponseStatus(HttpStatus.OK)
+    public BookDTO postBookAuthors(@PathVariable Integer id, @PathVariable Integer idAuthor) {
+        return bookService.setBookAuthor(id, idAuthor);
+    }
+
+    @PutMapping({"/{id}/authors/{idAuthor}"})
+    @ResponseStatus(HttpStatus.OK)
+    public BookDTO putBookAuthors(@PathVariable Integer id, @PathVariable Integer idAuthor) {
+        return bookService.setBookAuthor(id, idAuthor);
+    }
+
+    @DeleteMapping({"/{id}/authors/{idAuthor}"})
+    @ResponseStatus(HttpStatus.OK)
+    public BookDTO deleteBookAuthors(@PathVariable Integer id, @PathVariable Integer idAuthor) {
+        return bookService.deleteBookAuthor(id, idAuthor);
     }
 
 

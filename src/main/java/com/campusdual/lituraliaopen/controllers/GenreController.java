@@ -30,8 +30,8 @@ public class GenreController {
     GenreService genreService;
 
     @GetMapping
-    public ListDTO<GenreDTO> getAllGenres(@RequestParam(required = false, defaultValue = "1") Integer pageNumber,
-                                          @RequestParam(required = false, defaultValue = "10") Integer pageSize,
+    public ListDTO<GenreDTO> getAllGenres(@RequestParam(required = false, defaultValue = GlobalController.PAGINATION_DEFAULT_PAGE_NUM) Integer pageNumber,
+                                          @RequestParam(required = false, defaultValue = GlobalController.PAGINATION_DEFAULT_PAGE_SIZE) Integer pageSize,
                                           @RequestParam(required = false, defaultValue = "") String searchTerm) {
         ListDTO<GenreDTO> genres = new ListDTO<>();
 
@@ -42,9 +42,9 @@ public class GenreController {
             allGenres = genreService.getGenresBySearchTerm(searchTerm);
         }
         if (pageNumber < 1) {
-            genres.getData().addAll(allGenres);
+            genres.setData(allGenres);
             genres.setPaging(Paging.builder()
-                                   .pageNumber(1)
+                                   .pageNumber(0)
                                    .numberOfPages(1)
                                    .pageSize(genres.getData().size())
                                    .build());
@@ -54,10 +54,10 @@ public class GenreController {
             pageSize   = Math.max(pageSize, 10);
             pageNumber = Math.min(pageNumber, maxPage);
             pageNumber = Math.max(pageNumber, 1);
-            genres.getData().addAll(allGenres.stream()
-                                             .skip(Math.max(0, pageSize * (pageNumber - 1)))
-                                             .limit(pageSize)
-                                             .collect(Collectors.toList()));
+            genres.setData(allGenres.stream()
+                                    .skip(Math.max(0, pageSize * (pageNumber - 1)))
+                                    .limit(pageSize)
+                                    .collect(Collectors.toList()));
             genres.setPaging(Paging.builder()
                                    .pageNumber(pageNumber)
                                    .numberOfPages(maxPage)

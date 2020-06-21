@@ -69,7 +69,8 @@ class BookControllerTest {
                             .accept(MediaType.APPLICATION_JSON)
                             .contentType(MediaType.APPLICATION_JSON))
                .andExpect(status().isOk())
-               .andExpect(jsonPath("$.data", hasSize(2)));
+               .andExpect(jsonPath("$.data", hasSize(2)))
+               .andExpect(jsonPath("$.paging.pageSize", equalTo(2)));
     }
 
     @Test
@@ -165,4 +166,6 @@ class BookControllerTest {
                             .contentType(MediaType.APPLICATION_JSON))
                .andExpect(status().isNotFound());
     }
+
+
 }

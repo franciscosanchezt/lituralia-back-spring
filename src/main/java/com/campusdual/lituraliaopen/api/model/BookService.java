@@ -1,5 +1,6 @@
 package com.campusdual.lituraliaopen.api.model;
 
+import com.campusdual.lituraliaopen.api.model.dtos.AuthorDTO;
 import com.campusdual.lituraliaopen.api.model.dtos.BookDTO;
 import com.campusdual.lituraliaopen.api.model.dtos.GenreDTO;
 import com.campusdual.lituraliaopen.api.model.dtos.PublisherDTO;
@@ -31,4 +32,10 @@ public interface BookService {
     BookDTO setBookGenre(Integer bookId, Integer genreId) throws ResourceNotFoundException;
 
     BookDTO deleteBookGenre(Integer bookId, Integer genreId) throws ResourceNotFoundException;
+
+    List<AuthorDTO> getBookAuthors(Integer bookId) throws ResourceNotFoundException;
+
+    BookDTO setBookAuthor(Integer bookId, Integer authorId) throws ResourceNotFoundException;
+
+    BookDTO deleteBookAuthor(Integer bookId, Integer authorId) throws ResourceNotFoundException;
 }

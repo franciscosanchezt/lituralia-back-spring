@@ -30,8 +30,8 @@ public class AuthorController {
     AuthorService authorService;
 
     @GetMapping
-    public ListDTO<AuthorDTO> getAllAuthors(@RequestParam(required = false, defaultValue = "1") Integer pageNumber,
-                                            @RequestParam(required = false, defaultValue = "10") Integer pageSize,
+    public ListDTO<AuthorDTO> getAllAuthors(@RequestParam(required = false, defaultValue = GlobalController.PAGINATION_DEFAULT_PAGE_NUM) Integer pageNumber,
+                                            @RequestParam(required = false, defaultValue = GlobalController.PAGINATION_DEFAULT_PAGE_SIZE) Integer pageSize,
                                             @RequestParam(required = false, defaultValue = "") String searchTerm) {
         ListDTO<AuthorDTO> authors = new ListDTO<>();
 
@@ -42,9 +42,9 @@ public class AuthorController {
             allAuthors = authorService.getAuthorsBySearchTerm(searchTerm);
         }
         if (pageNumber < 1) {
-            authors.getData().addAll(allAuthors);
+            authors.setData(allAuthors);
             authors.setPaging(Paging.builder()
-                                    .pageNumber(1)
+                                    .pageNumber(0)
                                     .numberOfPages(1)
                                     .pageSize(authors.getData().size())
                                     .build());
@@ -54,10 +54,10 @@ public class AuthorController {
             pageSize   = Math.max(pageSize, 10);
             pageNumber = Math.min(pageNumber, maxPage);
             pageNumber = Math.max(pageNumber, 1);
-            authors.getData().addAll(allAuthors.stream()
-                                               .skip(Math.max(0, pageSize * (pageNumber - 1)))
-                                               .limit(pageSize)
-                                               .collect(Collectors.toList()));
+            authors.setData(allAuthors.stream()
+                                      .skip(Math.max(0, pageSize * (pageNumber - 1)))
+                                      .limit(pageSize)
+                                      .collect(Collectors.toList()));
             authors.setPaging(Paging.builder()
                                     .pageNumber(pageNumber)
                                     .numberOfPages(maxPage)

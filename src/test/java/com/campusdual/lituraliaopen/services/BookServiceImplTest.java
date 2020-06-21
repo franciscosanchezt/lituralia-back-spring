@@ -7,12 +7,14 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import com.campusdual.lituraliaopen.api.mapper.AuthorMapper;
 import com.campusdual.lituraliaopen.api.mapper.BookMapper;
 import com.campusdual.lituraliaopen.api.mapper.GenreMapper;
 import com.campusdual.lituraliaopen.api.mapper.PublisherMapper;
 import com.campusdual.lituraliaopen.api.model.BookService;
 import com.campusdual.lituraliaopen.api.model.dtos.BookDTO;
 import com.campusdual.lituraliaopen.domain.Book;
+import com.campusdual.lituraliaopen.repositories.AuthorRepository;
 import com.campusdual.lituraliaopen.repositories.BookRepository;
 import com.campusdual.lituraliaopen.repositories.GenreRepository;
 import com.campusdual.lituraliaopen.repositories.PublisherRepository;
@@ -33,10 +35,13 @@ class BookServiceImplTest {
     PublisherRepository publisherRepository;
     @Mock
     GenreRepository genreRepository;
+    @Mock
+    AuthorRepository authorRepository;
 
     BookMapper bookMapper = BookMapper.INSTANCE;
     PublisherMapper publisherMapper = PublisherMapper.INSTANCE;
     GenreMapper genreMapper = GenreMapper.INSTANCE;
+    AuthorMapper authorMapper = AuthorMapper.INSTANCE;
 
     BookService bookService;
 
@@ -45,7 +50,8 @@ class BookServiceImplTest {
         MockitoAnnotations.initMocks(this);
         bookService = new BookServiceImpl(bookRepository, bookMapper,
                                           publisherRepository, publisherMapper,
-                                          genreRepository, genreMapper);
+                                          genreRepository, genreMapper,
+                                          authorRepository, authorMapper);
     }
 
     @Test

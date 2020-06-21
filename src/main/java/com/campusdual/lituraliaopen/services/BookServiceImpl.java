@@ -1,15 +1,19 @@
 package com.campusdual.lituraliaopen.services;
 
+import com.campusdual.lituraliaopen.api.mapper.AuthorMapper;
 import com.campusdual.lituraliaopen.api.mapper.BookMapper;
 import com.campusdual.lituraliaopen.api.mapper.GenreMapper;
 import com.campusdual.lituraliaopen.api.mapper.PublisherMapper;
 import com.campusdual.lituraliaopen.api.model.BookService;
+import com.campusdual.lituraliaopen.api.model.dtos.AuthorDTO;
 import com.campusdual.lituraliaopen.api.model.dtos.BookDTO;
 import com.campusdual.lituraliaopen.api.model.dtos.GenreDTO;
 import com.campusdual.lituraliaopen.api.model.dtos.PublisherDTO;
+import com.campusdual.lituraliaopen.domain.Author;
 import com.campusdual.lituraliaopen.domain.Book;
 import com.campusdual.lituraliaopen.domain.Genre;
 import com.campusdual.lituraliaopen.domain.Publisher;
+import com.campusdual.lituraliaopen.repositories.AuthorRepository;
 import com.campusdual.lituraliaopen.repositories.BookRepository;
 import com.campusdual.lituraliaopen.repositories.GenreRepository;
 import com.campusdual.lituraliaopen.repositories.PublisherRepository;
@@ -23,23 +27,30 @@ public class BookServiceImpl implements BookService {
 
 
     private final BookRepository bookRepository;
-    private final PublisherRepository publisherRepository;
-
     private final BookMapper bookMapper;
+
+    private final PublisherRepository publisherRepository;
     private final PublisherMapper publisherMapper;
+
     private final GenreRepository genreRepository;
     private final GenreMapper genreMapper;
+
+    private final AuthorRepository authorRepository;
+    private final AuthorMapper authorMapper;
 
 
     public BookServiceImpl(BookRepository bookRepository, BookMapper bookMapper,
                            PublisherRepository publisherRepository, PublisherMapper publisherMapper,
-                           GenreRepository genreRepository, GenreMapper genreMapper) {
+                           GenreRepository genreRepository, GenreMapper genreMapper,
+                           AuthorRepository authorRepository, AuthorMapper authorMapper) {
         this.bookRepository      = bookRepository;
         this.publisherRepository = publisherRepository;
         this.bookMapper          = bookMapper;
         this.publisherMapper     = publisherMapper;
         this.genreRepository     = genreRepository;
         this.genreMapper         = genreMapper;
+        this.authorRepository    = authorRepository;
+        this.authorMapper        = authorMapper;
     }
 
 
@@ -142,6 +153,42 @@ public class BookServiceImpl implements BookService {
                                  Genre genre = genreRepository.findById(genreId)
                                                               .orElseThrow(ResourceNotFoundException::new);
                                  book.getGenres().remove(genre);
+                                 return bookMapper.bookToBookDTO(bookRepository.saveAndFlush(book));
+                             })
+                             .orElseThrow(ResourceNotFoundException::new);
+    }
+
+
+    @Override
+    public List<AuthorDTO> getBookAuthors(Integer bookId) throws ResourceNotFoundException {
+        return bookRepository.findById(bookId)
+                             .map(book -> {
+                                 return book.getAuthors().stream()
+                                            .map(authorMapper::authorToAuthorDTO)
+                                            .collect(Collectors.toList());
+                             })
+                             .orElseThrow(ResourceNotFoundException::new);
+    }
+
+    @Override
+    public BookDTO setBookAuthor(Integer bookId, Integer authorId) throws ResourceNotFoundException {
+        return bookRepository.findById(bookId)
+                             .map(book -> {
+                                 Author author = authorRepository.findById(authorId)
+                                                                 .orElseThrow(ResourceNotFoundException::new);
+                                 book.getAuthors().add(author);
+                                 return bookMapper.bookToBookDTO(bookRepository.saveAndFlush(book));
+                             })
+                             .orElseThrow(ResourceNotFoundException::new);
+    }
+
+    @Override
+    public BookDTO deleteBookAuthor(Integer bookId, Integer authorId) throws ResourceNotFoundException {
+        return bookRepository.findById(bookId)
+                             .map(book -> {
+                                 Author author = authorRepository.findById(authorId)
+                                                                 .orElseThrow(ResourceNotFoundException::new);
+                                 book.getAuthors().remove(author);
                                  return bookMapper.bookToBookDTO(bookRepository.saveAndFlush(book));
                              })
                              .orElseThrow(ResourceNotFoundException::new);
