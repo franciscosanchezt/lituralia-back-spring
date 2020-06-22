@@ -14,8 +14,8 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import com.campusdual.lituraliaopen.api.model.BookDTO;
-import com.campusdual.lituraliaopen.services.BookService;
+import com.campusdual.lituraliaopen.api.model.BookService;
+import com.campusdual.lituraliaopen.api.model.dtos.BookDTO;
 import java.util.Arrays;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -69,7 +69,8 @@ class BookControllerTest {
                             .accept(MediaType.APPLICATION_JSON)
                             .contentType(MediaType.APPLICATION_JSON))
                .andExpect(status().isOk())
-               .andExpect(jsonPath("$.books", hasSize(2)));
+               .andExpect(jsonPath("$.data", hasSize(2)))
+               .andExpect(jsonPath("$.paging.pageSize", equalTo(2)));
     }
 
     @Test
@@ -165,4 +166,6 @@ class BookControllerTest {
                             .contentType(MediaType.APPLICATION_JSON))
                .andExpect(status().isNotFound());
     }
+
+
 }

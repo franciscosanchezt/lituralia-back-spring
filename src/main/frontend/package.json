@@ -1,10 +1,11 @@
 {
   "name": "ngx",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --port 4201 -o --host localhost",
-    "build": "ng build",
+    "build": "ng build --prod",
+    "build-local": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"

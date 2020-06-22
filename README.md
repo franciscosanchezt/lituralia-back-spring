@@ -1,5 +1,5 @@
-[![CircleCI](https://circleci.com/gh/franciscosanchezt/lituralia-open/tree/develop.svg?style=shield)](https://circleci.com/gh/franciscosanchezt/lituralia-back-spring)
-[![codecov](https://codecov.io/gh/franciscosanchezt/lituralia-open/branch/master/graph/badge.svg)](https://codecov.io/gh/franciscosanchezt/lituralia-back-spring)
+[![CircleCI](https://circleci.com/gh/franciscosanchezt/lituralia-open.svg?style=shield)](https://circleci.com/gh/franciscosanchezt/lituralia-open)
+[![codecov](https://codecov.io/gh/franciscosanchezt/lituralia-open/branch/master/graph/badge.svg)](https://codecov.io/gh/franciscosanchezt/lituralia-open)
 
 # Lituralia Spring Angular
 
@@ -25,7 +25,7 @@ Java 8
 
 Descarga el ejecutable (jar) en: [Releases](https://github.com/franciscosanchezt/lituralia-open/releases)
 
-Ultima Version: [0.0.2-SNAPSHOT](https://github.com/franciscosanchezt/lituralia-open/releases/tag/0.0.2)
+Ultima Version: [0.0.3-SNAPSHOT](https://github.com/franciscosanchezt/lituralia-open/releases/tag/0.0.3)
 
 ## Despliegue 📦
    
@@ -37,10 +37,10 @@ Ultima Version: [0.0.2-SNAPSHOT](https://github.com/franciscosanchezt/lituralia-
    PG_PASS= contraseña postgres 
    ```
       
-   _Luego ejcutamos el siguiente comando en la ruta del archivo: lituralia-open-0.0.2-SNAPSHOT.jar_
+   _Luego ejecutamos el siguiente comando en la ruta del archivo: lituralia-open-0.0.3-SNAPSHOT.jar_
    
    ```
-   java -jar lituralia-open-0.0.2-SNAPSHOT.jar
+   java -jar lituralia-open-0.0.3-SNAPSHOT.jar
    ```
 
 
@@ -98,6 +98,10 @@ Contraseña :
 ## Versionado 📌
 
 Usamos [SemVer](http://semver.org/) para el versionado. Para todas las versiones disponibles, mira los [tags en este repositorio](tags/).
+
+## Changelog 𝌡
+
+Entra [aqui](CHANGELOG.md) para ver los cambios recientes.
 
 ## Desarrollado con 🛠️
 

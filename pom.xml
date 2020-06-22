@@ -10,7 +10,7 @@
   </parent>
   <groupId>com.campusdual</groupId>
   <artifactId>lituralia-open</artifactId>
-  <version>0.0.2-SNAPSHOT</version>
+  <version>0.0.3-SNAPSHOT</version>
   <name>lituralia-open</name>
   <description>Demo project for Spring Boot</description>
 
@@ -108,7 +108,7 @@
       <resource>
         <directory>src/main/resources</directory>
         <excludes>
-<!--          <exclude>webapp/</exclude>-->
+          <!--          <exclude>webapp/</exclude>-->
         </excludes>
       </resource>
     </resources>
@@ -119,7 +119,6 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
       </plugin>
-
       <!--mapstruct plugin-->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -188,9 +187,25 @@
         <artifactId>maven-site-plugin</artifactId>
         <version>3.7.1</version>
       </plugin>
+
+      <plugin>
+        <groupId>com.heroku.sdk</groupId>
+        <artifactId>heroku-maven-plugin</artifactId>
+        <version>3.0.2</version>
+        <configuration>
+          <appName>lituralia-open</appName>
+          <includeTarget>false</includeTarget>
+          <includes>
+            <include>target/${project.build.finalName}.jar</include>
+          </includes>
+          <jdkVersion>${java.version}</jdkVersion>
+          <processTypes>
+            <web>java $JAVA_OPTS -Dserver.port=$PORT -jar target/${project.build.finalName}.jar</web>
+          </processTypes>
+        </configuration>
+      </plugin>
     </plugins>
   </build>
-
 
 
   <profiles>
@@ -201,6 +216,17 @@
       </activation>
       <build>
         <plugins>
+          <plugin>
+            <artifactId>maven-clean-plugin</artifactId>
+            <version>3.1.0</version>
+            <configuration>
+              <filesets>
+                <fileset>
+                  <directory>src/main/resources/static/</directory>
+                </fileset>
+              </filesets>
+            </configuration>
+          </plugin>
           <plugin>
             <groupId>com.github.eirslett</groupId>
             <artifactId>frontend-maven-plugin</artifactId>
@@ -222,19 +248,78 @@
                 <goals>
                   <goal>npm</goal>
                 </goals>
-                <!-- Optional configuration which provides for running any npm command -->
                 <configuration>
                   <arguments>install</arguments>
                 </configuration>
               </execution>
+              <execution>
+                <id>npm run build-local</id>
+                <goals>
+                  <goal>npm</goal>
+                </goals>
+                <configuration>
+                  <!-- Optional configuration which provides for running any npm command -->
+                  <arguments>run build-local</arguments>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
 
+    <profile>
+      <id>build_frontend_heroku</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <artifactId>maven-clean-plugin</artifactId>
+            <version>3.1.0</version>
+            <configuration>
+              <filesets>
+                <fileset>
+                  <directory>src/main/resources/static/</directory>
+                </fileset>
+              </filesets>
+            </configuration>
+          </plugin>
+          <plugin>
+            <groupId>com.github.eirslett</groupId>
+            <artifactId>frontend-maven-plugin</artifactId>
+            <version>1.10.0</version>
+            <configuration>
+              <nodeVersion>v10.21.0</nodeVersion>
+              <workingDirectory>src/main/frontend</workingDirectory>
+            </configuration>
+            <executions>
+              <execution>
+                <id>install node and npm</id>
+                <goals>
+                  <goal>install-node-and-npm</goal>
+                </goals>
+                <phase>generate-resources</phase>
+              </execution>
+              <execution>
+                <id>npm install</id>
+                <goals>
+                  <goal>npm</goal>
+                </goals>
+                <configuration>
+                  <arguments>install</arguments>
+                </configuration>
+              </execution>
               <execution>
                 <id>npm run build</id>
                 <goals>
                   <goal>npm</goal>
                 </goals>
                 <configuration>
-                  <arguments>run build</arguments>
+                  <!-- Optional configuration which provides for running any npm command -->
+                  <arguments>run build --prod</arguments>
+                  <!--                  <arguments>run build</arguments>-->
                 </configuration>
               </execution>
               <!--              <execution>-->

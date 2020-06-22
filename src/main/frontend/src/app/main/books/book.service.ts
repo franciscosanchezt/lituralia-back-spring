@@ -5,13 +5,14 @@ import {Book} from "./book";
 import {catchError, map, tap} from "rxjs/operators";
 import {PagedList} from "../../shared/paged-list";
 import {Paging} from "../../shared/paging";
+import {environment} from "../../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class BookService {
 
-  private booksUrl: string = 'http://localhost:8080/books';
+  private booksUrl: string = environment.apiUrl + '/books';
   private httpOptions = {headers: new HttpHeaders({'Content-Type': 'application/json'})};
 
   constructor(private http: HttpClient) {
@@ -19,8 +20,8 @@ export class BookService {
 
   public getAllBooks(): Observable<Book[]> {
     return this.http.get<any>(this.booksUrl).pipe(
-      tap(list => console.log(list)),
-      map(result => result.books),
+      tap(page => console.log(page)),
+      map(result => result.data),
       catchError(error => this.handleError('getAllBooks'))
     );
   }
@@ -35,7 +36,7 @@ export class BookService {
     }
     return this.http.get<any>(this.booksUrl, {params: params}).pipe(
       tap(obj => console.log(obj)),
-      map(value => new PagedList<Book>(value.books, value.paging)),
+      map(value => new PagedList<Book>(value.data, value.paging)),
       catchError(error => this.handleError('getPagedBooks'))
     );
   }

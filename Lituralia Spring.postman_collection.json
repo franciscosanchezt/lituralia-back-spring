@@ -1,127 +1,811 @@
 {
-  "info": {
-    "_postman_id": "efb3ea17-d735-4799-b6dd-d506a5bd9fc2",
-    "name": "Lituralia Spring",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
-  },
-  "item": [
-    {
-      "name": "libros",
-      "item": [
+    "info": {
+        "_postman_id": "efb3ea17-d735-4799-b6dd-d506a5bd9fc2",
+        "name": "Lituralia Spring",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
         {
-          "name": "books -C",
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n        \"isbn\": \"272907930-9\",\r\n        \"title\": \"Necronomicon\",\r\n        \"synopsis\": \"Sic semper infestus\",\r\n        \"publish_date\": \"1555-02-19\",\r\n        \"cover\": \"ZGF0YTppbWFnZS9wbmc7YmFzZTY0LGlWQk9SdzBLR2dvQUFBQU5TVWhFVWdBQUFCQUFBQUFRQ0FZQUFBQWY4LzloQUFBQUJHZEJUVUVBQUsvSU53V0s2UUFBQUJsMFJWaDBVMjltZEhkaGNtVUFRV1J2WW1VZ1NXMWhaMlZTWldGa2VYSEpaVHdBQUFLYVNVUkJWRGpMclpOZFNGTmhHTWRQRjE1RWRPTzk0RTIzMGtYUjZzSVpabDRWa1JpVk1kT0xpcUM2c01ncjA4aFFRVXFVbkJGSmJScUtwYTZ5cncyYnptMTYybGR1WTJkdWJqdmJiRi9PaitXWnV1MzhlOCtoZFJOR1VBLzhlRG53L1AvdjgzRmVDZ0QxTDFELzFZQmhtQktDd3VWeUtaeE9wOExoY0l6WjdmYXgrZmw1aGMxbVUxaXRWb1haYkM3NXpjRHRkcGNTWVdCeGNSR0pSQUxMeThzaXlXUlNQT1B4dUVnMEdnVXhCVTNUZ2JtNXVWTFJnSWpMaVpoZldWbEJQTXppeTV0aFRENTlpUEcyMjNqWmNsMUUxZDZJeWY0dW1DWkdTRTRRc1ZnTVJxT1JOeGdNNVVMWkZrR2N5V1RFeEFlbkR2NFJWVWNqVXFtVWFESXpNMk9oU0RuckdvMEdQTThqUzB3K3l0dWh2Rm1MUnhmSzBYVmFJdElycThEZ3JUclFmZWZoVjlYaG0wa3B0alE5UGIxR0taWEtVQ1FTUVRxZFJqYWJGYy90N1cwUm9iSThZYjBjaWRrYnlLUm1zYVMrQ0pkdUNGTlRVMTZxdTd0N0dEOURLSTFNSDRKaGZuQUNRV00vWWxvWk1xc0tyTnFia1RBMHdUdFFqVS95aG5lVVZDcXR6QnNJZlpHMXdlUHh3Ty8zdytmelFkaU01L1UxYkNXSHNMblVoTTNJWTZ6YW1zQ3h6V0RrWld0VVlXSGg0Znp0Z2xnUUJZTkJzQ3lMUUNBZ2ZpOTh1SWZ2M25ady9xdElzdzNnZkxYZzNOVXczWkdrcUlLQ2drTmtsWlpjTGllV0t3akM0VEJDb1JCWSt5UUNFNWNRMHRSam5aR0JXemlKdExjR0d5NGlidG1mZVg2MitCeEZZcmRnTWpvNjZpUkdzRmdzNGd5QzlDQjhJeldrMUQ1c2VLckFNY2RoNnBIQzJuRU10amJwMWd0WmNkV3ZQNUhFTHNJZXJWWTdRbmJMQzMySDNsOGhQVC9EK2xjSk9HY2x6TDFITVNhL3kydmVqci82TEN2YXUrTmowdXYxUlRxZEx1dFIxV01yZWg4YnpBblFQV1ZRUFduTnFkWHFvcjkramJPZEIxb2QvUlZSdXZPSWYrRHl2ak03NWYwQU9FTUt2cm4raWUwQUFBQUFTVVZPUks1Q1lJST0=\",\r\n        \"publisher_id\": 7\r\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
+            "name": "books",
+            "item": [
+                {
+                    "name": "books -C",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n        \"isbn\": \"272907930-9\",\r\n        \"title\": \"Necronomicon\",\r\n        \"synopsis\": \"Sic semper infestus\",\r\n        \"publishDate\": \"1555-02-19\",\r\n        \"cover\": \"ZGF0YTppbWFnZS9wbmc7YmFzZTY0LGlWQk9SdzBLR2dvQUFBQU5TVWhFVWdBQUFCQUFBQUFRQ0FZQUFBQWY4LzloQUFBQUJHZEJUVUVBQUsvSU53V0s2UUFBQUJsMFJWaDBVMjltZEhkaGNtVUFRV1J2WW1VZ1NXMWhaMlZTWldGa2VYSEpaVHdBQUFLYVNVUkJWRGpMclpOZFNGTmhHTWRQRjE1RWRPTzk0RTIzMGtYUjZzSVpabDRWa1JpVk1kT0xpcUM2c01ncjA4aFFRVXFVbkJGSmJScUtwYTZ5cncyYnptMTYybGR1WTJkdWJqdmJiRi9PaitXWnV1MzhlOCtoZFJOR1VBLzhlRG53L1AvdjgzRmVDZ0QxTDFELzFZQmhtQktDd3VWeUtaeE9wOExoY0l6WjdmYXgrZmw1aGMxbVUxaXRWb1haYkM3NXpjRHRkcGNTWVdCeGNSR0pSQUxMeThzaXlXUlNQT1B4dUVnMEdnVXhCVTNUZ2JtNXVWTFJnSWpMaVpoZldWbEJQTXppeTV0aFRENTlpUEcyMjNqWmNsMUUxZDZJeWY0dW1DWkdTRTRRc1ZnTVJxT1JOeGdNNVVMWkZrR2N5V1RFeEFlbkR2NFJWVWNqVXFtVWFESXpNMk9oU0RuckdvMEdQTThqUzB3K3l0dWh2Rm1MUnhmSzBYVmFJdElycThEZ3JUclFmZWZoVjlYaG0wa3B0alE5UGIxR0taWEtVQ1FTUVRxZFJqYWJGYy90N1cwUm9iSThZYjBjaWRrYnlLUm1zYVMrQ0pkdUNGTlRVMTZxdTd0N0dEOURLSTFNSDRKaGZuQUNRV00vWWxvWk1xc0tyTnFia1RBMHdUdFFqVS95aG5lVVZDcXR6QnNJZlpHMXdlUHh3Ty8zdytmelFkaU01L1UxYkNXSHNMblVoTTNJWTZ6YW1zQ3h6V0RrWld0VVlXSGg0Znp0Z2xnUUJZTkJzQ3lMUUNBZ2ZpOTh1SWZ2M25ady9xdElzdzNnZkxYZzNOVXczWkdrcUlLQ2drTmtsWlpjTGllV0t3akM0VEJDb1JCWSt5UUNFNWNRMHRSam5aR0JXemlKdExjR0d5NGlidG1mZVg2MitCeEZZcmRnTWpvNjZpUkdzRmdzNGd5QzlDQjhJeldrMUQ1c2VLckFNY2RoNnBIQzJuRU10amJwMWd0WmNkV3ZQNUhFTHNJZXJWWTdRbmJMQzMySDNsOGhQVC9EK2xjSk9HY2x6TDFITVNhL3kydmVqci82TEN2YXUrTmowdXYxUlRxZEx1dFIxV01yZWg4YnpBblFQV1ZRUFduTnFkWHFvcjkramJPZEIxb2QvUlZSdXZPSWYrRHl2ak03NWYwQU9FTUt2cm4raWUwQUFBQUFTVVZPUks1Q1lJST0=\",\r\n        \"publisherId\": 7\r\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "localhost:8080/books",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8080",
+                            "path": [
+                                "books"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "books -R",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "localhost:8080/books",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8080",
+                            "path": [
+                                "books"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "books-R",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "localhost:8080/books/4",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8080",
+                            "path": [
+                                "books",
+                                "4"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "books-U",
+                    "request": {
+                        "method": "PUT",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n        \"isbn\": \"272907930-X\",\r\n        \"title\": \"NECRONOMICON 2\",\r\n        \"synopsis\": \"Sic semper infestus 2\",\r\n        \"publishDate\": \"1555-02-19\",\r\n        \"cover\": \"ZGF0YTppbWFnZS9wbmc7YmFzZTY0LGlWQk9SdzBLR2dvQUFBQU5TVWhFVWdBQUFCQUFBQUFRQ0FZQUFBQWY4LzloQUFBQUJHZEJUVUVBQUsvSU53V0s2UUFBQUJsMFJWaDBVMjltZEhkaGNtVUFRV1J2WW1VZ1NXMWhaMlZTWldGa2VYSEpaVHdBQUFLYVNVUkJWRGpMclpOZFNGTmhHTWRQRjE1RWRPTzk0RTIzMGtYUjZzSVpabDRWa1JpVk1kT0xpcUM2c01ncjA4aFFRVXFVbkJGSmJScUtwYTZ5cncyYnptMTYybGR1WTJkdWJqdmJiRi9PaitXWnV1MzhlOCtoZFJOR1VBLzhlRG53L1AvdjgzRmVDZ0QxTDFELzFZQmhtQktDd3VWeUtaeE9wOExoY0l6WjdmYXgrZmw1aGMxbVUxaXRWb1haYkM3NXpjRHRkcGNTWVdCeGNSR0pSQUxMeThzaXlXUlNQT1B4dUVnMEdnVXhCVTNUZ2JtNXVWTFJnSWpMaVpoZldWbEJQTXppeTV0aFRENTlpUEcyMjNqWmNsMUUxZDZJeWY0dW1DWkdTRTRRc1ZnTVJxT1JOeGdNNVVMWkZrR2N5V1RFeEFlbkR2NFJWVWNqVXFtVWFESXpNMk9oU0RuckdvMEdQTThqUzB3K3l0dWh2Rm1MUnhmSzBYVmFJdElycThEZ3JUclFmZWZoVjlYaG0wa3B0alE5UGIxR0taWEtVQ1FTUVRxZFJqYWJGYy90N1cwUm9iSThZYjBjaWRrYnlLUm1zYVMrQ0pkdUNGTlRVMTZxdTd0N0dEOURLSTFNSDRKaGZuQUNRV00vWWxvWk1xc0tyTnFia1RBMHdUdFFqVS95aG5lVVZDcXR6QnNJZlpHMXdlUHh3Ty8zdytmelFkaU01L1UxYkNXSHNMblVoTTNJWTZ6YW1zQ3h6V0RrWld0VVlXSGg0Znp0Z2xnUUJZTkJzQ3lMUUNBZ2ZpOTh1SWZ2M25ady9xdElzdzNnZkxYZzNOVXczWkdrcUlLQ2drTmtsWlpjTGllV0t3akM0VEJDb1JCWSt5UUNFNWNRMHRSam5aR0JXemlKdExjR0d5NGlidG1mZVg2MitCeEZZcmRnTWpvNjZpUkdzRmdzNGd5QzlDQjhJeldrMUQ1c2VLckFNY2RoNnBIQzJuRU10amJwMWd0WmNkV3ZQNUhFTHNJZXJWWTdRbmJMQzMySDNsOGhQVC9EK2xjSk9HY2x6TDFITVNhL3kydmVqci82TEN2YXUrTmowdXYxUlRxZEx1dFIxV01yZWg4YnpBblFQV1ZRUFduTnFkWHFvcjkramJPZEIxb2QvUlZSdXZPSWYrRHl2ak03NWYwQU9FTUt2cm4raWUwQUFBQUFTVVZPUks1Q1lJST0=\",\r\n        \"publisherId\": 7\r\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "localhost:8080/books/4",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8080",
+                            "path": [
+                                "books",
+                                "4"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "books-D",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "localhost:8080/books/4",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8080",
+                            "path": [
+                                "books",
+                                "4"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "books-R publisher",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "localhost:8080/books/4/publisher/",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8080",
+                            "path": [
+                                "books",
+                                "4",
+                                "publisher",
+                                ""
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "books-U publisher",
+                    "request": {
+                        "method": "PUT",
+                        "header": [],
+                        "url": {
+                            "raw": "localhost:8080/books/4/publisher/5",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8080",
+                            "path": [
+                                "books",
+                                "4",
+                                "publisher",
+                                "5"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "books-R genres",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "localhost:8080/books/4/genres/",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8080",
+                            "path": [
+                                "books",
+                                "4",
+                                "genres",
+                                ""
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "books-U genres",
+                    "request": {
+                        "method": "PUT",
+                        "header": [],
+                        "url": {
+                            "raw": "localhost:8080/books/4/genres/6",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8080",
+                            "path": [
+                                "books",
+                                "4",
+                                "genres",
+                                "6"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "books-D genres",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "localhost:8080/books/4/genres/6",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8080",
+                            "path": [
+                                "books",
+                                "4",
+                                "genres",
+                                "6"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "books-R authors",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "localhost:8080/books/6/authors/",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8080",
+                            "path": [
+                                "books",
+                                "6",
+                                "authors",
+                                ""
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "books-U authors",
+                    "request": {
+                        "method": "PUT",
+                        "header": [],
+                        "url": {
+                            "raw": "localhost:8080/books/5/authors/6",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8080",
+                            "path": [
+                                "books",
+                                "5",
+                                "authors",
+                                "6"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "books-D authors",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "localhost:8080/books/25/authors/38",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8080",
+                            "path": [
+                                "books",
+                                "25",
+                                "authors",
+                                "38"
+                            ]
+                        }
+                    },
+                    "response": []
                 }
-              }
-            },
-            "url": {
-              "raw": "localhost:8080/books",
-              "host": [
-                "localhost"
-              ],
-              "port": "8080",
-              "path": [
-                "books"
-              ]
-            }
-          },
-          "response": []
+            ],
+            "protocolProfileBehavior": {}
         },
         {
-          "name": "books -R",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "localhost:8080/books",
-              "host": [
-                "localhost"
-              ],
-              "port": "8080",
-              "path": [
-                "books"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "books-R",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "localhost:8080/books/4",
-              "host": [
-                "localhost"
-              ],
-              "port": "8080",
-              "path": [
-                "books",
-                "4"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "books-U",
-          "request": {
-            "method": "PUT",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n\t\"id\": 4,\r\n        \"isbn\": \"272907930-9\",\r\n        \"tutle\": \"NECRONOMICON\",\r\n        \"synopsis\": \"Sic semper infestus\",\r\n        \"publish_Date\": \"1555-02-19\",\r\n        \"cover\": \"ZGF0YTppbWFnZS9wbmc7YmFzZTY0LGlWQk9SdzBLR2dvQUFBQU5TVWhFVWdBQUFCQUFBQUFRQ0FZQUFBQWY4LzloQUFBQUJHZEJUVUVBQUsvSU53V0s2UUFBQUJsMFJWaDBVMjltZEhkaGNtVUFRV1J2WW1VZ1NXMWhaMlZTWldGa2VYSEpaVHdBQUFLYVNVUkJWRGpMclpOZFNGTmhHTWRQRjE1RWRPTzk0RTIzMGtYUjZzSVpabDRWa1JpVk1kT0xpcUM2c01ncjA4aFFRVXFVbkJGSmJScUtwYTZ5cncyYnptMTYybGR1WTJkdWJqdmJiRi9PaitXWnV1MzhlOCtoZFJOR1VBLzhlRG53L1AvdjgzRmVDZ0QxTDFELzFZQmhtQktDd3VWeUtaeE9wOExoY0l6WjdmYXgrZmw1aGMxbVUxaXRWb1haYkM3NXpjRHRkcGNTWVdCeGNSR0pSQUxMeThzaXlXUlNQT1B4dUVnMEdnVXhCVTNUZ2JtNXVWTFJnSWpMaVpoZldWbEJQTXppeTV0aFRENTlpUEcyMjNqWmNsMUUxZDZJeWY0dW1DWkdTRTRRc1ZnTVJxT1JOeGdNNVVMWkZrR2N5V1RFeEFlbkR2NFJWVWNqVXFtVWFESXpNMk9oU0RuckdvMEdQTThqUzB3K3l0dWh2Rm1MUnhmSzBYVmFJdElycThEZ3JUclFmZWZoVjlYaG0wa3B0alE5UGIxR0taWEtVQ1FTUVRxZFJqYWJGYy90N1cwUm9iSThZYjBjaWRrYnlLUm1zYVMrQ0pkdUNGTlRVMTZxdTd0N0dEOURLSTFNSDRKaGZuQUNRV00vWWxvWk1xc0tyTnFia1RBMHdUdFFqVS95aG5lVVZDcXR6QnNJZlpHMXdlUHh3Ty8zdytmelFkaU01L1UxYkNXSHNMblVoTTNJWTZ6YW1zQ3h6V0RrWld0VVlXSGg0Znp0Z2xnUUJZTkJzQ3lMUUNBZ2ZpOTh1SWZ2M25ady9xdElzdzNnZkxYZzNOVXczWkdrcUlLQ2drTmtsWlpjTGllV0t3akM0VEJDb1JCWSt5UUNFNWNRMHRSam5aR0JXemlKdExjR0d5NGlidG1mZVg2MitCeEZZcmRnTWpvNjZpUkdzRmdzNGd5QzlDQjhJeldrMUQ1c2VLckFNY2RoNnBIQzJuRU10amJwMWd0WmNkV3ZQNUhFTHNJZXJWWTdRbmJMQzMySDNsOGhQVC9EK2xjSk9HY2x6TDFITVNhL3kydmVqci82TEN2YXUrTmowdXYxUlRxZEx1dFIxV01yZWg4YnpBblFQV1ZRUFduTnFkWHFvcjkramJPZEIxb2QvUlZSdXZPSWYrRHl2ak03NWYwQU9FTUt2cm4raWUwQUFBQUFTVVZPUks1Q1lJST0=\",\r\n        \"publisher_id\": 7\r\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
+            "name": "publishers",
+            "item": [
+                {
+                    "name": "publishers  -C",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n    \"publisherName\": \"Demo Publisher\",\r\n    \"publisherDesc\": \"Demo Publisher\",\r\n    \"publisherLogo\": \"iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAJSSURBVDjLzZNdSNNhFMYXs4tuBLuKqAsvoqJMrSgJKr+WH2sZJFpsCLk/thAxhzorSm8cfhBIdxWCCIIgBiKGSpFSKVaihlo05kcLpbTtTaebbvv/emddFBgI3fTCc3Pgec55znleDaD5F2j+DwG1otQo8U1ChBEqs4qQtVgEiwpF4Po1sa6YxVpenvBfviJ8l7LF6vmsRe+5DNOGgCTkSHjp6YaBARgbA4cDJicJ9T1nsaUFd3MzS01NeB48xNXQgOtuJctnUrxLCaezwgJvaXwEnZ3Q1gYTEzA6Cu3thMrKcFkszCkKbrOZBZOJYYOBDzU1OIpLEPEnXWGBWLXc+lqttYPsxuwsG6+/n1B2NnN6PV8yM/kuMZWczPvqaqaUAkTsiXnPwficjR1Iv1HS75NQVSV0dMD8PIyMoBqNLEqiR4p40tNx2u1MX1UQR4473Qfi4v64QsBSELmen98VtNlgcBDGx1Hl6EKnw5uWxkJdHTOS7Dl8zOnefyRm0zP6jaZIX05u13q57aeA3IE3KQl/fT3j5gxeZewMPk2OUHt02k8SFZvmYPXCxciVdH3v2u07qK2tBGpr+ajoeVeSgK/rHupkNyutVt4UxgR7UyKKNg3HcmLqnqVTZx1r1lJ8N6z0Je5QVyWZ+wawRYE9WlpKpCdVO/XXhImjCYek3yHpdyY8tjr8mN+fp3IX4fqW4ir9uryNZpAkf7kGt8SsRYusf96SwIvc3VVDyr7AnC2arze341S28cwQEezWaW9t+dO8zN1bITtO/7qCK0wO138A9zXJPLDAEBEAAAAASUVORK5CYII=\"\r\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "localhost:8080/publishers",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8080",
+                            "path": [
+                                "publishers"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "publishers -R",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "localhost:8080/publishers",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8080",
+                            "path": [
+                                "publishers"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "publishers-R",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "localhost:8080/publishers/5",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8080",
+                            "path": [
+                                "publishers",
+                                "5"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "publishers -U",
+                    "request": {
+                        "method": "PUT",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n    \"publisherName\": \"Demo Publisher M\",\r\n    \"publisherDesc\": \"Demo Publisher M\",\r\n    \"publisherLogo\": \"iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAJSSURBVDjLzZNdSNNhFMYXs4tuBLuKqAsvoqJMrSgJKr+WH2sZJFpsCLk/thAxhzorSm8cfhBIdxWCCIIgBiKGSpFSKVaihlo05kcLpbTtTaebbvv/emddFBgI3fTCc3Pgec55znleDaD5F2j+DwG1otQo8U1ChBEqs4qQtVgEiwpF4Po1sa6YxVpenvBfviJ8l7LF6vmsRe+5DNOGgCTkSHjp6YaBARgbA4cDJicJ9T1nsaUFd3MzS01NeB48xNXQgOtuJctnUrxLCaezwgJvaXwEnZ3Q1gYTEzA6Cu3thMrKcFkszCkKbrOZBZOJYYOBDzU1OIpLEPEnXWGBWLXc+lqttYPsxuwsG6+/n1B2NnN6PV8yM/kuMZWczPvqaqaUAkTsiXnPwficjR1Iv1HS75NQVSV0dMD8PIyMoBqNLEqiR4p40tNx2u1MX1UQR4473Qfi4v64QsBSELmen98VtNlgcBDGx1Hl6EKnw5uWxkJdHTOS7Dl8zOnefyRm0zP6jaZIX05u13q57aeA3IE3KQl/fT3j5gxeZewMPk2OUHt02k8SFZvmYPXCxciVdH3v2u07qK2tBGpr+ajoeVeSgK/rHupkNyutVt4UxgR7UyKKNg3HcmLqnqVTZx1r1lJ8N6z0Je5QVyWZ+wawRYE9WlpKpCdVO/XXhImjCYek3yHpdyY8tjr8mN+fp3IX4fqW4ir9uryNZpAkf7kGt8SsRYusf96SwIvc3VVDyr7AnC2arze341S28cwQEezWaW9t+dO8zN1bITtO/7qCK0wO138A9zXJPLDAEBEAAAAASUVORK5CYII=\"\r\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "localhost:8080/publishers/23",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8080",
+                            "path": [
+                                "publishers",
+                                "23"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "publishers -D",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "localhost:8080/publishers/22",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8080",
+                            "path": [
+                                "publishers",
+                                "22"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "publishers -R books",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "localhost:8080/publishers/3/books",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8080",
+                            "path": [
+                                "publishers",
+                                "3",
+                                "books"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "publisher -U book",
+                    "request": {
+                        "method": "PUT",
+                        "header": [],
+                        "url": {
+                            "raw": "localhost:8080/books/4/genres/6",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8080",
+                            "path": [
+                                "books",
+                                "4",
+                                "genres",
+                                "6"
+                            ]
+                        }
+                    },
+                    "response": []
                 }
-              }
-            },
-            "url": {
-              "raw": "localhost:8080/books/4",
-              "host": [
-                "localhost"
-              ],
-              "port": "8080",
-              "path": [
-                "books",
-                "4"
-              ]
-            }
-          },
-          "response": []
+            ],
+            "protocolProfileBehavior": {}
         },
         {
-          "name": "books-D",
-          "request": {
-            "method": "DELETE",
-            "header": [],
-            "url": {
-              "raw": "localhost:8080/books/4",
-              "host": [
-                "localhost"
-              ],
-              "port": "8080",
-              "path": [
-                "books",
-                "4"
-              ]
-            }
-          },
-          "response": []
+            "name": "genres",
+            "item": [
+                {
+                    "name": "genres -C",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n    \"genreName\": \"New Genre\",\r\n    \"genreDesc\": \"New Genre Desc.\"\r\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "localhost:8080/genres",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8080",
+                            "path": [
+                                "genres"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "genres -R",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "localhost:8080/genres",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8080",
+                            "path": [
+                                "genres"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "genres -R",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "localhost:8080/genres/5",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8080",
+                            "path": [
+                                "genres",
+                                "5"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "genres -U",
+                    "request": {
+                        "method": "PUT",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n    \"genreName\": \"Programming 11\",\r\n    \"genreDesc\": \"Programming Books 11.\"\r\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "localhost:8080/genres/11",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8080",
+                            "path": [
+                                "genres",
+                                "11"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "genres -D",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "localhost:8080/genres/22",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8080",
+                            "path": [
+                                "genres",
+                                "22"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "genres-R books",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "localhost:8080/genres/5/books",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8080",
+                            "path": [
+                                "genres",
+                                "5",
+                                "books"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "genres -U book",
+                    "request": {
+                        "method": "PUT",
+                        "header": [],
+                        "url": {
+                            "raw": "localhost:8080/genres/5/books/47",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8080",
+                            "path": [
+                                "genres",
+                                "5",
+                                "books",
+                                "47"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "genres -D books",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "localhost:8080/genres/5/books/47",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8080",
+                            "path": [
+                                "genres",
+                                "5",
+                                "books",
+                                "47"
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ],
+            "protocolProfileBehavior": {}
+        },
+        {
+            "name": "authors",
+            "item": [
+                {
+                    "name": "authors -C",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n            \"authorName\": \"Demo Author\",\r\n            \"authorBirth\": \"1975-10-12\"\r\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "localhost:8080/authors",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8080",
+                            "path": [
+                                "authors"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "authors -R",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "localhost:8080/authors",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8080",
+                            "path": [
+                                "authors"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "authors -R",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "localhost:8080/authors/55",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8080",
+                            "path": [
+                                "authors",
+                                "55"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "authors -U",
+                    "request": {
+                        "method": "PUT",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n\r\n            \"authorName\": \"Demo Author Modded\",\r\n            \"authorBirth\": \"1975-10-12\"\r\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "localhost:8080/authors/101",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8080",
+                            "path": [
+                                "authors",
+                                "101"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "authors -D",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "localhost:8080/authors/22",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8080",
+                            "path": [
+                                "authors",
+                                "22"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "authors -R books",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "localhost:8080/authors/38/books",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8080",
+                            "path": [
+                                "authors",
+                                "38",
+                                "books"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "authors -U book",
+                    "request": {
+                        "method": "PUT",
+                        "header": [],
+                        "url": {
+                            "raw": "localhost:8080/authors/101/books/6",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8080",
+                            "path": [
+                                "authors",
+                                "101",
+                                "books",
+                                "6"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "authors -D books",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "localhost:8080/authors/38/books/69",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8080",
+                            "path": [
+                                "authors",
+                                "38",
+                                "books",
+                                "69"
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ],
+            "protocolProfileBehavior": {}
         }
-      ],
-      "protocolProfileBehavior": {}
-    }
-  ],
-  "protocolProfileBehavior": {}
+    ],
+    "protocolProfileBehavior": {}
 }

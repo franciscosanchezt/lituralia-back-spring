@@ -13,8 +13,6 @@ public interface BookRepository extends JpaRepository<Book, Integer> {
 
     Optional<Book> findByTitle(String title);
 
-    List<Book> findByTitleContainingOrderByTitle(String likeTitle);
-
     @Query("SELECT b FROM books b WHERE LOWER(b.title) like LOWER(CONCAT('%',:searchTerm, '%') )")
     List<Book> findBySearchTerm(@Param("searchTerm") String searchTerm);
 

@@ -37,7 +37,7 @@ jobs:
 
       - run: mvn dependency:resolve-plugins dependency:go-offline
 
-      - run: mvn integration-test jacoco:report
+      - run: mvn integration-test jacoco:report -P !build_frontend
 
       - save_cache:
           paths:
@@ -45,7 +45,7 @@ jobs:
           key: v1-dependencies-{{ checksum "pom.xml" }}
 
       - store_artifacts:
-          path: target/lituralia-open-0.0.2-SNAPSHOT.jar
+          path: target/lituralia-open-0.0.3-SNAPSHOT.jar
 
       - store_test_results:
           path: target/surefire-reports

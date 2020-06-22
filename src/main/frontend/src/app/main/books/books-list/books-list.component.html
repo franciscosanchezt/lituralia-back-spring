@@ -29,21 +29,21 @@ Book Catalog
     <thead>
     <tr>
       <th>Book ID</th>
+      <th>Cover</th>
       <th>ISBN</th>
       <th>Title</th>
       <th>Publish Date</th>
-      <th>Publisher ID</th>
     </tr>
     </thead>
     <!--Table head-->
     <!--Table body-->
     <tbody>
-    <tr *ngFor="let book of books ">
+    <tr *ngFor="let book of books" routerLink="/main/books/{{book.bookId}}">
       <th scope="row">{{book.bookId}}</th>
+      <td><img width="40%" src="{{this.book?'data:image/jpg;base64,' + this.book.cover:''}}"/></td>
       <td>{{book.isbn}}</td>
       <td>{{book.title}}</td>
       <td>{{book.publishDate}}</td>
-      <td>{{book.publisherId}}</td>
     </tr>
     </tbody>
     <!--Table body-->
