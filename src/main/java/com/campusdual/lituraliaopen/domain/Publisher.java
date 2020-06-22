@@ -13,7 +13,9 @@ import javax.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -34,6 +36,8 @@ public class Publisher {
     @Column(name = "publisher_logo")
     private String publisherLogo;
 
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     @OneToMany(mappedBy = "publisher", fetch = FetchType.LAZY)
     private Set<Book> books = new HashSet<>();
 

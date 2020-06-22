@@ -1,7 +1,8 @@
 package com.campusdual.lituraliaopen.domain;
 
 import java.time.LocalDate;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -12,7 +13,9 @@ import javax.persistence.ManyToMany;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -34,7 +37,9 @@ public class Author {
     @Column(name = "author_death", columnDefinition = "DATE")
     private LocalDate authorDeath;
 
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     @ManyToMany(mappedBy = "authors", fetch = FetchType.LAZY)
-    private List<Book> books;
+    private Set<Book> books = new HashSet<>();
 
 }

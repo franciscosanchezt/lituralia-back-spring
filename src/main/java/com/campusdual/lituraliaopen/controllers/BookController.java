@@ -68,7 +68,7 @@ public class BookController {
             books.setPaging(Paging.builder()
                                   .pageNumber(pageNumber)
                                   .numberOfPages(maxPage)
-                                  .pageSize(pageSize)
+                                  .pageSize(books.getData().size())
                                   .searchTerm(searchTerm)
                                   .build());
         }
@@ -100,8 +100,10 @@ public class BookController {
         bookService.deleteBookById(id);
     }
 
+    // -------- Book's Publisher
 
-    @GetMapping({"/{id}/publisher/"})
+
+    @GetMapping({"/{id}/publisher"})
     @ResponseStatus(HttpStatus.OK)
     public PublisherDTO getBookPublisher(@PathVariable Integer id) {
         return bookService.getBookPublisher(id);
@@ -119,7 +121,10 @@ public class BookController {
         return bookService.setBookPublisher(id, idPublisher);
     }
 
-    @GetMapping({"/{id}/genres/"})
+    // -------- Book's Genres
+
+
+    @GetMapping({"/{id}/genres"})
     @ResponseStatus(HttpStatus.OK)
     public ListDTO<GenreDTO> getBookGenres(@PathVariable Integer id) {
         return new ListDTO<>(bookService.getBookGenres(id));
@@ -143,7 +148,9 @@ public class BookController {
         return bookService.deleteBookGenre(id, idGenre);
     }
 
-    @GetMapping({"/{id}/authors/"})
+    // -------- Book's Authors
+
+    @GetMapping({"/{id}/authors"})
     @ResponseStatus(HttpStatus.OK)
     public ListDTO<AuthorDTO> getBookAuthors(@PathVariable Integer id) {
         return new ListDTO<>(bookService.getBookAuthors(id));
