@@ -24,15 +24,21 @@ public interface BookService {
 
     List<BookDTO> getBooksBySearchTerm(String searchTerm) throws ResourceNotFoundException;
 
+    // -------- Book's Publisher
+
     PublisherDTO getBookPublisher(Integer bookId) throws ResourceNotFoundException;
 
     BookDTO setBookPublisher(Integer bookId, Integer publisherId) throws ResourceNotFoundException;
+
+    // -------- Book's Genres
 
     Set<GenreDTO> getBookGenres(Integer bookId) throws ResourceNotFoundException;
 
     BookDTO setBookGenre(Integer bookId, Integer genreId) throws ResourceNotFoundException;
 
     BookDTO deleteBookGenre(Integer bookId, Integer genreId) throws ResourceNotFoundException;
+
+    // -------- Book's Authors
 
     Set<AuthorDTO> getBookAuthors(Integer bookId) throws ResourceNotFoundException;
 

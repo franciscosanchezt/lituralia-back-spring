@@ -102,6 +102,9 @@ public class BookServiceImpl implements BookService {
         bookRepository.deleteById(bookId);
     }
 
+    // -------- Book's Publisher
+
+
     @Override
     public PublisherDTO getBookPublisher(Integer bookId) throws ResourceNotFoundException {
         return bookRepository.findById(bookId)
@@ -123,6 +126,7 @@ public class BookServiceImpl implements BookService {
                              .orElseThrow(ResourceNotFoundException::new);
     }
 
+    // -------- Book's Genres
 
     @Override
     public Set<GenreDTO> getBookGenres(Integer bookId) throws ResourceNotFoundException {
@@ -158,6 +162,8 @@ public class BookServiceImpl implements BookService {
                              })
                              .orElseThrow(ResourceNotFoundException::new);
     }
+
+    // -------- Book's Authors
 
 
     @Override

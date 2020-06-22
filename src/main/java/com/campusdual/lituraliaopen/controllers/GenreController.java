@@ -2,6 +2,7 @@ package com.campusdual.lituraliaopen.controllers;
 
 import com.campusdual.lituraliaopen.api.Paging;
 import com.campusdual.lituraliaopen.api.model.GenreService;
+import com.campusdual.lituraliaopen.api.model.dtos.BookDTO;
 import com.campusdual.lituraliaopen.api.model.dtos.GenreDTO;
 import com.campusdual.lituraliaopen.api.model.dtos.ListDTO;
 import java.util.List;
@@ -91,5 +92,32 @@ public class GenreController {
     @ResponseStatus(HttpStatus.OK)
     public void deleteGenre(@PathVariable Integer id) {
         genreService.deleteGenreById(id);
+    }
+
+    // -------- Genre's Books
+
+
+    @GetMapping({"/{id}/books"})
+    @ResponseStatus(HttpStatus.OK)
+    public ListDTO<BookDTO> getGenreBooks(@PathVariable Integer id) {
+        return new ListDTO<>(genreService.getGenreBooks(id));
+    }
+
+    @PostMapping({"/{id}/books/{idBook}"})
+    @ResponseStatus(HttpStatus.OK)
+    public BookDTO postGenreBooks(@PathVariable Integer id, @PathVariable Integer idBook) {
+        return genreService.setGenreBook(id, idBook);
+    }
+
+    @PutMapping({"/{id}/books/{idBook}"})
+    @ResponseStatus(HttpStatus.OK)
+    public BookDTO putGenreBooks(@PathVariable Integer id, @PathVariable Integer idBook) {
+        return genreService.setGenreBook(id, idBook);
+    }
+
+    @DeleteMapping({"/{id}/books/{idBook}"})
+    @ResponseStatus(HttpStatus.OK)
+    public BookDTO deleteGenreBooks(@PathVariable Integer id, @PathVariable Integer idBook) {
+        return genreService.deleteGenreBook(id, idBook);
     }
 }

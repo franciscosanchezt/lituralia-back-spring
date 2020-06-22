@@ -1,6 +1,7 @@
 package com.campusdual.lituraliaopen.domain;
 
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -11,7 +12,9 @@ import javax.persistence.ManyToMany;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -28,8 +31,10 @@ public class Genre {
     private String genreName;
     private String genreDesc;
 
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     @ManyToMany(mappedBy = "genres", fetch = FetchType.LAZY)
-    private List<Book> books;
+    private Set<Book> books = new HashSet<>();
 
 
 }

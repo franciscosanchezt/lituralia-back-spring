@@ -2,6 +2,7 @@ package com.campusdual.lituraliaopen.controllers;
 
 import com.campusdual.lituraliaopen.api.Paging;
 import com.campusdual.lituraliaopen.api.model.PublisherService;
+import com.campusdual.lituraliaopen.api.model.dtos.BookDTO;
 import com.campusdual.lituraliaopen.api.model.dtos.ListDTO;
 import com.campusdual.lituraliaopen.api.model.dtos.PublisherDTO;
 import java.util.List;
@@ -92,4 +93,26 @@ public class PublisherController {
     public void deletePublisher(@PathVariable Integer id) {
         publisherService.deletePublisherById(id);
     }
+
+    // -------- Publisher's Books
+
+
+    @GetMapping({"/{id}/books"})
+    @ResponseStatus(HttpStatus.OK)
+    public ListDTO<BookDTO> getPublisherBooks(@PathVariable Integer id) {
+        return new ListDTO<>(publisherService.getPublisherBooks(id));
+    }
+
+    @PostMapping({"/{id}/books/{idBook}"})
+    @ResponseStatus(HttpStatus.OK)
+    public BookDTO postPublisherBooks(@PathVariable Integer id, @PathVariable Integer idBook) {
+        return publisherService.setPublisherBook(id, idBook);
+    }
+
+    @PutMapping({"/{id}/books/{idBook}"})
+    @ResponseStatus(HttpStatus.OK)
+    public BookDTO putPublisherBooks(@PathVariable Integer id, @PathVariable Integer idBook) {
+        return publisherService.setPublisherBook(id, idBook);
+    }
+
 }
