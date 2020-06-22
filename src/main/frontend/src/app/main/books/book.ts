@@ -5,5 +5,6 @@ export class Book {
   synopsis: string;
   publishDate: string;
   publisherId: number;
+  cover: string;
 
 }

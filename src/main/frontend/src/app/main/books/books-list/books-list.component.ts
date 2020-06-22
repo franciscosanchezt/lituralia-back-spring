@@ -5,6 +5,7 @@ import {Book} from "../book";
 import {Paging} from "../../../shared/paging";
 import {debounceTime, distinctUntilChanged, switchMap, tap} from "rxjs/operators";
 import {isNumeric} from "rxjs/internal-compatibility";
+import {RouterOutlet} from "@angular/router";
 
 @Component({
   selector: 'app-books-list',
@@ -26,7 +27,8 @@ export class BooksListComponent implements OnInit {
   activePages: any[] = [];
 
 
-  constructor(private bookService: BookService) {
+  constructor(private bookService: BookService,
+              private routerOutlet: RouterOutlet) {
   }
 
   ngOnInit(): void {

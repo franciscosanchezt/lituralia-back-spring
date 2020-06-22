@@ -1,7 +1,8 @@
 package com.campusdual.lituraliaopen.domain;
 
 
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -34,6 +35,6 @@ public class Publisher {
     private String publisherLogo;
 
     @OneToMany(mappedBy = "publisher", fetch = FetchType.LAZY)
-    private List<Book> books;
+    private Set<Book> books = new HashSet<>();
 
 }

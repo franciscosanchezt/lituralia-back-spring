@@ -5,6 +5,7 @@ import com.campusdual.lituraliaopen.api.model.dtos.BookDTO;
 import com.campusdual.lituraliaopen.api.model.dtos.GenreDTO;
 import com.campusdual.lituraliaopen.api.model.dtos.PublisherDTO;
 import java.util.List;
+import java.util.Set;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 
 public interface BookService {
@@ -27,13 +28,13 @@ public interface BookService {
 
     BookDTO setBookPublisher(Integer bookId, Integer publisherId) throws ResourceNotFoundException;
 
-    List<GenreDTO> getBookGenres(Integer bookId) throws ResourceNotFoundException;
+    Set<GenreDTO> getBookGenres(Integer bookId) throws ResourceNotFoundException;
 
     BookDTO setBookGenre(Integer bookId, Integer genreId) throws ResourceNotFoundException;
 
     BookDTO deleteBookGenre(Integer bookId, Integer genreId) throws ResourceNotFoundException;
 
-    List<AuthorDTO> getBookAuthors(Integer bookId) throws ResourceNotFoundException;
+    Set<AuthorDTO> getBookAuthors(Integer bookId) throws ResourceNotFoundException;
 
     BookDTO setBookAuthor(Integer bookId, Integer authorId) throws ResourceNotFoundException;
 
