@@ -14,7 +14,6 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class AuthorServiceImpl implements AuthorService {
@@ -25,7 +24,7 @@ public class AuthorServiceImpl implements AuthorService {
     private final BookRepository bookRepository;
     private final BookMapper bookMapper;
 
-    public AuthorServiceImpl(AuthorMapper authorMapper, AuthorRepository authorRepository,
+    public AuthorServiceImpl(AuthorRepository authorRepository, AuthorMapper authorMapper,
                              BookRepository bookRepository, BookMapper bookMapper) {
         this.authorMapper     = authorMapper;
         this.authorRepository = authorRepository;
@@ -93,7 +92,6 @@ public class AuthorServiceImpl implements AuthorService {
                                .orElseThrow(ResourceNotFoundException::new);
     }
 
-    @Transactional
     @Override
     public BookDTO setAuthorBook(Integer authorId, Integer bookId) throws ResourceNotFoundException {
         return authorRepository.findById(authorId)
@@ -106,7 +104,6 @@ public class AuthorServiceImpl implements AuthorService {
                                .orElseThrow(ResourceNotFoundException::new);
     }
 
-    @Transactional
     @Override
     public BookDTO deleteAuthorBook(Integer authorId, Integer bookId) throws ResourceNotFoundException {
         return authorRepository.findById(authorId)

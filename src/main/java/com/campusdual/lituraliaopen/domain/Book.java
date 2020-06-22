@@ -44,6 +44,7 @@ public class Book {
 
     private String cover;
 
+    @ToString.Exclude
     @EqualsAndHashCode.Exclude
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "publisher_id")
