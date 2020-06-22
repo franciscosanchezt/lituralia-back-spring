@@ -20,8 +20,8 @@ export class BookService {
 
   public getAllBooks(): Observable<Book[]> {
     return this.http.get<any>(this.booksUrl).pipe(
-      tap(list => console.log(list)),
-      map(result => result.books),
+      tap(page => console.log(page)),
+      map(result => result.data),
       catchError(error => this.handleError('getAllBooks'))
     );
   }
@@ -36,7 +36,7 @@ export class BookService {
     }
     return this.http.get<any>(this.booksUrl, {params: params}).pipe(
       tap(obj => console.log(obj)),
-      map(value => new PagedList<Book>(value.books, value.paging)),
+      map(value => new PagedList<Book>(value.data, value.paging)),
       catchError(error => this.handleError('getPagedBooks'))
     );
   }

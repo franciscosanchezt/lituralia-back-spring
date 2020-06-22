@@ -1,9 +1,5 @@
 package com.campusdual.lituraliaopen.api.mapper;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
-import com.campusdual.lituraliaopen.domain.Book;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -61,30 +57,30 @@ class BookMapperTest {
 //        assertEquals(ISBN, book.getIsbn());
 //        assertEquals(TITLE, book.getTitle());
 //    }
-
-    @Test
-    void idToBook() {
-        //given
-        Integer id = ID;
-
-        //whendejame p
-        Book book = mapper.idToBook(id);
-
-        //then
-        assertEquals(ID, book.getBookId());
-    }
-
-    @Test
-    void bookToId() {
-        //given
-        Book book = Book.builder()
-                        .bookId(ID)
-                        .build();
-
-        //when
-        Integer id = mapper.bookToId(book);
-
-        //then
-        assertEquals(ID, id);
-    }
+//
+//    @Test
+//    void idToBook() {
+//        //given
+//        Integer id = ID;
+//
+//        //whendejame p
+//        Book book = mapper.idToBook(id);
+//
+//        //then
+//        assertEquals(ID, book.getBookId());
+//    }
+//
+//    @Test
+//    void bookToId() {
+//        //given
+//        Book book = Book.builder()
+//                        .bookId(ID)
+//                        .build();
+//
+//        //when
+//        Integer id = mapper.bookToId(book);
+//
+//        //then
+//        assertEquals(ID, id);
+//    }
 }

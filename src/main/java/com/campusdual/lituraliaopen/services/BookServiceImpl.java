@@ -18,6 +18,7 @@ import com.campusdual.lituraliaopen.repositories.BookRepository;
 import com.campusdual.lituraliaopen.repositories.GenreRepository;
 import com.campusdual.lituraliaopen.repositories.PublisherRepository;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
@@ -124,12 +125,12 @@ public class BookServiceImpl implements BookService {
 
 
     @Override
-    public List<GenreDTO> getBookGenres(Integer bookId) throws ResourceNotFoundException {
+    public Set<GenreDTO> getBookGenres(Integer bookId) throws ResourceNotFoundException {
         return bookRepository.findById(bookId)
                              .map(book -> {
                                  return book.getGenres().stream()
                                             .map(genreMapper::genreToGenreDTO)
-                                            .collect(Collectors.toList());
+                                            .collect(Collectors.toSet());
                              })
                              .orElseThrow(ResourceNotFoundException::new);
     }
@@ -160,12 +161,12 @@ public class BookServiceImpl implements BookService {
 
 
     @Override
-    public List<AuthorDTO> getBookAuthors(Integer bookId) throws ResourceNotFoundException {
+    public Set<AuthorDTO> getBookAuthors(Integer bookId) throws ResourceNotFoundException {
         return bookRepository.findById(bookId)
                              .map(book -> {
                                  return book.getAuthors().stream()
                                             .map(authorMapper::authorToAuthorDTO)
-                                            .collect(Collectors.toList());
+                                            .collect(Collectors.toSet());
                              })
                              .orElseThrow(ResourceNotFoundException::new);
     }
