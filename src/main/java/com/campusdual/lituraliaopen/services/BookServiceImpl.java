@@ -17,9 +17,10 @@ import com.campusdual.lituraliaopen.repositories.AuthorRepository;
 import com.campusdual.lituraliaopen.repositories.BookRepository;
 import com.campusdual.lituraliaopen.repositories.GenreRepository;
 import com.campusdual.lituraliaopen.repositories.PublisherRepository;
-import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
@@ -56,19 +57,15 @@ public class BookServiceImpl implements BookService {
 
 
     @Override
-    public List<BookDTO> getAllBooks() {
-        return bookRepository.findAll()
-                             .stream()
-                             .map(bookMapper::bookToBookDTO)
-                             .collect(Collectors.toList());
+    public Page<BookDTO> getAllBooks(Pageable pageable) {
+        return bookRepository.findAll(pageable)
+                             .map(bookMapper::bookToBookDTO);
     }
 
     @Override
-    public List<BookDTO> getBooksBySearchTerm(String searchTerm) throws ResourceNotFoundException {
-        return bookRepository.findBySearchTerm(searchTerm)
-                             .stream()
-                             .map(bookMapper::bookToBookDTO)
-                             .collect(Collectors.toList());
+    public Page<BookDTO> searchBooks(String searchTerm, Pageable pageable) throws ResourceNotFoundException {
+        return bookRepository.findByTitleContainingIgnoreCase(searchTerm, pageable)
+                             .map(bookMapper::bookToBookDTO);
     }
 
     @Override

@@ -129,3 +129,6 @@ Entra [aqui](CHANGELOG.md) para ver los cambios recientes.
 ## Licencia 📄
 
 Este proyecto está bajo la Licencia (MIT) - mira el archivo [LICENSE.md](LICENSE.md) para detalles
+
+
+![image](https://user-images.githubusercontent.com/64412593/85792901-81146000-b734-11ea-9744-e7426ca9145e.png)

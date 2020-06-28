@@ -4,13 +4,14 @@ import com.campusdual.lituraliaopen.api.model.dtos.AuthorDTO;
 import com.campusdual.lituraliaopen.api.model.dtos.BookDTO;
 import com.campusdual.lituraliaopen.api.model.dtos.GenreDTO;
 import com.campusdual.lituraliaopen.api.model.dtos.PublisherDTO;
-import java.util.List;
 import java.util.Set;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 
 public interface BookService {
 
-    List<BookDTO> getAllBooks();
+    Page<BookDTO> getAllBooks(Pageable pageable);
 
     BookDTO getBookById(Integer bookId) throws ResourceNotFoundException;
 
@@ -22,7 +23,7 @@ public interface BookService {
 
     void deleteBookById(Integer bookId) throws ResourceNotFoundException;
 
-    List<BookDTO> getBooksBySearchTerm(String searchTerm) throws ResourceNotFoundException;
+    Page<BookDTO> searchBooks(String searchTerm, Pageable pageable) throws ResourceNotFoundException;
 
     // -------- Book's Publisher
 

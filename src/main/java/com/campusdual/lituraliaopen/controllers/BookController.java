@@ -1,6 +1,5 @@
 package com.campusdual.lituraliaopen.controllers;
 
-import com.campusdual.lituraliaopen.api.Paging;
 import com.campusdual.lituraliaopen.api.model.BookService;
 import com.campusdual.lituraliaopen.api.model.PublisherService;
 import com.campusdual.lituraliaopen.api.model.dtos.AuthorDTO;
@@ -8,10 +7,13 @@ import com.campusdual.lituraliaopen.api.model.dtos.BookDTO;
 import com.campusdual.lituraliaopen.api.model.dtos.GenreDTO;
 import com.campusdual.lituraliaopen.api.model.dtos.ListDTO;
 import com.campusdual.lituraliaopen.api.model.dtos.PublisherDTO;
-import java.util.List;
-import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
+import org.springframework.data.web.PageableDefault;
+import org.springframework.data.web.SortDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -37,42 +39,20 @@ public class BookController {
     PublisherService publisherService;
 
     @GetMapping
-    public ListDTO<BookDTO> getAllBooks(@RequestParam(required = false, defaultValue = GlobalController.PAGINATION_DEFAULT_PAGE_NUM) Integer pageNumber,
-                                        @RequestParam(required = false, defaultValue = GlobalController.PAGINATION_DEFAULT_PAGE_SIZE) Integer pageSize,
-                                        @RequestParam(required = false, defaultValue = "") String searchTerm) {
-        ListDTO<BookDTO> books = new ListDTO<>();
+    public Page<BookDTO> getAllBooks(@PageableDefault(page = 0, size = 10)
+                                     @SortDefault.SortDefaults({@SortDefault(sort = "bookId", direction = Direction.ASC)})
+                                         Pageable pageable) {
+        return bookService.getAllBooks(pageable);
+    }
 
-        List<BookDTO> allBooks;
-        if (searchTerm.isEmpty() || searchTerm.equals("null")) {
-            allBooks = bookService.getAllBooks();
-        } else {
-            allBooks = bookService.getBooksBySearchTerm(searchTerm);
-        }
-        if (pageNumber < 1) {
-            books.setData(allBooks);
-            books.setPaging(Paging.builder()
-                                  .pageNumber(0)
-                                  .numberOfPages(1)
-                                  .pageSize(allBooks.size())
-                                  .build());
-        } else {
-            int maxPage = (allBooks.size() / pageSize) + (allBooks.size() % pageSize == 0 ? 0 : 1);
-            pageSize   = Math.min(pageSize, 50);
-            pageSize   = Math.max(pageSize, 10);
-            pageNumber = Math.min(pageNumber, maxPage);
-            pageNumber = Math.max(pageNumber, 1);
-            books.setData(allBooks.stream()
-                                  .skip(Math.max(0, pageSize * (pageNumber - 1)))
-                                  .limit(pageSize)
-                                  .collect(Collectors.toList()));
-            books.setPaging(Paging.builder()
-                                  .pageNumber(pageNumber)
-                                  .numberOfPages(maxPage)
-                                  .pageSize(books.getData().size())
-                                  .searchTerm(searchTerm)
-                                  .build());
-        }
-        return books;
+    @GetMapping("/search")
+    public Page<BookDTO> searchBooks(@PageableDefault(page = 0, size = 10)
+                                     @SortDefault.SortDefaults({@SortDefault(sort = "bookId", direction = Direction.ASC)})
+                                         Pageable pageable,
+                                     @RequestParam(required = false, defaultValue = "") String searchTerm) {
+        return searchTerm.isEmpty() ?
+               bookService.getAllBooks(pageable) :
+               bookService.searchBooks(searchTerm, pageable);
     }
 
 

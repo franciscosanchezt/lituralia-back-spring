@@ -1,9 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {BookService} from "../book.service";
-import {Subject} from "rxjs";
+import {BehaviorSubject} from "rxjs";
 import {Book} from "../book";
-import {Paging} from "../../../shared/paging";
-import {debounceTime, distinctUntilChanged, switchMap, tap} from "rxjs/operators";
+import {Paging} from "../../../shared/paging/paging";
+import {debounceTime, distinctUntilChanged, switchMap} from "rxjs/operators";
 import {isNumeric} from "rxjs/internal-compatibility";
 import {RouterOutlet} from "@angular/router";
 
@@ -13,61 +13,68 @@ import {RouterOutlet} from "@angular/router";
   styleUrls: ['./books-list.component.css'],
   providers: [BookService]
 })
-export class BooksListComponent implements OnInit {
+export class BooksListComponent implements OnInit, OnDestroy {
 
 
   books: Book[] = [];
 
-  pagingObs: Subject<Paging> = new Subject<Paging>();
   pagingStatus: Paging = new Paging();
+  pagingObs: BehaviorSubject<Paging> = new BehaviorSubject<Paging>(this.pagingStatus);
 
   selectedSize = Paging.defaultSize;
   pageSizes: { value: number, viewValue: string }[] = Paging.pageSizes
 
   activePages: any[] = [];
 
+  searchTerm = "";
+
 
   constructor(private bookService: BookService,
               private routerOutlet: RouterOutlet) {
   }
 
+  ngOnDestroy(): void {
+    this.pagingObs.unsubscribe()
+  }
+
   ngOnInit(): void {
     this.pagingObs.pipe(
       debounceTime(300),
-      distinctUntilChanged((x, y) => Paging.samePage(x, y)),
-      switchMap(paging => this.bookService.getBooks(paging)),
-      tap(x => {
-        this.pagingStatus = x.paging;
-        this.selectedSize = x.paging.pageSize
-        this.setActivePages()
-        this.books = x.list
-      })
+      distinctUntilChanged((x, y) => x.equalTo(y)),
+      switchMap(paging => this.bookService.searchBooks(paging.page, paging.size, paging.searchTerm))
     ).subscribe(value => {
+      this.books = value.content
+      this.pagingStatus = Paging.setPagingData(value)
+      this.pagingStatus.searchTerm = this.searchTerm
+      this.setActivePages()
     })
     this.pagingObs.next(this.pagingStatus)
   }
 
   private setActivePages() {
     let pagesList = []
-    if (this.pagingStatus.numberOfPages < 9) {
-      pagesList = Array(this.pagingStatus.numberOfPages).fill(this.pagingStatus.numberOfPages).map((x, i) => i + 1)
+    const page = this.pagingStatus.page + 1
+    if (this.pagingStatus.pages < 9) {
+      pagesList = Array(this.pagingStatus.pages)
+      .fill(this.pagingStatus.pages)
+      .map((x, i) => i + 1)
     } else {
       let pages: Set<any> = new Set();
       pages.add(1)
       pages.add(2)
-      if (this.pagingStatus.pageNumber > 4) {
+      if (page > 4) {
         pages.add('...')
       }
 
-      pages.add(Math.max(1, this.pagingStatus.pageNumber - 1))
-      pages.add(this.pagingStatus.pageNumber)
-      pages.add(Math.min(this.pagingStatus.numberOfPages, this.pagingStatus.pageNumber + 1))
+      pages.add(Math.max(1, page - 1))
+      pages.add(page)
+      pages.add(Math.min(this.pagingStatus.pages, page + 1))
 
-      if (this.pagingStatus.pageNumber < this.pagingStatus.numberOfPages - 3) {
+      if (page < this.pagingStatus.pages - 3) {
         pages.add('... ')
       }
-      pages.add(this.pagingStatus.numberOfPages - 1)
-      pages.add(this.pagingStatus.numberOfPages)
+      pages.add(this.pagingStatus.pages - 1)
+      pages.add(this.pagingStatus.pages)
 
       pagesList = Array.from(pages);
     }
@@ -79,21 +86,21 @@ export class BooksListComponent implements OnInit {
   }
 
   navigateTo(page: any) {
-    if (Number.isNaN(page) || page < 1 || page > this.pagingStatus.numberOfPages) {
+    if (Number.isNaN(page) || page < 0 || page > this.pagingStatus.pages - 1) {
       return;
     }
-    this.pagingStatus.pageNumber = page
+    this.pagingStatus.page = page
     this.pagingObs.next(this.pagingStatus);
   }
 
-
   changePageSize(pageSize: number) {
-    this.pagingStatus.pageSize = pageSize
+    this.pagingStatus.size = pageSize
     this.pagingObs.next(this.pagingStatus);
   }
 
   search(term: string = "") {
     this.pagingStatus.searchTerm = term
+    this.searchTerm = term
     this.pagingObs.next(this.pagingStatus);
   }
 

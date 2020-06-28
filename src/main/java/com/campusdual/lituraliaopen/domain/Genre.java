@@ -28,7 +28,10 @@ public class Genre {
     @Column(name = "genre_id")
     private Integer genreId;
 
+    @Column(name = "genre_name")
     private String genreName;
+
+    @Column(name = "genre_desc")
     private String genreDesc;
 
     @ToString.Exclude

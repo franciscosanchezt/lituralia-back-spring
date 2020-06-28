@@ -18,8 +18,6 @@ import com.campusdual.lituraliaopen.repositories.AuthorRepository;
 import com.campusdual.lituraliaopen.repositories.BookRepository;
 import com.campusdual.lituraliaopen.repositories.GenreRepository;
 import com.campusdual.lituraliaopen.repositories.PublisherRepository;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Optional;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -54,28 +52,28 @@ class BookServiceImplTest {
                                           authorRepository, authorMapper);
     }
 
-    @Test
-    void getAllBooks() {
-        //given
-        Book book1 = Book.builder()
-                         .bookId(1)
-                         .isbn("123456")
-                         .title("Hamlet")
-                         .build();
-        Book book2 = Book.builder()
-                         .bookId(2)
-                         .isbn("123457")
-                         .title("MacBeth")
-                         .build();
-
-        when(bookRepository.findAll()).thenReturn(Arrays.asList(book1, book2));
-
-        //when
-        List<BookDTO> bookDTOS = bookService.getAllBooks();
-
-        //then
-        assertEquals(2, bookDTOS.size());
-    }
+//    @Test
+//    void getAllBooks() {
+//        //given
+//        Book book1 = Book.builder()
+//                         .bookId(1)
+//                         .isbn("123456")
+//                         .title("Hamlet")
+//                         .build();
+//        Book book2 = Book.builder()
+//                         .bookId(2)
+//                         .isbn("123457")
+//                         .title("MacBeth")
+//                         .build();
+//
+//        when(bookRepository.findAll()).thenReturn(Arrays.asList(book1, book2));
+//
+//        //when
+//        List<BookDTO> bookDTOS = bookService.getAllBooks();
+//
+//        //then
+//        assertEquals(2, bookDTOS.size());
+//    }
 
     @Test
     void getBookById() {

@@ -29,6 +29,7 @@ public class Author {
     @Column(name = "author_id")
     private Integer authorId;
 
+    @Column(name = "author_name")
     private String authorName;
 
     @Column(name = "author_birth", columnDefinition = "DATE")
@@ -41,5 +42,11 @@ public class Author {
     @EqualsAndHashCode.Exclude
     @ManyToMany(mappedBy = "authors", fetch = FetchType.LAZY)
     private Set<Book> books = new HashSet<>();
+
+    @Column(name = "author_portrait")
+    private String authorPortrait;
+
+    @Column(name = "author_bio")
+    private String authorBio;
 
 }
