@@ -61,7 +61,7 @@ Book Catalog
       </li>
       <li *ngFor="let page of activePages" class="page-item" [class.active]="pagingStatus.page+1===page">
         <a *ngIf="isNumeric(page); else threeDots" class="page-link" mdbWavesEffect
-           (click)="navigateTo(page-1)">{{page}}</a>
+           (click)="navigateToOffset(page)">{{page}}</a>
         <ng-template #threeDots><span class="page-link">{{page}}</span></ng-template>
       </li>
       <li class="page-item">

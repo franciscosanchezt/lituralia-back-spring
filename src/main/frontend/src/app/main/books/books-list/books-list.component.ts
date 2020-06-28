@@ -105,4 +105,8 @@ export class BooksListComponent implements OnInit, OnDestroy {
   }
 
 
+  navigateToOffset(page: any) {
+    const pagen = parseInt(page)
+    this.navigateTo(pagen - 1)
+  }
 }
