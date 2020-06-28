@@ -5,12 +5,11 @@ import com.campusdual.lituraliaopen.api.model.PublisherService;
 import com.campusdual.lituraliaopen.api.model.dtos.AuthorDTO;
 import com.campusdual.lituraliaopen.api.model.dtos.BookDTO;
 import com.campusdual.lituraliaopen.api.model.dtos.GenreDTO;
-import com.campusdual.lituraliaopen.api.model.dtos.ListDTO;
 import com.campusdual.lituraliaopen.api.model.dtos.PublisherDTO;
-import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Slice;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.data.web.PageableDefault;
@@ -107,25 +106,25 @@ public class BookController {
 
     @GetMapping({"/{id}/genres"})
     @ResponseStatus(HttpStatus.OK)
-    public ListDTO<GenreDTO> getBookGenres(@PathVariable Integer id) {
-        return new ListDTO<>(bookService.getBookGenres(id));
+    public Slice<GenreDTO> getBookGenres(@PathVariable Integer id) {
+        return bookService.getBookGenres(id);
     }
 
     @PostMapping({"/{id}/genres/{idGenre}"})
     @ResponseStatus(HttpStatus.OK)
-    public Set<GenreDTO> postBookGenres(@PathVariable Integer id, @PathVariable Integer idGenre) {
+    public Slice<GenreDTO> postBookGenres(@PathVariable Integer id, @PathVariable Integer idGenre) {
         return bookService.setBookGenre(id, idGenre);
     }
 
     @PutMapping({"/{id}/genres/{idGenre}"})
     @ResponseStatus(HttpStatus.OK)
-    public Set<GenreDTO> putBookGenres(@PathVariable Integer id, @PathVariable Integer idGenre) {
+    public Slice<GenreDTO> putBookGenres(@PathVariable Integer id, @PathVariable Integer idGenre) {
         return bookService.setBookGenre(id, idGenre);
     }
 
     @DeleteMapping({"/{id}/genres/{idGenre}"})
     @ResponseStatus(HttpStatus.OK)
-    public Set<GenreDTO> deleteBookGenres(@PathVariable Integer id, @PathVariable Integer idGenre) {
+    public Slice<GenreDTO> deleteBookGenres(@PathVariable Integer id, @PathVariable Integer idGenre) {
         return bookService.deleteBookGenre(id, idGenre);
     }
 
@@ -133,25 +132,25 @@ public class BookController {
 
     @GetMapping({"/{id}/authors"})
     @ResponseStatus(HttpStatus.OK)
-    public ListDTO<AuthorDTO> getBookAuthors(@PathVariable Integer id) {
-        return new ListDTO<>(bookService.getBookAuthors(id));
+    public Slice<AuthorDTO> getBookAuthors(@PathVariable Integer id) {
+        return bookService.getBookAuthors(id);
     }
 
     @PostMapping({"/{id}/authors/{idAuthor}"})
     @ResponseStatus(HttpStatus.OK)
-    public Set<AuthorDTO> postBookAuthors(@PathVariable Integer id, @PathVariable Integer idAuthor) {
+    public Slice<AuthorDTO> postBookAuthors(@PathVariable Integer id, @PathVariable Integer idAuthor) {
         return bookService.setBookAuthor(id, idAuthor);
     }
 
     @PutMapping({"/{id}/authors/{idAuthor}"})
     @ResponseStatus(HttpStatus.OK)
-    public Set<AuthorDTO> putBookAuthors(@PathVariable Integer id, @PathVariable Integer idAuthor) {
+    public Slice<AuthorDTO> putBookAuthors(@PathVariable Integer id, @PathVariable Integer idAuthor) {
         return bookService.setBookAuthor(id, idAuthor);
     }
 
     @DeleteMapping({"/{id}/authors/{idAuthor}"})
     @ResponseStatus(HttpStatus.OK)
-    public Set<AuthorDTO> deleteBookAuthors(@PathVariable Integer id, @PathVariable Integer idAuthor) {
+    public Slice<AuthorDTO> deleteBookAuthors(@PathVariable Integer id, @PathVariable Integer idAuthor) {
         return bookService.deleteBookAuthor(id, idAuthor);
     }
 

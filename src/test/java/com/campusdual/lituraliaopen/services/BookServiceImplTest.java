@@ -29,7 +29,6 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Optional;
-import java.util.Set;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -39,6 +38,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Slice;
 
 class BookServiceImplTest {
 
@@ -241,10 +241,10 @@ class BookServiceImplTest {
         when(bookRepository.findById(any(Integer.class))).thenReturn(Optional.ofNullable(book));
 
         //when
-        Set<GenreDTO> bookGenres = this.bookService.getBookGenres(1);
+        Slice<GenreDTO> bookGenres = this.bookService.getBookGenres(1);
 
         //then
-        assertEquals(2, bookGenres.size());
+        assertEquals(2, bookGenres.getSize());
         assertEquals(genre1.getGenreName(), bookGenres.iterator().next().getGenreName());
     }
 
@@ -262,10 +262,10 @@ class BookServiceImplTest {
         when(bookRepository.saveAndFlush(any(Book.class))).thenReturn(book);
 
         //when
-        Set<GenreDTO> bookGenres = this.bookService.setBookGenre(1, 2);
+        Slice<GenreDTO> bookGenres = this.bookService.setBookGenre(1, 2);
 
         //then
-        assertEquals(2, bookGenres.size());
+        assertEquals(2, bookGenres.getSize());
         Iterator<GenreDTO> iterator = bookGenres.iterator();
         iterator.next();
 
@@ -285,18 +285,18 @@ class BookServiceImplTest {
         when(bookRepository.saveAndFlush(any(Book.class))).thenReturn(book);
 
         //when
-        Set<GenreDTO> bookGenres = this.bookService.deleteBookGenre(1, 1);
+        Slice<GenreDTO> bookGenres = this.bookService.deleteBookGenre(1, 1);
 
         //then
-        assertEquals(1, bookGenres.size());
+        assertEquals(1, bookGenres.getSize());
         assertEquals(genre2.getGenreName(), bookGenres.iterator().next().getGenreName());
     }
 
 
     @Test
     void getBookAuthor() {
-        Author author1 = Author.builder().authorId(1).authorName("Terror").build();
-        Author author2 = Author.builder().authorId(2).authorName("Comedy").build();
+        Author author1 = Author.builder().authorId(1).authorName("Shakespeare").build();
+        Author author2 = Author.builder().authorId(2).authorName("Cervantes").build();
         Book book = Book.builder().bookId(1)
                         .title("Harry Potter")
                         .authors(new HashSet<>(Arrays.asList(author1, author2))).build();
@@ -304,18 +304,18 @@ class BookServiceImplTest {
         when(bookRepository.findById(any(Integer.class))).thenReturn(Optional.ofNullable(book));
 
         //when
-        Set<AuthorDTO> bookAuthors = this.bookService.getBookAuthors(1);
+        Slice<AuthorDTO> bookAuthors = this.bookService.getBookAuthors(1);
 
         //then
-        assertEquals(2, bookAuthors.size());
+        assertEquals(2, bookAuthors.getSize());
         assertEquals(author1.getAuthorName(), bookAuthors.iterator().next().getAuthorName());
     }
 
 
     @Test
     void setBookAuthor() {
-        Author author1 = Author.builder().authorId(1).authorName("Terror").build();
-        Author author2 = Author.builder().authorId(2).authorName("Comedy").build();
+        Author author1 = Author.builder().authorId(1).authorName("Shakespeare").build();
+        Author author2 = Author.builder().authorId(2).authorName("Cervantes").build();
         Book book = Book.builder().bookId(1)
                         .title("Harry Potter")
                         .authors(new HashSet<>(Collections.singletonList(author1))).build();
@@ -325,20 +325,17 @@ class BookServiceImplTest {
         when(bookRepository.saveAndFlush(any(Book.class))).thenReturn(book);
 
         //when
-        Set<AuthorDTO> bookAuthors = this.bookService.setBookAuthor(1, 2);
+        Slice<AuthorDTO> bookAuthors = this.bookService.setBookAuthor(1, 2);
 
         //then
-        assertEquals(2, bookAuthors.size());
-        Iterator<AuthorDTO> iterator = bookAuthors.iterator();
-        iterator.next();
-
-        assertEquals(author2.getAuthorName(), iterator.next().getAuthorName());
+        assertEquals(2, bookAuthors.getSize());
+        assertEquals(author2.getAuthorName(), bookAuthors.getContent().get(1).getAuthorName());
     }
 
     @Test
     void deleteBookAuthor() {
-        Author author1 = Author.builder().authorId(1).authorName("Terror").build();
-        Author author2 = Author.builder().authorId(2).authorName("Comedy").build();
+        Author author1 = Author.builder().authorId(1).authorName("Shakespeare").build();
+        Author author2 = Author.builder().authorId(2).authorName("Cervantes").build();
         Book book = Book.builder().bookId(1)
                         .title("Harry Potter")
                         .authors(new HashSet<>(Arrays.asList(author1, author2))).build();
@@ -348,10 +345,10 @@ class BookServiceImplTest {
         when(bookRepository.saveAndFlush(any(Book.class))).thenReturn(book);
 
         //when
-        Set<AuthorDTO> bookAuthors = this.bookService.deleteBookAuthor(1, 1);
+        Slice<AuthorDTO> bookAuthors = this.bookService.deleteBookAuthor(1, 1);
 
         //then
-        assertEquals(1, bookAuthors.size());
+        assertEquals(1, bookAuthors.getSize());
         assertEquals(author2.getAuthorName(), bookAuthors.iterator().next().getAuthorName());
     }
 
