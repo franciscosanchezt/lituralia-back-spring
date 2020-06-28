@@ -7,9 +7,9 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = {BookMapperImpl.class, PublisherMapperImpl.class, GenreMapperImpl.class, AuthorMapperImpl.class})
-class BookMapperTest {
+class AuthorMapperTest {
 
     @Autowired
-    BookMapper mapper;
+    AuthorMapper mapper;
 
 }

@@ -111,15 +111,16 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public BookDTO setBookPublisher(Integer bookId, Integer publisherId) throws ResourceNotFoundException {
+    public PublisherDTO setBookPublisher(Integer bookId, Integer publisherId) throws ResourceNotFoundException {
         return bookRepository.findById(bookId)
                              .map(book -> {
                                  Publisher publisher = publisherRepository.findById(publisherId)
                                                                           .orElseThrow(ResourceNotFoundException::new);
                                  book.setPublisher(publisher);
-                                 return bookRepository.saveAndFlush(book);
+                                 Book book1 = bookRepository.saveAndFlush(book);
+                                 return book1.getPublisher();
                              })
-                             .map(bookMapper::bookToBookDTO)
+                             .map(publisherMapper::publisherToPublisherDTO)
                              .orElseThrow(ResourceNotFoundException::new);
     }
 
@@ -137,25 +138,31 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public BookDTO setBookGenre(Integer bookId, Integer genreId) throws ResourceNotFoundException {
+    public Set<GenreDTO> setBookGenre(Integer bookId, Integer genreId) throws ResourceNotFoundException {
         return bookRepository.findById(bookId)
                              .map(book -> {
                                  Genre genre = genreRepository.findById(genreId)
                                                               .orElseThrow(ResourceNotFoundException::new);
                                  book.getGenres().add(genre);
-                                 return bookMapper.bookToBookDTO(bookRepository.saveAndFlush(book));
+                                 Book book1 = bookRepository.saveAndFlush(book);
+                                 return book1.getGenres().stream()
+                                             .map(genreMapper::genreToGenreDTO)
+                                             .collect(Collectors.toSet());
                              })
                              .orElseThrow(ResourceNotFoundException::new);
     }
 
     @Override
-    public BookDTO deleteBookGenre(Integer bookId, Integer genreId) throws ResourceNotFoundException {
+    public Set<GenreDTO> deleteBookGenre(Integer bookId, Integer genreId) throws ResourceNotFoundException {
         return bookRepository.findById(bookId)
                              .map(book -> {
                                  Genre genre = genreRepository.findById(genreId)
                                                               .orElseThrow(ResourceNotFoundException::new);
                                  book.getGenres().remove(genre);
-                                 return bookMapper.bookToBookDTO(bookRepository.saveAndFlush(book));
+                                 Book book1 = bookRepository.saveAndFlush(book);
+                                 return book1.getGenres().stream()
+                                             .map(genreMapper::genreToGenreDTO)
+                                             .collect(Collectors.toSet());
                              })
                              .orElseThrow(ResourceNotFoundException::new);
     }
@@ -175,25 +182,31 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public BookDTO setBookAuthor(Integer bookId, Integer authorId) throws ResourceNotFoundException {
+    public Set<AuthorDTO> setBookAuthor(Integer bookId, Integer authorId) throws ResourceNotFoundException {
         return bookRepository.findById(bookId)
                              .map(book -> {
                                  Author author = authorRepository.findById(authorId)
                                                                  .orElseThrow(ResourceNotFoundException::new);
                                  book.getAuthors().add(author);
-                                 return bookMapper.bookToBookDTO(bookRepository.saveAndFlush(book));
+                                 Book book1 = bookRepository.saveAndFlush(book);
+                                 return book1.getAuthors().stream()
+                                             .map(authorMapper::authorToAuthorDTO)
+                                             .collect(Collectors.toSet());
                              })
                              .orElseThrow(ResourceNotFoundException::new);
     }
 
     @Override
-    public BookDTO deleteBookAuthor(Integer bookId, Integer authorId) throws ResourceNotFoundException {
+    public Set<AuthorDTO> deleteBookAuthor(Integer bookId, Integer authorId) throws ResourceNotFoundException {
         return bookRepository.findById(bookId)
                              .map(book -> {
                                  Author author = authorRepository.findById(authorId)
                                                                  .orElseThrow(ResourceNotFoundException::new);
                                  book.getAuthors().remove(author);
-                                 return bookMapper.bookToBookDTO(bookRepository.saveAndFlush(book));
+                                 Book book1 = bookRepository.saveAndFlush(book);
+                                 return book1.getAuthors().stream()
+                                             .map(authorMapper::authorToAuthorDTO)
+                                             .collect(Collectors.toSet());
                              })
                              .orElseThrow(ResourceNotFoundException::new);
     }

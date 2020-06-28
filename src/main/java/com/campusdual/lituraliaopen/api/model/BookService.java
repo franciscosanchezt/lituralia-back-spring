@@ -29,21 +29,21 @@ public interface BookService {
 
     PublisherDTO getBookPublisher(Integer bookId) throws ResourceNotFoundException;
 
-    BookDTO setBookPublisher(Integer bookId, Integer publisherId) throws ResourceNotFoundException;
+    PublisherDTO setBookPublisher(Integer bookId, Integer publisherId) throws ResourceNotFoundException;
 
     // -------- Book's Genres
 
     Set<GenreDTO> getBookGenres(Integer bookId) throws ResourceNotFoundException;
 
-    BookDTO setBookGenre(Integer bookId, Integer genreId) throws ResourceNotFoundException;
+    Set<GenreDTO> setBookGenre(Integer bookId, Integer genreId) throws ResourceNotFoundException;
 
-    BookDTO deleteBookGenre(Integer bookId, Integer genreId) throws ResourceNotFoundException;
+    Set<GenreDTO> deleteBookGenre(Integer bookId, Integer genreId) throws ResourceNotFoundException;
 
     // -------- Book's Authors
 
     Set<AuthorDTO> getBookAuthors(Integer bookId) throws ResourceNotFoundException;
 
-    BookDTO setBookAuthor(Integer bookId, Integer authorId) throws ResourceNotFoundException;
+    Set<AuthorDTO> setBookAuthor(Integer bookId, Integer authorId) throws ResourceNotFoundException;
 
-    BookDTO deleteBookAuthor(Integer bookId, Integer authorId) throws ResourceNotFoundException;
+    Set<AuthorDTO> deleteBookAuthor(Integer bookId, Integer authorId) throws ResourceNotFoundException;
 }
