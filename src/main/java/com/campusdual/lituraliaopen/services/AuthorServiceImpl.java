@@ -9,9 +9,11 @@ import com.campusdual.lituraliaopen.domain.Author;
 import com.campusdual.lituraliaopen.domain.Book;
 import com.campusdual.lituraliaopen.repositories.AuthorRepository;
 import com.campusdual.lituraliaopen.repositories.BookRepository;
-import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Slice;
+import org.springframework.data.domain.SliceImpl;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
@@ -33,19 +35,15 @@ public class AuthorServiceImpl implements AuthorService {
     }
 
     @Override
-    public List<AuthorDTO> getAllAuthors() {
-        return authorRepository.findAll()
-                               .stream()
-                               .map(authorMapper::authorToAuthorDTO)
-                               .collect(Collectors.toList());
+    public Page<AuthorDTO> getAllAuthors(Pageable pageable) {
+        return authorRepository.findAll(pageable)
+                               .map(authorMapper::authorToAuthorDTO);
     }
 
     @Override
-    public List<AuthorDTO> getAuthorsBySearchTerm(String searchTerm) throws ResourceNotFoundException {
-        return authorRepository.findBySearchTerm(searchTerm)
-                               .stream()
-                               .map(authorMapper::authorToAuthorDTO)
-                               .collect(Collectors.toList());
+    public Page<AuthorDTO> searchAuthors(String searchTerm, Pageable pageable) throws ResourceNotFoundException {
+        return authorRepository.findByAuthorNameContainingIgnoreCase(searchTerm, pageable)
+                               .map(authorMapper::authorToAuthorDTO);
     }
 
     @Override
@@ -82,37 +80,43 @@ public class AuthorServiceImpl implements AuthorService {
     // -------- Author's Books
 
     @Override
-    public Set<BookDTO> getAuthorBooks(Integer authorId) throws ResourceNotFoundException {
-        return authorRepository.findById(authorId)
-                               .map(author -> {
-                                   return author.getBooks().stream()
-                                                .map(bookMapper::bookToBookDTO)
-                                                .collect(Collectors.toSet());
-                               })
-                               .orElseThrow(ResourceNotFoundException::new);
+    public Slice<BookDTO> getAuthorBooks(Integer authorId) throws ResourceNotFoundException {
+        return new SliceImpl<>(authorRepository.findById(authorId)
+                                               .map(author -> {
+                                                   return author.getBooks().stream()
+                                                                .map(bookMapper::bookToBookDTO)
+                                                                .collect(Collectors.toList());
+                                               })
+                                               .orElseThrow(ResourceNotFoundException::new));
     }
 
     @Override
-    public BookDTO setAuthorBook(Integer authorId, Integer bookId) throws ResourceNotFoundException {
-        return authorRepository.findById(authorId)
-                               .map(author -> {
-                                   Book book = bookRepository.findById(bookId)
-                                                             .orElseThrow(ResourceNotFoundException::new);
-                                   book.getAuthors().add(author);
-                                   return bookMapper.bookToBookDTO(bookRepository.saveAndFlush(book));
-                               })
-                               .orElseThrow(ResourceNotFoundException::new);
+    public Slice<BookDTO> setAuthorBook(Integer authorId, Integer bookId) throws ResourceNotFoundException {
+        return new SliceImpl<>(authorRepository.findById(authorId)
+                                               .map(author -> {
+                                                   Book book = bookRepository.findById(bookId)
+                                                                             .orElseThrow(ResourceNotFoundException::new);
+                                                   book.getAuthors().add(author);
+                                                   bookRepository.saveAndFlush(book);//TODO: check if added book ins in returned slice
+                                                   return author.getBooks().stream()
+                                                                .map(bookMapper::bookToBookDTO)
+                                                                .collect(Collectors.toList());
+                                               })
+                                               .orElseThrow(ResourceNotFoundException::new));
     }
 
     @Override
-    public BookDTO deleteAuthorBook(Integer authorId, Integer bookId) throws ResourceNotFoundException {
-        return authorRepository.findById(authorId)
-                               .map(author -> {
-                                   Book book = bookRepository.findById(bookId)
-                                                             .orElseThrow(ResourceNotFoundException::new);
-                                   book.getAuthors().remove(author);
-                                   return bookMapper.bookToBookDTO(bookRepository.saveAndFlush(book));
-                               })
-                               .orElseThrow(ResourceNotFoundException::new);
+    public Slice<BookDTO> deleteAuthorBook(Integer authorId, Integer bookId) throws ResourceNotFoundException {
+        return new SliceImpl<>(authorRepository.findById(authorId)
+                                               .map(author -> {
+                                                   Book book = bookRepository.findById(bookId)
+                                                                             .orElseThrow(ResourceNotFoundException::new);
+                                                   book.getAuthors().remove(author);
+                                                   bookRepository.saveAndFlush(book);
+                                                   return author.getBooks().stream()
+                                                                .map(bookMapper::bookToBookDTO)
+                                                                .collect(Collectors.toList());
+                                               })
+                                               .orElseThrow(ResourceNotFoundException::new));
     }
 }

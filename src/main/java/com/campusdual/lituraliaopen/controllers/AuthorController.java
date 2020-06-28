@@ -1,14 +1,16 @@
 package com.campusdual.lituraliaopen.controllers;
 
-import com.campusdual.lituraliaopen.api.Paging;
 import com.campusdual.lituraliaopen.api.model.AuthorService;
 import com.campusdual.lituraliaopen.api.model.dtos.AuthorDTO;
 import com.campusdual.lituraliaopen.api.model.dtos.BookDTO;
-import com.campusdual.lituraliaopen.api.model.dtos.ListDTO;
-import java.util.List;
-import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Slice;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
+import org.springframework.data.web.PageableDefault;
+import org.springframework.data.web.SortDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -30,45 +32,23 @@ public class AuthorController {
     @Autowired
     AuthorService authorService;
 
-    @GetMapping
-    public ListDTO<AuthorDTO> getAllAuthors(@RequestParam(required = false, defaultValue = GlobalController.PAGINATION_DEFAULT_PAGE_NUM) Integer pageNumber,
-                                            @RequestParam(required = false, defaultValue = GlobalController.PAGINATION_DEFAULT_PAGE_SIZE) Integer pageSize,
-                                            @RequestParam(required = false, defaultValue = "") String searchTerm) {
-        ListDTO<AuthorDTO> authors = new ListDTO<>();
 
-        List<AuthorDTO> allAuthors;
-        if (searchTerm.isEmpty() || searchTerm.equals("null")) {
-            allAuthors = authorService.getAllAuthors();
-        } else {
-            allAuthors = authorService.getAuthorsBySearchTerm(searchTerm);
-        }
-        if (pageNumber < 1) {
-            authors.setData(allAuthors);
-            authors.setPaging(Paging.builder()
-                                    .pageNumber(0)
-                                    .numberOfPages(1)
-                                    .pageSize(authors.getData().size())
-                                    .build());
-        } else {
-            int maxPage = (allAuthors.size() / pageSize) + (allAuthors.size() % pageSize == 0 ? 0 : 1);
-            pageSize   = Math.min(pageSize, 50);
-            pageSize   = Math.max(pageSize, 10);
-            pageNumber = Math.min(pageNumber, maxPage);
-            pageNumber = Math.max(pageNumber, 1);
-            authors.setData(allAuthors.stream()
-                                      .skip(Math.max(0, pageSize * (pageNumber - 1)))
-                                      .limit(pageSize)
-                                      .collect(Collectors.toList()));
-            authors.setPaging(Paging.builder()
-                                    .pageNumber(pageNumber)
-                                    .numberOfPages(maxPage)
-                                    .pageSize(pageSize)
-                                    .searchTerm(searchTerm)
-                                    .build());
-        }
-        return authors;
+    @GetMapping
+    public Page<AuthorDTO> getAllAuthors(@PageableDefault(page = 0, size = 10)
+                                         @SortDefault.SortDefaults({@SortDefault(sort = "authorId", direction = Direction.ASC)})
+                                             Pageable pageable) {
+        return authorService.getAllAuthors(pageable);
     }
 
+    @GetMapping("/search")
+    public Page<AuthorDTO> searchAuthors(@PageableDefault(page = 0, size = 10)
+                                         @SortDefault.SortDefaults({@SortDefault(sort = "authorId", direction = Direction.ASC)})
+                                             Pageable pageable,
+                                         @RequestParam(required = false, defaultValue = "") String searchTerm) {
+        return searchTerm.isEmpty() ?
+               authorService.getAllAuthors(pageable) :
+               authorService.searchAuthors(searchTerm, pageable);
+    }
 
     @GetMapping("/{id}")
     public AuthorDTO getEmployeeById(@PathVariable("id") Integer id)
@@ -99,25 +79,25 @@ public class AuthorController {
 
     @GetMapping({"/{id}/books"})
     @ResponseStatus(HttpStatus.OK)
-    public ListDTO<BookDTO> getAuthorBooks(@PathVariable Integer id) {
-        return new ListDTO<>(authorService.getAuthorBooks(id));
+    public Slice<BookDTO> getAuthorBooks(@PathVariable Integer id) {
+        return authorService.getAuthorBooks(id);
     }
 
     @PostMapping({"/{id}/books/{idBook}"})
     @ResponseStatus(HttpStatus.OK)
-    public BookDTO postAuthorBooks(@PathVariable Integer id, @PathVariable Integer idBook) {
+    public Slice<BookDTO> postAuthorBooks(@PathVariable Integer id, @PathVariable Integer idBook) {
         return authorService.setAuthorBook(id, idBook);
     }
 
     @PutMapping({"/{id}/books/{idBook}"})
     @ResponseStatus(HttpStatus.OK)
-    public BookDTO putAuthorBooks(@PathVariable Integer id, @PathVariable Integer idBook) {
+    public Slice<BookDTO> putAuthorBooks(@PathVariable Integer id, @PathVariable Integer idBook) {
         return authorService.setAuthorBook(id, idBook);
     }
 
     @DeleteMapping({"/{id}/books/{idBook}"})
     @ResponseStatus(HttpStatus.OK)
-    public BookDTO deleteAuthorBooks(@PathVariable Integer id, @PathVariable Integer idBook) {
+    public Slice<BookDTO> deleteAuthorBooks(@PathVariable Integer id, @PathVariable Integer idBook) {
         return authorService.deleteAuthorBook(id, idBook);
     }
 

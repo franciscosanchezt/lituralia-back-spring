@@ -54,6 +54,24 @@
                     "response": []
                 },
                 {
+                    "name": "books -R search",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "localhost:8080/books",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8080",
+                            "path": [
+                                "books"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
                     "name": "books-R",
                     "request": {
                         "method": "GET",
@@ -670,6 +688,31 @@
                             "port": "8080",
                             "path": [
                                 "authors"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "authors -R search",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "localhost:8080/authors/search?searchTerm=Iss",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8080",
+                            "path": [
+                                "authors",
+                                "search"
+                            ],
+                            "query": [
+                                {
+                                    "key": "searchTerm",
+                                    "value": "Iss"
+                                }
                             ]
                         }
                     },

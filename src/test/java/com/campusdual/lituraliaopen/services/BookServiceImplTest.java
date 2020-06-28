@@ -86,7 +86,7 @@ class BookServiceImplTest {
         when(bookRepository.findAll(any(Pageable.class))).thenReturn(page);
 
         //when
-        Page<BookDTO> bookDTOS = bookService.getAllBooks(PageRequest.of(10, 5));
+        Page<BookDTO> bookDTOS = bookService.getAllBooks(PageRequest.of(0, 10));
 
         //then
         assertEquals(2, bookDTOS.getContent().size());
@@ -113,7 +113,7 @@ class BookServiceImplTest {
         when(bookRepository.findByTitleContainingIgnoreCase(any(String.class), any(Pageable.class))).thenReturn(page);
 
         //when
-        Page<BookDTO> bookDTOS = bookService.searchBooks("", PageRequest.of(10, 5));
+        Page<BookDTO> bookDTOS = bookService.searchBooks("", PageRequest.of(0, 10));
 
         //then
         assertEquals(2, bookDTOS.getContent().size());
@@ -234,8 +234,7 @@ class BookServiceImplTest {
     void getBookGenre() {
         Genre genre1 = Genre.builder().genreId(1).genreName("Terror").build();
         Genre genre2 = Genre.builder().genreId(2).genreName("Comedy").build();
-        Book book = Book.builder().bookId(1)
-                        .title("Harry Potter")
+        Book book = Book.builder().bookId(1).title("Harry Potter")
                         .genres(new HashSet<>(Arrays.asList(genre1, genre2))).build();
 
         when(bookRepository.findById(any(Integer.class))).thenReturn(Optional.ofNullable(book));
