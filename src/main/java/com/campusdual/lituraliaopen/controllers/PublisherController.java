@@ -26,7 +26,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*", maxAge = 3600)
 @RestController
-@RequestMapping("/publishers")
+@RequestMapping("/api/publishers")
 public class PublisherController {
 
     @Autowired

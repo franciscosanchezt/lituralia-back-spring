@@ -23,12 +23,13 @@
                             }
                         },
                         "url": {
-                            "raw": "localhost:8080/books",
+                            "raw": "localhost:8080/api/books",
                             "host": [
                                 "localhost"
                             ],
                             "port": "8080",
                             "path": [
+                                "api",
                                 "books"
                             ]
                         }
@@ -41,12 +42,13 @@
                         "method": "GET",
                         "header": [],
                         "url": {
-                            "raw": "localhost:8080/books",
+                            "raw": "localhost:8080/api/books",
                             "host": [
                                 "localhost"
                             ],
                             "port": "8080",
                             "path": [
+                                "api",
                                 "books"
                             ]
                         }
@@ -59,12 +61,13 @@
                         "method": "GET",
                         "header": [],
                         "url": {
-                            "raw": "localhost:8080/books",
+                            "raw": "localhost:8080/api/books",
                             "host": [
                                 "localhost"
                             ],
                             "port": "8080",
                             "path": [
+                                "api",
                                 "books"
                             ]
                         }
@@ -77,12 +80,13 @@
                         "method": "GET",
                         "header": [],
                         "url": {
-                            "raw": "localhost:8080/books/4",
+                            "raw": "localhost:8080/api/books/4",
                             "host": [
                                 "localhost"
                             ],
                             "port": "8080",
                             "path": [
+                                "api",
                                 "books",
                                 "4"
                             ]
@@ -105,12 +109,13 @@
                             }
                         },
                         "url": {
-                            "raw": "localhost:8080/books/4",
+                            "raw": "localhost:8080/api/books/4",
                             "host": [
                                 "localhost"
                             ],
                             "port": "8080",
                             "path": [
+                                "api",
                                 "books",
                                 "4"
                             ]
@@ -124,12 +129,13 @@
                         "method": "DELETE",
                         "header": [],
                         "url": {
-                            "raw": "localhost:8080/books/4",
+                            "raw": "localhost:8080/api/books/4",
                             "host": [
                                 "localhost"
                             ],
                             "port": "8080",
                             "path": [
+                                "api",
                                 "books",
                                 "4"
                             ]
@@ -143,12 +149,13 @@
                         "method": "GET",
                         "header": [],
                         "url": {
-                            "raw": "localhost:8080/books/4/publisher/",
+                            "raw": "localhost:8080/api/books/4/publisher/",
                             "host": [
                                 "localhost"
                             ],
                             "port": "8080",
                             "path": [
+                                "api",
                                 "books",
                                 "4",
                                 "publisher",
@@ -164,12 +171,13 @@
                         "method": "PUT",
                         "header": [],
                         "url": {
-                            "raw": "localhost:8080/books/4/publisher/5",
+                            "raw": "localhost:8080/api/books/4/publisher/5",
                             "host": [
                                 "localhost"
                             ],
                             "port": "8080",
                             "path": [
+                                "api",
                                 "books",
                                 "4",
                                 "publisher",
@@ -185,12 +193,13 @@
                         "method": "GET",
                         "header": [],
                         "url": {
-                            "raw": "localhost:8080/books/4/genres/",
+                            "raw": "localhost:8080/api/books/4/genres/",
                             "host": [
                                 "localhost"
                             ],
                             "port": "8080",
                             "path": [
+                                "api",
                                 "books",
                                 "4",
                                 "genres",
@@ -206,12 +215,13 @@
                         "method": "PUT",
                         "header": [],
                         "url": {
-                            "raw": "localhost:8080/books/4/genres/6",
+                            "raw": "localhost:8080/api/books/4/genres/6",
                             "host": [
                                 "localhost"
                             ],
                             "port": "8080",
                             "path": [
+                                "api",
                                 "books",
                                 "4",
                                 "genres",
@@ -227,12 +237,13 @@
                         "method": "DELETE",
                         "header": [],
                         "url": {
-                            "raw": "localhost:8080/books/4/genres/6",
+                            "raw": "localhost:8080/api/books/4/genres/6",
                             "host": [
                                 "localhost"
                             ],
                             "port": "8080",
                             "path": [
+                                "api",
                                 "books",
                                 "4",
                                 "genres",
@@ -248,12 +259,13 @@
                         "method": "GET",
                         "header": [],
                         "url": {
-                            "raw": "localhost:8080/books/6/authors/",
+                            "raw": "localhost:8080/api/books/6/authors/",
                             "host": [
                                 "localhost"
                             ],
                             "port": "8080",
                             "path": [
+                                "api",
                                 "books",
                                 "6",
                                 "authors",
@@ -269,12 +281,13 @@
                         "method": "PUT",
                         "header": [],
                         "url": {
-                            "raw": "localhost:8080/books/5/authors/6",
+                            "raw": "localhost:8080/api/books/5/authors/6",
                             "host": [
                                 "localhost"
                             ],
                             "port": "8080",
                             "path": [
+                                "api",
                                 "books",
                                 "5",
                                 "authors",
@@ -290,12 +303,13 @@
                         "method": "DELETE",
                         "header": [],
                         "url": {
-                            "raw": "localhost:8080/books/25/authors/38",
+                            "raw": "localhost:8080/api/books/25/authors/38",
                             "host": [
                                 "localhost"
                             ],
                             "port": "8080",
                             "path": [
+                                "api",
                                 "books",
                                 "25",
                                 "authors",
@@ -326,12 +340,13 @@
                             }
                         },
                         "url": {
-                            "raw": "localhost:8080/publishers",
+                            "raw": "localhost:8080/api/publishers",
                             "host": [
                                 "localhost"
                             ],
                             "port": "8080",
                             "path": [
+                                "api",
                                 "publishers"
                             ]
                         }
@@ -344,12 +359,13 @@
                         "method": "GET",
                         "header": [],
                         "url": {
-                            "raw": "localhost:8080/publishers",
+                            "raw": "localhost:8080/api/publishers",
                             "host": [
                                 "localhost"
                             ],
                             "port": "8080",
                             "path": [
+                                "api",
                                 "publishers"
                             ]
                         }
@@ -362,12 +378,13 @@
                         "method": "GET",
                         "header": [],
                         "url": {
-                            "raw": "localhost:8080/publishers/5",
+                            "raw": "localhost:8080/api/publishers/5",
                             "host": [
                                 "localhost"
                             ],
                             "port": "8080",
                             "path": [
+                                "api",
                                 "publishers",
                                 "5"
                             ]
@@ -390,12 +407,13 @@
                             }
                         },
                         "url": {
-                            "raw": "localhost:8080/publishers/23",
+                            "raw": "localhost:8080/api/publishers/23",
                             "host": [
                                 "localhost"
                             ],
                             "port": "8080",
                             "path": [
+                                "api",
                                 "publishers",
                                 "23"
                             ]
@@ -409,12 +427,13 @@
                         "method": "DELETE",
                         "header": [],
                         "url": {
-                            "raw": "localhost:8080/publishers/22",
+                            "raw": "localhost:8080/api/publishers/22",
                             "host": [
                                 "localhost"
                             ],
                             "port": "8080",
                             "path": [
+                                "api",
                                 "publishers",
                                 "22"
                             ]
@@ -428,12 +447,13 @@
                         "method": "GET",
                         "header": [],
                         "url": {
-                            "raw": "localhost:8080/publishers/3/books",
+                            "raw": "localhost:8080/api/publishers/3/books",
                             "host": [
                                 "localhost"
                             ],
                             "port": "8080",
                             "path": [
+                                "api",
                                 "publishers",
                                 "3",
                                 "books"
@@ -448,12 +468,13 @@
                         "method": "PUT",
                         "header": [],
                         "url": {
-                            "raw": "localhost:8080/books/4/genres/6",
+                            "raw": "localhost:8080/api/books/4/genres/6",
                             "host": [
                                 "localhost"
                             ],
                             "port": "8080",
                             "path": [
+                                "api",
                                 "books",
                                 "4",
                                 "genres",
@@ -484,12 +505,13 @@
                             }
                         },
                         "url": {
-                            "raw": "localhost:8080/genres",
+                            "raw": "localhost:8080/api/genres",
                             "host": [
                                 "localhost"
                             ],
                             "port": "8080",
                             "path": [
+                                "api",
                                 "genres"
                             ]
                         }
@@ -502,12 +524,13 @@
                         "method": "GET",
                         "header": [],
                         "url": {
-                            "raw": "localhost:8080/genres",
+                            "raw": "localhost:8080/api/genres",
                             "host": [
                                 "localhost"
                             ],
                             "port": "8080",
                             "path": [
+                                "api",
                                 "genres"
                             ]
                         }
@@ -520,12 +543,13 @@
                         "method": "GET",
                         "header": [],
                         "url": {
-                            "raw": "localhost:8080/genres/5",
+                            "raw": "localhost:8080/api/genres/5",
                             "host": [
                                 "localhost"
                             ],
                             "port": "8080",
                             "path": [
+                                "api",
                                 "genres",
                                 "5"
                             ]
@@ -548,12 +572,13 @@
                             }
                         },
                         "url": {
-                            "raw": "localhost:8080/genres/11",
+                            "raw": "localhost:8080/api/genres/11",
                             "host": [
                                 "localhost"
                             ],
                             "port": "8080",
                             "path": [
+                                "api",
                                 "genres",
                                 "11"
                             ]
@@ -567,12 +592,13 @@
                         "method": "DELETE",
                         "header": [],
                         "url": {
-                            "raw": "localhost:8080/genres/22",
+                            "raw": "localhost:8080/api/genres/22",
                             "host": [
                                 "localhost"
                             ],
                             "port": "8080",
                             "path": [
+                                "api",
                                 "genres",
                                 "22"
                             ]
@@ -586,12 +612,13 @@
                         "method": "GET",
                         "header": [],
                         "url": {
-                            "raw": "localhost:8080/genres/5/books",
+                            "raw": "localhost:8080/api/genres/5/books",
                             "host": [
                                 "localhost"
                             ],
                             "port": "8080",
                             "path": [
+                                "api",
                                 "genres",
                                 "5",
                                 "books"
@@ -606,12 +633,13 @@
                         "method": "PUT",
                         "header": [],
                         "url": {
-                            "raw": "localhost:8080/genres/5/books/47",
+                            "raw": "localhost:8080/api/genres/5/books/47",
                             "host": [
                                 "localhost"
                             ],
                             "port": "8080",
                             "path": [
+                                "api",
                                 "genres",
                                 "5",
                                 "books",
@@ -627,12 +655,13 @@
                         "method": "DELETE",
                         "header": [],
                         "url": {
-                            "raw": "localhost:8080/genres/5/books/47",
+                            "raw": "localhost:8080/api/genres/5/books/47",
                             "host": [
                                 "localhost"
                             ],
                             "port": "8080",
                             "path": [
+                                "api",
                                 "genres",
                                 "5",
                                 "books",
@@ -663,12 +692,13 @@
                             }
                         },
                         "url": {
-                            "raw": "localhost:8080/authors",
+                            "raw": "localhost:8080/api/authors",
                             "host": [
                                 "localhost"
                             ],
                             "port": "8080",
                             "path": [
+                                "api",
                                 "authors"
                             ]
                         }
@@ -681,12 +711,13 @@
                         "method": "GET",
                         "header": [],
                         "url": {
-                            "raw": "localhost:8080/authors",
+                            "raw": "localhost:8080/api/authors",
                             "host": [
                                 "localhost"
                             ],
                             "port": "8080",
                             "path": [
+                                "api",
                                 "authors"
                             ]
                         }
@@ -699,12 +730,13 @@
                         "method": "GET",
                         "header": [],
                         "url": {
-                            "raw": "localhost:8080/authors/search?searchTerm=Iss",
+                            "raw": "localhost:8080/api/authors/search?searchTerm=Iss",
                             "host": [
                                 "localhost"
                             ],
                             "port": "8080",
                             "path": [
+                                "api",
                                 "authors",
                                 "search"
                             ],
@@ -724,12 +756,13 @@
                         "method": "GET",
                         "header": [],
                         "url": {
-                            "raw": "localhost:8080/authors/55",
+                            "raw": "localhost:8080/api/authors/55",
                             "host": [
                                 "localhost"
                             ],
                             "port": "8080",
                             "path": [
+                                "api",
                                 "authors",
                                 "55"
                             ]
@@ -752,12 +785,13 @@
                             }
                         },
                         "url": {
-                            "raw": "localhost:8080/authors/101",
+                            "raw": "localhost:8080/api/authors/101",
                             "host": [
                                 "localhost"
                             ],
                             "port": "8080",
                             "path": [
+                                "api",
                                 "authors",
                                 "101"
                             ]
@@ -771,12 +805,13 @@
                         "method": "DELETE",
                         "header": [],
                         "url": {
-                            "raw": "localhost:8080/authors/22",
+                            "raw": "localhost:8080/api/authors/22",
                             "host": [
                                 "localhost"
                             ],
                             "port": "8080",
                             "path": [
+                                "api",
                                 "authors",
                                 "22"
                             ]
@@ -790,12 +825,13 @@
                         "method": "GET",
                         "header": [],
                         "url": {
-                            "raw": "localhost:8080/authors/38/books",
+                            "raw": "localhost:8080/api/authors/38/books",
                             "host": [
                                 "localhost"
                             ],
                             "port": "8080",
                             "path": [
+                                "api",
                                 "authors",
                                 "38",
                                 "books"
@@ -810,12 +846,13 @@
                         "method": "PUT",
                         "header": [],
                         "url": {
-                            "raw": "localhost:8080/authors/101/books/6",
+                            "raw": "localhost:8080/api/authors/101/books/6",
                             "host": [
                                 "localhost"
                             ],
                             "port": "8080",
                             "path": [
+                                "api",
                                 "authors",
                                 "101",
                                 "books",
@@ -831,12 +868,13 @@
                         "method": "DELETE",
                         "header": [],
                         "url": {
-                            "raw": "localhost:8080/authors/38/books/69",
+                            "raw": "localhost:8080/api/authors/38/books/69",
                             "host": [
                                 "localhost"
                             ],
                             "port": "8080",
                             "path": [
+                                "api",
                                 "authors",
                                 "38",
                                 "books",
