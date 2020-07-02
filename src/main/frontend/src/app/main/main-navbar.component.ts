@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {DialogService} from "../shared/dialog/dialog.service";
+import {AuthService} from "./auth/auth.service";
 
 @Component({
   selector: 'app-main-navbar',
@@ -8,7 +8,7 @@ import {DialogService} from "../shared/dialog/dialog.service";
 })
 export class MainNavbarComponent implements OnInit {
 
-  constructor(public dialogService: DialogService) {
+  constructor(public authService: AuthService) {
   }
 
   ngOnInit(): void {

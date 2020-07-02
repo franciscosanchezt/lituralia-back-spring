@@ -1,0 +1,49 @@
+<!--Header-->
+<div class="text-center">
+  <h4 class=" w-100 font-weight-bold">Sign in</h4>
+</div>
+
+<!--Body-->
+<div class="text-center border border-light p-5 mx-3">
+  <div class="md-form mb-5">
+    <mdb-icon fas icon="envelope" class="prefix grey-text"></mdb-icon>
+    <input type="text" id="defaultForm-user" [formControl]="loginFormModalUser" class="form-control"
+           mdbInput mdbValidate>
+    <label for="defaultForm-user">Your user</label>
+    <mdb-error
+      *ngIf="loginFormModalUser.invalid && (loginFormModalUser.dirty || loginFormModalUser.touched)">
+      Input invalid
+    </mdb-error>
+    <mdb-success
+      *ngIf="loginFormModalUser.valid && (loginFormModalUser.dirty || loginFormModalUser.touched)">Input
+      valid
+    </mdb-success>
+  </div>
+
+  <div class="md-form mb-4">
+    <mdb-icon fas icon="lock" class="prefix grey-text"></mdb-icon>
+    <input type="password" id="defaultForm-pass" [formControl]="loginFormModalPassword" class="form-control"
+           mdbInput mdbValidate>
+    <label for="defaultForm-pass">Your password</label>
+    <mdb-error
+      *ngIf="loginFormModalPassword.invalid && (loginFormModalPassword.dirty || loginFormModalPassword.touched)">
+      Input invalid
+    </mdb-error>
+    <mdb-success
+      *ngIf="loginFormModalPassword.valid && (loginFormModalPassword.dirty || loginFormModalPassword.touched)">
+      Input valid
+    </mdb-success>
+  </div>
+  <div class="flex-center loginError">{{errorText}}</div>
+  <div class="d-flex justify-content-center">
+    <div class="row d-flex justify-content-center">
+      <button mdbBtn color="green" class="waves-light accent-4" mdbWavesEffect (click)="checkLogin()">
+        <mdb-icon fas icon="user-check" size="2x" class="mr-2"></mdb-icon>
+        Login
+      </button>
+    </div>
+  </div>
+
+</div>
+
+<!--Footer-->

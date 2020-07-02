@@ -3,6 +3,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {MainComponent} from "./main.component";
 import {HomeModule} from "./home/home.module";
 import {BooksModule} from "./books/books.module";
+import {AuthModule} from "./auth/auth.module";
 
 
 export function loadHomeModule() {
@@ -13,6 +14,10 @@ function loadBooksModule() {
   return BooksModule;
 }
 
+function loadAuthModule() {
+  return AuthModule;
+}
+
 export const routes: Routes = [
   {
     path: '',
@@ -20,7 +25,8 @@ export const routes: Routes = [
     children: [
       {path: '', redirectTo: 'home', pathMatch: 'full'},
       {path: 'home', loadChildren: loadHomeModule},
-      {path: 'books', loadChildren: loadBooksModule}
+      {path: 'books', loadChildren: loadBooksModule},
+      {path: 'auth', loadChildren: loadAuthModule}
     ]
   }
 ];
