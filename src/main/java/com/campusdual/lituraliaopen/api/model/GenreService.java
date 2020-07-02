@@ -2,13 +2,14 @@ package com.campusdual.lituraliaopen.api.model;
 
 import com.campusdual.lituraliaopen.api.model.dtos.BookDTO;
 import com.campusdual.lituraliaopen.api.model.dtos.GenreDTO;
-import java.util.List;
-import java.util.Set;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Slice;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 
 public interface GenreService {
 
-    List<GenreDTO> getAllGenres();
+    Page<GenreDTO> getAllGenres(Pageable pageable);
 
     GenreDTO getGenreById(Integer genre_id) throws ResourceNotFoundException;
 
@@ -20,13 +21,13 @@ public interface GenreService {
 
     void deleteGenreById(Integer genre_id) throws ResourceNotFoundException;
 
-    List<GenreDTO> getGenresBySearchTerm(String searchTerm) throws ResourceNotFoundException;
+    Page<GenreDTO> searchGenres(String searchTerm, Pageable pageable) throws ResourceNotFoundException;
 
     // -------- Genre's Books
 
-    Set<BookDTO> getGenreBooks(Integer genreId) throws ResourceNotFoundException;
+    Slice<BookDTO> getGenreBooks(Integer genreId) throws ResourceNotFoundException;
 
-    BookDTO setGenreBook(Integer genreId, Integer bookId) throws ResourceNotFoundException;
+    Slice<BookDTO> setGenreBook(Integer genreId, Integer bookId) throws ResourceNotFoundException;
 
-    BookDTO deleteGenreBook(Integer genreId, Integer bookId) throws ResourceNotFoundException;
+    Slice<BookDTO> deleteGenreBook(Integer genreId, Integer bookId) throws ResourceNotFoundException;
 }
