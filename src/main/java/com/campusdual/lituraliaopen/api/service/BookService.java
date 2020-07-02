@@ -1,9 +1,9 @@
-package com.campusdual.lituraliaopen.api.model;
+package com.campusdual.lituraliaopen.api.service;
 
-import com.campusdual.lituraliaopen.api.model.dtos.AuthorDTO;
-import com.campusdual.lituraliaopen.api.model.dtos.BookDTO;
-import com.campusdual.lituraliaopen.api.model.dtos.GenreDTO;
-import com.campusdual.lituraliaopen.api.model.dtos.PublisherDTO;
+import com.campusdual.lituraliaopen.api.mapper.dtos.AuthorDTO;
+import com.campusdual.lituraliaopen.api.mapper.dtos.BookDTO;
+import com.campusdual.lituraliaopen.api.mapper.dtos.GenreDTO;
+import com.campusdual.lituraliaopen.api.mapper.dtos.PublisherDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;

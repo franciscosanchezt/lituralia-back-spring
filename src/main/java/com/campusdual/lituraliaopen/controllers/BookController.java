@@ -1,11 +1,11 @@
 package com.campusdual.lituraliaopen.controllers;
 
-import com.campusdual.lituraliaopen.api.model.BookService;
-import com.campusdual.lituraliaopen.api.model.PublisherService;
-import com.campusdual.lituraliaopen.api.model.dtos.AuthorDTO;
-import com.campusdual.lituraliaopen.api.model.dtos.BookDTO;
-import com.campusdual.lituraliaopen.api.model.dtos.GenreDTO;
-import com.campusdual.lituraliaopen.api.model.dtos.PublisherDTO;
+import com.campusdual.lituraliaopen.api.mapper.dtos.AuthorDTO;
+import com.campusdual.lituraliaopen.api.mapper.dtos.BookDTO;
+import com.campusdual.lituraliaopen.api.mapper.dtos.GenreDTO;
+import com.campusdual.lituraliaopen.api.mapper.dtos.PublisherDTO;
+import com.campusdual.lituraliaopen.api.service.BookService;
+import com.campusdual.lituraliaopen.api.service.PublisherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

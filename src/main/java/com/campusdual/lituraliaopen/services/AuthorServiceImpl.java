@@ -2,9 +2,9 @@ package com.campusdual.lituraliaopen.services;
 
 import com.campusdual.lituraliaopen.api.mapper.AuthorMapper;
 import com.campusdual.lituraliaopen.api.mapper.BookMapper;
-import com.campusdual.lituraliaopen.api.model.AuthorService;
-import com.campusdual.lituraliaopen.api.model.dtos.AuthorDTO;
-import com.campusdual.lituraliaopen.api.model.dtos.BookDTO;
+import com.campusdual.lituraliaopen.api.mapper.dtos.AuthorDTO;
+import com.campusdual.lituraliaopen.api.mapper.dtos.BookDTO;
+import com.campusdual.lituraliaopen.api.service.AuthorService;
 import com.campusdual.lituraliaopen.domain.Author;
 import com.campusdual.lituraliaopen.domain.Book;
 import com.campusdual.lituraliaopen.repositories.AuthorRepository;

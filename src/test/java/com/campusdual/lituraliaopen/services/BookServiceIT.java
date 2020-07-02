@@ -4,8 +4,8 @@ package com.campusdual.lituraliaopen.services;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import com.campusdual.lituraliaopen.api.mapper.BookMapper;
-import com.campusdual.lituraliaopen.api.model.BookService;
-import com.campusdual.lituraliaopen.api.model.dtos.BookDTO;
+import com.campusdual.lituraliaopen.api.mapper.dtos.BookDTO;
+import com.campusdual.lituraliaopen.api.service.BookService;
 import com.campusdual.lituraliaopen.domain.Book;
 import com.campusdual.lituraliaopen.repositories.BookRepository;
 import javax.transaction.Transactional;
