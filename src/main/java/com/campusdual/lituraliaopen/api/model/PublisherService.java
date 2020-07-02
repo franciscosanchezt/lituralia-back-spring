@@ -2,13 +2,14 @@ package com.campusdual.lituraliaopen.api.model;
 
 import com.campusdual.lituraliaopen.api.model.dtos.BookDTO;
 import com.campusdual.lituraliaopen.api.model.dtos.PublisherDTO;
-import java.util.List;
-import java.util.Set;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Slice;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 
 public interface PublisherService {
 
-    List<PublisherDTO> getAllPublishers();
+    Page<PublisherDTO> getAllPublishers(Pageable pageable);
 
     PublisherDTO getPublisherById(Integer publisher_id) throws ResourceNotFoundException;
 
@@ -20,12 +21,12 @@ public interface PublisherService {
 
     void deletePublisherById(Integer publisher_id) throws ResourceNotFoundException;
 
-    List<PublisherDTO> getPublishersBySearchTerm(String searchTerm) throws ResourceNotFoundException;
+    Page<PublisherDTO> searchPublishers(String searchTerm, Pageable pageable) throws ResourceNotFoundException;
 
     // -------- Publisher's Books
 
-    Set<BookDTO> getPublisherBooks(Integer publisherId) throws ResourceNotFoundException;
+    Slice<BookDTO> getPublisherBooks(Integer publisherId) throws ResourceNotFoundException;
 
-    BookDTO setPublisherBook(Integer publisherId, Integer bookId) throws ResourceNotFoundException;
+    Slice<BookDTO> setPublisherBook(Integer publisherId, Integer bookId) throws ResourceNotFoundException;
 
 }
