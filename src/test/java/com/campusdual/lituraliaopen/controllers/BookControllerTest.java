@@ -27,7 +27,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 class BookControllerTest {
 
-    public static final String REST_URL = "/books";
+    public static final String REST_URL = "/api/books";
     public static final String HAMLET = "Hamlet";
     public static final String HAMLET_ISBN = "123456";
     @Mock
