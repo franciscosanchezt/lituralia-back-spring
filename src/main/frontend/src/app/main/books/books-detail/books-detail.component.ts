@@ -3,6 +3,7 @@ import {FormControl, FormGroup} from "@angular/forms";
 import {ActivatedRoute, Params} from "@angular/router";
 import {BookService} from "../book.service";
 import {Book} from "../book";
+import {DialogService} from "../../../shared/dialog/dialog.service";
 
 @Component({
   selector: 'app-books-detail',
@@ -24,7 +25,8 @@ export class BooksDetailComponent implements OnInit {
   })
 
   constructor(private route: ActivatedRoute,
-              private bookService: BookService) {
+              private bookService: BookService,
+              private dialogService: DialogService) {
   }
 
   ngOnInit(): void {
@@ -73,6 +75,20 @@ export class BooksDetailComponent implements OnInit {
   }
 
   onSubmit() {
-
+    const book = new Book()
+    book.title = this.bookForm.value['title']
+    book.isbn = this.bookForm.value['isbn']
+    book.synopsis = this.bookForm.value['synopsis']
+    if (this.editMode) {
+      this.bookService.updateBook(this.id, book).subscribe(
+        value => this.dialogService.infoDialog("Update Ok"),
+        error => this.dialogService.infoDialog("Update Error"),
+      )
+    } else {
+      this.bookService.addBook(book).subscribe(
+        value => this.dialogService.infoDialog("Insert Ok"),
+        error => this.dialogService.infoDialog("Insert Error"),
+      )
+    }
   }
 }

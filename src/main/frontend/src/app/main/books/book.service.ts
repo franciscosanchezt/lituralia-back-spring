@@ -41,34 +41,6 @@ export class BookService {
     );
   }
 
-
-  // public getBooks(paging: Paging) {
-  //   let params: HttpParams = new HttpParams()
-  //   .append('pageNumber', String(paging.page))
-  //   .append('pageSize', String(paging.size));
-  //
-  //   if (paging.searchTerm !== null && paging.searchTerm.length > 0) {
-  //     params = params.append('searchTerm', paging.searchTerm);
-  //   }
-  //   return this.http.get<any>(this.booksUrl, {params: params}).pipe(
-  //     tap(obj => console.log(obj)),
-  //     map(value => new PagedList<Book>(value.data, value.paging)),
-  //     catchError(error => this.handleError('getBookss'))
-  //   );
-  // }
-
-  // public getPagedBooks(pageNumber: number = 1, pageSize: number = 20, titleLike: string = ""): Observable<PagedList<Book>> {
-  //   let params: HttpParams = new HttpParams()
-  //   .append('pageNumber', String(pageNumber))
-  //   .append('pageSize', String(pageSize))
-  //   .append('titleLike', titleLike);
-  //   return this.http.get<any>(this.booksUrl, {params: params}).pipe(
-  //     tap(obj => console.log(obj)),
-  //     map(value => new PagedList<Book>(value.books, value.paging)),
-  //     catchError(error => this.handleError('getPagedBookss'))
-  //   );
-  // }
-
   public getBook(id: number): Observable<Book> {
     return this.http.get<Book>(this.booksUrl + '/' + id)
   }

@@ -21,7 +21,10 @@ Book Catalog
     </form>
   </div>
 </div>
-
+<div>
+  <button type="button" class="btn btn-primary" routerLink="/main/books/new">Add Book</button>
+  <button type="button" class="btn btn-success" (click)="refresh()">Refresh</button>
+</div>
 <div class="table-responsive row">
   <!--Table-->
   <table id="tablePreview" class="table table-hover">
@@ -33,6 +36,8 @@ Book Catalog
       <th>ISBN</th>
       <th>Title</th>
       <th>Publish Date</th>
+      <th>Edit</th>
+      <th>Delete</th>
     </tr>
     </thead>
     <!--Table head-->
@@ -44,6 +49,12 @@ Book Catalog
       <td>{{book.isbn}}</td>
       <td>{{book.title}}</td>
       <td>{{book.publishDate}}</td>
+      <td>
+        <button type="button" class="btn btn-warning" routerLink="/books/new">Edit</button>
+      </td>
+      <td>
+        <button type="button" class="btn btn-danger" (click)="deleteBook(book.bookId)">Delete</button>
+      </td>
     </tr>
     </tbody>
     <!--Table body-->

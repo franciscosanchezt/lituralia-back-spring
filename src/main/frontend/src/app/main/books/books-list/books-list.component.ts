@@ -6,6 +6,7 @@ import {Paging} from "../../../shared/paging/paging";
 import {debounceTime, distinctUntilChanged, switchMap} from "rxjs/operators";
 import {isNumeric} from "rxjs/internal-compatibility";
 import {RouterOutlet} from "@angular/router";
+import {DialogService} from "../../../shared/dialog/dialog.service";
 
 @Component({
   selector: 'app-books-list',
@@ -30,7 +31,8 @@ export class BooksListComponent implements OnInit, OnDestroy {
 
 
   constructor(private bookService: BookService,
-              private routerOutlet: RouterOutlet) {
+              private routerOutlet: RouterOutlet,
+              private dialogService: DialogService) {
   }
 
   ngOnDestroy(): void {
@@ -48,7 +50,7 @@ export class BooksListComponent implements OnInit, OnDestroy {
       this.pagingStatus.searchTerm = this.searchTerm
       this.setActivePages()
     })
-    this.pagingObs.next(this.pagingStatus)
+    this.refresh();
   }
 
   private setActivePages() {
@@ -90,23 +92,35 @@ export class BooksListComponent implements OnInit, OnDestroy {
       return;
     }
     this.pagingStatus.page = page
-    this.pagingObs.next(this.pagingStatus);
+    this.refresh();
   }
 
   changePageSize(pageSize: number) {
     this.pagingStatus.size = pageSize
-    this.pagingObs.next(this.pagingStatus);
+    this.refresh();
   }
 
   search(term: string = "") {
     this.pagingStatus.searchTerm = term
     this.searchTerm = term
-    this.pagingObs.next(this.pagingStatus);
+    this.refresh();
   }
 
 
   navigateToOffset(page: any) {
     const pagen = parseInt(page)
     this.navigateTo(pagen - 1)
+  }
+
+  deleteBook(bookId: number) {
+    this.bookService.deleteBook(bookId).subscribe(
+      value => this.dialogService.infoDialog("Delete Ok"),
+      error => this.dialogService.infoDialog("Delete Error"),
+    )
+  }
+
+
+  refresh() {
+    this.pagingObs.next(this.pagingStatus);
   }
 }

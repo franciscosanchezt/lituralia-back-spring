@@ -9,9 +9,14 @@ const routes: Routes = [{
   component: BooksHomeComponent
 },
   {
+    path: 'new',
+    component: BooksDetailComponent
+  },
+  {
     path: ':bookId',
     component: BooksDetailComponent
-  }];
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
