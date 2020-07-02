@@ -28,14 +28,17 @@ export class LoginComponent implements OnInit {
 
   checkLogin() {
     if (!this.loginValidatingForm.invalid) {
-      if (this.authService.authenticate(this.loginFormModalUser.value, this.loginFormModalPassword.value)
-      ) {
-        this.router.navigate([''])
-        this.invalidLogin = false
-        this.errorText = "login ok"
-      } else
-        this.invalidLogin = true
-      this.errorText = "login err"
+      this.authService.authenticate(this.loginFormModalUser.value, this.loginFormModalPassword.value).subscribe(
+        value => {
+          this.invalidLogin = false
+          this.errorText = "login ok"
+          this.router.navigate(['/main', 'auth', 'profile'])
+        },
+        error => {
+          this.invalidLogin = true
+          this.errorText = "login err"
+        }
+      )
     }
   }
 

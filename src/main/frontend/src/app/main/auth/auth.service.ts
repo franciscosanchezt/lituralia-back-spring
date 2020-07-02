@@ -1,26 +1,35 @@
 import {Injectable} from '@angular/core';
+import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {User} from "./user";
+import {map} from "rxjs/operators";
+import {environment} from "../../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor() {
+  private authUrl: string = environment.apiUrl + '/login';
+
+  constructor(private httpClient: HttpClient) {
   }
 
 
   authenticate(username, password) {
-    if (username === "demo" && password === "demouser") {
-      sessionStorage.setItem('username', username)
-      return true;
-    } else {
-      return false;
-    }
+    const headers = new HttpHeaders({Authorization: 'Basic ' + btoa(username + ':' + password)});
+    return this.httpClient.get<User>(this.authUrl, {headers}).pipe(
+      map(
+        userData => {
+          sessionStorage.setItem('username', username);
+          return userData;
+        }
+      )
+    );
   }
 
   isUserLoggedIn() {
     let user = sessionStorage.getItem('username')
-    console.log(!(user === null))
+    // console.log(!(user === null))
     return !(user === null)
   }
 
