@@ -33,11 +33,11 @@ jobs:
             - v1-dependencies-
 
         # Install deps for Circle CI
-      - run: mvn clean install -DskipTests=true
+      - run: mvn clean install -DskipTests=true -P build_frontend
 
-      - run: mvn dependency:resolve-plugins dependency:go-offline
+      - run: mvn dependency:go-offline
 
-      - run: mvn integration-test jacoco:report -P !build_frontend
+      - run: mvn integration-test jacoco:report
 
       - save_cache:
           paths:
@@ -45,7 +45,7 @@ jobs:
           key: v1-dependencies-{{ checksum "pom.xml" }}
 
       - store_artifacts:
-          path: target/lituralia-open-0.0.3-SNAPSHOT.jar
+          path: target/lituralia-open-0.0.4-SNAPSHOT.jar
 
       - store_test_results:
           path: target/surefire-reports

@@ -1,5 +1,7 @@
 [![CircleCI](https://circleci.com/gh/franciscosanchezt/lituralia-open.svg?style=shield)](https://circleci.com/gh/franciscosanchezt/lituralia-open)
-[![codecov](https://codecov.io/gh/franciscosanchezt/lituralia-open/branch/master/graph/badge.svg)](https://codecov.io/gh/franciscosanchezt/lituralia-open)
+[![codecov](https://codecov.io/gh/franciscosanchezt/lituralia-open/branch/develop/graph/badge.svg)](https://codecov.io/gh/franciscosanchezt/lituralia-open)
+# [https://lituralia-open.herokuapp.com](https://lituralia-open.herokuapp.com)
+
 
 # Lituralia Spring Angular
 
@@ -25,24 +27,36 @@ Java 8
 
 Descarga el ejecutable (jar) en: [Releases](https://github.com/franciscosanchezt/lituralia-open/releases)
 
-Ultima Version: [0.0.3-SNAPSHOT](https://github.com/franciscosanchezt/lituralia-open/releases/tag/0.0.3)
+Ultima Version: [0.0.4-SNAPSHOT](https://github.com/franciscosanchezt/lituralia-open/releases/tag/0.0.4)
 
 ## Despliegue 📦
    
-   _Por seguridad primero debemos establecer variables de entorno:_
-   
-   ```
-   PG_JDBC= jdbc:postgresql://ip:puerto/db 
-   PG_USER= usuario de postgres 
-   PG_PASS= contraseña postgres 
-   ```
-      
-   _Luego ejecutamos el siguiente comando en la ruta del archivo: lituralia-open-0.0.3-SNAPSHOT.jar_
-   
-   ```
-   java -jar lituralia-open-0.0.3-SNAPSHOT.jar
-   ```
+_Por seguridad primero debemos establecer variables de entorno:_
 
+```
+PG_JDBC= jdbc:postgresql://ip:puerto/db 
+PG_USER= usuario de postgres 
+PG_PASS= contraseña postgres 
+```
+   
+_Luego ejecutamos el siguiente comando en la ruta del archivo: lituralia-open-0.0.4-SNAPSHOT.jar_
+
+```
+java -jar lituralia-open-0.0.4-SNAPSHOT.jar
+```
+
+Este paquete despliega el backend y el frontend en el puerto 33333
+
+```
+http://localhost:8080
+```
+
+Los datos de inicio de sesión son:
+
+```
+Usuario    : 
+Contraseña : 
+```
 
 ## Build 🔧
 
@@ -52,6 +66,7 @@ _Requisitos:_
 Java 8
 Maven 3.6+
 ```
+
 _Descarga el proyecto_
 
 ```
@@ -70,17 +85,12 @@ _Instala dependencias con maven_
 mvn clean install
 ```
 
-El empaquetado del proyecto estara en la ruta: 
+El empaquetado del proyecto estará en la ruta: 
 
 ```
-lituralia-open/target/lituralia-open-[version].jar
+lituralia-open/target/lituralia-open-0.0.4.jar
 ```
 
-Este paquete despliega el backend y el frontend en el puerto 33333
-
-```
-http://localhost:8080
-```
 
 El build del frontend lo encontraremos en:
 
@@ -88,20 +98,13 @@ El build del frontend lo encontraremos en:
 lituralia-open/src/main/resources/static
 ```
 
-Los datos de inicio de sesión son:
+## Changelog 𝌡
 
-```
-Usuario    : 
-Contraseña : 
-```
+Entra [aqui](CHANGELOG.md) para ver los cambios recientes.
 
 ## Versionado 📌
 
 Usamos [SemVer](http://semver.org/) para el versionado. Para todas las versiones disponibles, mira los [tags en este repositorio](tags/).
-
-## Changelog 𝌡
-
-Entra [aqui](CHANGELOG.md) para ver los cambios recientes.
 
 ## Desarrollado con 🛠️
 
@@ -129,3 +132,6 @@ Entra [aqui](CHANGELOG.md) para ver los cambios recientes.
 ## Licencia 📄
 
 Este proyecto está bajo la Licencia (MIT) - mira el archivo [LICENSE.md](LICENSE.md) para detalles
+
+
+![image](https://user-images.githubusercontent.com/64412593/85792901-81146000-b734-11ea-9744-e7426ca9145e.png)

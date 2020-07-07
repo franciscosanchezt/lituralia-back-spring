@@ -2,16 +2,18 @@ package com.campusdual.lituraliaopen.services;
 
 import com.campusdual.lituraliaopen.api.mapper.BookMapper;
 import com.campusdual.lituraliaopen.api.mapper.GenreMapper;
-import com.campusdual.lituraliaopen.api.model.GenreService;
-import com.campusdual.lituraliaopen.api.model.dtos.BookDTO;
-import com.campusdual.lituraliaopen.api.model.dtos.GenreDTO;
+import com.campusdual.lituraliaopen.api.mapper.dtos.BookDTO;
+import com.campusdual.lituraliaopen.api.mapper.dtos.GenreDTO;
+import com.campusdual.lituraliaopen.api.service.GenreService;
 import com.campusdual.lituraliaopen.domain.Book;
 import com.campusdual.lituraliaopen.domain.Genre;
 import com.campusdual.lituraliaopen.repositories.BookRepository;
 import com.campusdual.lituraliaopen.repositories.GenreRepository;
-import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Slice;
+import org.springframework.data.domain.SliceImpl;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
@@ -33,20 +35,17 @@ public class GenreServiceImpl implements GenreService {
         this.bookMapper      = bookMapper;
     }
 
+
     @Override
-    public List<GenreDTO> getAllGenres() {
-        return genreRepository.findAll()
-                              .stream()
-                              .map(genreMapper::genreToGenreDTO)
-                              .collect(Collectors.toList());
+    public Page<GenreDTO> getAllGenres(Pageable pageable) {
+        return genreRepository.findAll(pageable)
+                              .map(genreMapper::genreToGenreDTO);
     }
 
     @Override
-    public List<GenreDTO> getGenresBySearchTerm(String searchTerm) throws ResourceNotFoundException {
-        return genreRepository.findBySearchTerm(searchTerm)
-                              .stream()
-                              .map(genreMapper::genreToGenreDTO)
-                              .collect(Collectors.toList());
+    public Page<GenreDTO> searchGenres(String searchTerm, Pageable pageable) throws ResourceNotFoundException {
+        return genreRepository.findByGenreNameContainingIgnoreCase(searchTerm, pageable)
+                              .map(genreMapper::genreToGenreDTO);
     }
 
     @Override
@@ -83,37 +82,43 @@ public class GenreServiceImpl implements GenreService {
     // -------- Genre's Books
 
     @Override
-    public Set<BookDTO> getGenreBooks(Integer genreId) throws ResourceNotFoundException {
-        return genreRepository.findById(genreId)
-                              .map(genre -> {
-                                  return genre.getBooks().stream()
-                                              .map(bookMapper::bookToBookDTO)
-                                              .collect(Collectors.toSet());
-                              })
-                              .orElseThrow(ResourceNotFoundException::new);
+    public Slice<BookDTO> getGenreBooks(Integer genreId) throws ResourceNotFoundException {
+        return new SliceImpl<>(genreRepository.findById(genreId)
+                                              .map(genre -> {
+                                                  return genre.getBooks().stream()
+                                                              .map(bookMapper::bookToBookDTO)
+                                                              .collect(Collectors.toList());
+                                              })
+                                              .orElseThrow(ResourceNotFoundException::new));
     }
 
     @Override
-    public BookDTO setGenreBook(Integer genreId, Integer bookId) throws ResourceNotFoundException {
-        return genreRepository.findById(genreId)
-                              .map(genre -> {
-                                  Book book = bookRepository.findById(bookId)
-                                                            .orElseThrow(ResourceNotFoundException::new);
-                                  book.getGenres().add(genre);
-                                  return bookMapper.bookToBookDTO(bookRepository.saveAndFlush(book));
-                              })
-                              .orElseThrow(ResourceNotFoundException::new);
+    public Slice<BookDTO> setGenreBook(Integer genreId, Integer bookId) throws ResourceNotFoundException {
+        return new SliceImpl<>(genreRepository.findById(genreId)
+                                              .map(genre -> {
+                                                  Book book = bookRepository.findById(bookId)
+                                                                            .orElseThrow(ResourceNotFoundException::new);
+                                                  book.getGenres().add(genre);
+                                                  bookRepository.saveAndFlush(book);//TODO: check if added book ins in returned slice
+                                                  return genre.getBooks().stream()
+                                                              .map(bookMapper::bookToBookDTO)
+                                                              .collect(Collectors.toList());
+                                              })
+                                              .orElseThrow(ResourceNotFoundException::new));
     }
 
     @Override
-    public BookDTO deleteGenreBook(Integer genreId, Integer bookId) throws ResourceNotFoundException {
-        return genreRepository.findById(genreId)
-                              .map(genre -> {
-                                  Book book = bookRepository.findById(bookId)
-                                                            .orElseThrow(ResourceNotFoundException::new);
-                                  book.getGenres().remove(genre);
-                                  return bookMapper.bookToBookDTO(bookRepository.saveAndFlush(book));
-                              })
-                              .orElseThrow(ResourceNotFoundException::new);
+    public Slice<BookDTO> deleteGenreBook(Integer genreId, Integer bookId) throws ResourceNotFoundException {
+        return new SliceImpl<>(genreRepository.findById(genreId)
+                                              .map(genre -> {
+                                                  Book book = bookRepository.findById(bookId)
+                                                                            .orElseThrow(ResourceNotFoundException::new);
+                                                  book.getGenres().remove(genre);
+                                                  bookRepository.saveAndFlush(book);
+                                                  return genre.getBooks().stream()
+                                                              .map(bookMapper::bookToBookDTO)
+                                                              .collect(Collectors.toList());
+                                              })
+                                              .orElseThrow(ResourceNotFoundException::new));
     }
 }

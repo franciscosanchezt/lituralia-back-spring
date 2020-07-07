@@ -2,16 +2,18 @@ package com.campusdual.lituraliaopen.services;
 
 import com.campusdual.lituraliaopen.api.mapper.BookMapper;
 import com.campusdual.lituraliaopen.api.mapper.PublisherMapper;
-import com.campusdual.lituraliaopen.api.model.PublisherService;
-import com.campusdual.lituraliaopen.api.model.dtos.BookDTO;
-import com.campusdual.lituraliaopen.api.model.dtos.PublisherDTO;
+import com.campusdual.lituraliaopen.api.mapper.dtos.BookDTO;
+import com.campusdual.lituraliaopen.api.mapper.dtos.PublisherDTO;
+import com.campusdual.lituraliaopen.api.service.PublisherService;
 import com.campusdual.lituraliaopen.domain.Book;
 import com.campusdual.lituraliaopen.domain.Publisher;
 import com.campusdual.lituraliaopen.repositories.BookRepository;
 import com.campusdual.lituraliaopen.repositories.PublisherRepository;
-import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Slice;
+import org.springframework.data.domain.SliceImpl;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
@@ -32,20 +34,17 @@ public class PublisherServiceImpl implements PublisherService {
         this.bookMapper          = bookMapper;
     }
 
+
     @Override
-    public List<PublisherDTO> getAllPublishers() {
-        return publisherRepository.findAll()
-                                  .stream()
-                                  .map(publisherMapper::publisherToPublisherDTO)
-                                  .collect(Collectors.toList());
+    public Page<PublisherDTO> getAllPublishers(Pageable pageable) {
+        return publisherRepository.findAll(pageable)
+                                  .map(publisherMapper::publisherToPublisherDTO);
     }
 
     @Override
-    public List<PublisherDTO> getPublishersBySearchTerm(String searchTerm) throws ResourceNotFoundException {
-        return publisherRepository.findBySearchTerm(searchTerm)
-                                  .stream()
-                                  .map(publisherMapper::publisherToPublisherDTO)
-                                  .collect(Collectors.toList());
+    public Page<PublisherDTO> searchPublishers(String searchTerm, Pageable pageable) throws ResourceNotFoundException {
+        return publisherRepository.findByPublisherNameContainingIgnoreCase(searchTerm, pageable)
+                                  .map(publisherMapper::publisherToPublisherDTO);
     }
 
     @Override
@@ -82,25 +81,28 @@ public class PublisherServiceImpl implements PublisherService {
     // -------- Publisher's Books
 
     @Override
-    public Set<BookDTO> getPublisherBooks(Integer publisherId) throws ResourceNotFoundException {
-        return publisherRepository.findById(publisherId)
-                                  .map(publisher -> {
-                                      return publisher.getBooks().stream()
-                                                      .map(bookMapper::bookToBookDTO)
-                                                      .collect(Collectors.toSet());
-                                  })
-                                  .orElseThrow(ResourceNotFoundException::new);
+    public Slice<BookDTO> getPublisherBooks(Integer publisherId) throws ResourceNotFoundException {
+        return new SliceImpl<>(publisherRepository.findById(publisherId)
+                                                  .map(publisher -> {
+                                                      return publisher.getBooks().stream()
+                                                                      .map(bookMapper::bookToBookDTO)
+                                                                      .collect(Collectors.toList());
+                                                  })
+                                                  .orElseThrow(ResourceNotFoundException::new));
     }
 
     @Override
-    public BookDTO setPublisherBook(Integer publisherId, Integer bookId) throws ResourceNotFoundException {
-        return publisherRepository.findById(publisherId)
-                                  .map(publisher -> {
-                                      Book book = bookRepository.findById(bookId)
-                                                                .orElseThrow(ResourceNotFoundException::new);
-                                      book.setPublisher(publisher);
-                                      return bookMapper.bookToBookDTO(bookRepository.saveAndFlush(book));
-                                  })
-                                  .orElseThrow(ResourceNotFoundException::new);
+    public Slice<BookDTO> setPublisherBook(Integer publisherId, Integer bookId) throws ResourceNotFoundException {
+        return new SliceImpl<>(publisherRepository.findById(publisherId)
+                                                  .map(publisher -> {
+                                                      Book book = bookRepository.findById(bookId)
+                                                                                .orElseThrow(ResourceNotFoundException::new);
+                                                      book.setPublisher(publisher);
+                                                      bookRepository.saveAndFlush(book);//TODO: check if added book ins in returned slice
+                                                      return publisher.getBooks().stream()
+                                                                      .map(bookMapper::bookToBookDTO)
+                                                                      .collect(Collectors.toList());
+                                                  })
+                                                  .orElseThrow(ResourceNotFoundException::new));
     }
 }

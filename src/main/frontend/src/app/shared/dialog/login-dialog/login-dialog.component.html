@@ -10,15 +10,15 @@
 <div class="modal-body mx-3">
   <div class="md-form mb-5">
     <mdb-icon fas icon="envelope" class="prefix grey-text"></mdb-icon>
-    <input type="email" id="defaultForm-email" [formControl]="loginFormModalEmail" class="form-control"
+    <input type="email" id="defaultForm-email" [formControl]="loginFormModalUser" class="form-control"
            mdbInput mdbValidate>
     <label for="defaultForm-email">Your email</label>
     <mdb-error
-      *ngIf="loginFormModalEmail.invalid && (loginFormModalEmail.dirty || loginFormModalEmail.touched)">
+      *ngIf="loginFormModalUser.invalid && (loginFormModalUser.dirty || loginFormModalUser.touched)">
       Input invalid
     </mdb-error>
     <mdb-success
-      *ngIf="loginFormModalEmail.valid && (loginFormModalEmail.dirty || loginFormModalEmail.touched)">Input
+      *ngIf="loginFormModalUser.valid && (loginFormModalUser.dirty || loginFormModalUser.touched)">Input
       valid
     </mdb-success>
   </div>

@@ -35,7 +35,7 @@
 
     <!-- Links Right-->
     <ul class="navbar-nav ml-auto">
-      <ng-container>
+      <ng-container *ngIf="authService.isUserLoggedIn(); else loggedOutButtons">
 
         <!-- Dropdown -->
         <li class="nav-item dropdown" dropdown>
@@ -53,7 +53,7 @@
               <mdb-icon fas icon="at" size="2x"></mdb-icon>
               [Email]
             </a>
-            <a class="dropdown-item waves-light" mdbWavesEffect routerLink="/perfil">
+            <a class="dropdown-item waves-light" mdbWavesEffect routerLink="/main/auth/profile">
               <mdb-icon fas icon="user-edit" size="2x"></mdb-icon>
               Mi Perfil
             </a>
@@ -61,27 +61,29 @@
               <mdb-icon fas icon="edit" size="2x"></mdb-icon>
               Admin
             </a>
-            <a class="dropdown-item waves-light" mdbWavesEffect (click)="logout()">
+            <a class="dropdown-item waves-light" mdbWavesEffect routerLink="/main/auth/logout">
               <mdb-icon fas icon="sign-out-alt" size="2x"></mdb-icon>
               Logout
             </a>
           </div>
         </li>
+      </ng-container>
+      <ng-template #loggedOutButtons>
         <li class="nav-item">
           <a class="nav-link waves-light" mdbWavesEffect
-             data-toggle="modal" data-target="#basicExample" (click)="dialogService.loginDialog()">
+             data-toggle="modal" data-target="#basicExample" routerLink="/main/auth">
             <mdb-icon fas icon="sign-in-alt" size="2x"></mdb-icon>
             Login
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link waves-light" mdbWavesEffect
-             data-toggle="modal" data-target="#basicExample" (click)="dialogService.signupDialog()">
+          <a class="nav-link waves-light " mdbWavesEffect
+             data-toggle="modal" data-target="#basicExample">
             <mdb-icon fas icon="address-card" size="2x"></mdb-icon>
             Registro
           </a>
         </li>
-      </ng-container>
+      </ng-template>
     </ul>
   </links>
   <!-- Collapsible content -->

@@ -1,6 +1,6 @@
 {
   "name": "ngx",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --port 4201 -o --host localhost",
@@ -21,8 +21,8 @@
     "@angular/platform-browser": "~9.1.9",
     "@angular/platform-browser-dynamic": "~9.1.9",
     "@angular/router": "~9.1.9",
-    "@fortawesome/fontawesome-free": "^5.13.0",
-    "@types/chart.js": "^2.9.21",
+    "@fortawesome/fontawesome-free": "^5.13.1",
+    "@types/chart.js": "^2.9.22",
     "angular-bootstrap-md": "^9.3.1",
     "animate.css": "^4.1.0",
     "bootstrap": "^4.5.0",

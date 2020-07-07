@@ -20,12 +20,12 @@ export class LoginDialogComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginValidatingForm = new FormGroup({
-      loginFormModalEmail: new FormControl('', Validators.compose([Validators.required, Validators.minLength(5), Validators.email])),
+      loginFormModalUser: new FormControl('', Validators.compose([Validators.required, Validators.minLength(5), Validators.email])),
       loginFormModalPassword: new FormControl('', Validators.compose([Validators.required, Validators.minLength(6)]))
     });
   }
 
-  get loginFormModalEmail() {
+  get loginFormModalUser() {
     return this.loginValidatingForm.get('loginFormModalEmail');
   }
 

@@ -1,4 +1,4 @@
-package com.campusdual.lituraliaopen.api.model.dtos;
+package com.campusdual.lituraliaopen.api.mapper.dtos;
 
 import java.time.LocalDate;
 import lombok.AllArgsConstructor;

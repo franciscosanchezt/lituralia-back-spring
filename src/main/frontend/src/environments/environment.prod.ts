@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://lituralia-open.herokuapp.com'
+  apiUrl: 'https://lituralia-open.herokuapp.com/api'
 };

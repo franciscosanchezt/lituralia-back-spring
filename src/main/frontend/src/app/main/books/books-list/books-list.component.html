@@ -21,7 +21,10 @@ Book Catalog
     </form>
   </div>
 </div>
-
+<div>
+  <button type="button" class="btn btn-primary" routerLink="/main/books/new">Add Book</button>
+  <button type="button" class="btn btn-success" (click)="refresh()">Refresh</button>
+</div>
 <div class="table-responsive row">
   <!--Table-->
   <table id="tablePreview" class="table table-hover">
@@ -33,6 +36,8 @@ Book Catalog
       <th>ISBN</th>
       <th>Title</th>
       <th>Publish Date</th>
+      <th>Edit</th>
+      <th>Delete</th>
     </tr>
     </thead>
     <!--Table head-->
@@ -40,10 +45,16 @@ Book Catalog
     <tbody>
     <tr *ngFor="let book of books" routerLink="/main/books/{{book.bookId}}">
       <th scope="row">{{book.bookId}}</th>
-      <td><img width="40%" src="{{this.book?'data:image/jpg;base64,' + this.book.cover:''}}"/></td>
+      <td><img width="33px" src="{{this.book?'data:image/jpg;base64,' + this.book.cover:''}}"/></td>
       <td>{{book.isbn}}</td>
       <td>{{book.title}}</td>
       <td>{{book.publishDate}}</td>
+      <td>
+        <button type="button" class="btn btn-warning" routerLink="/books/new">Edit</button>
+      </td>
+      <td>
+        <button type="button" class="btn btn-danger" (click)="deleteBook(book.bookId)">Delete</button>
+      </td>
     </tr>
     </tbody>
     <!--Table body-->
@@ -54,18 +65,18 @@ Book Catalog
   <nav>
     <ul class="pagination pg-blue">
       <li class="page-item">
-        <a class="page-link" aria-label="Previous" mdbWavesEffect (click)="navigateTo(pagingStatus.pageNumber-1)">
+        <a class="page-link" aria-label="Previous" mdbWavesEffect (click)="navigateTo(pagingStatus.page-1)">
           <span aria-hidden="true">&laquo;</span>
           <span class="sr-only">Previous</span>
         </a>
       </li>
-      <li *ngFor="let page of activePages" class="page-item" [class.active]="pagingStatus.pageNumber===page">
+      <li *ngFor="let page of activePages" class="page-item" [class.active]="pagingStatus.page+1===page">
         <a *ngIf="isNumeric(page); else threeDots" class="page-link" mdbWavesEffect
-           (click)="navigateTo(page)">{{page}}</a>
+           (click)="navigateToOffset(page)">{{page}}</a>
         <ng-template #threeDots><span class="page-link">{{page}}</span></ng-template>
       </li>
       <li class="page-item">
-        <a class="page-link" aria-label="Next" mdbWavesEffect (click)="navigateTo(pagingStatus.pageNumber+1)">
+        <a class="page-link" aria-label="Next" mdbWavesEffect (click)="navigateTo(pagingStatus.page+1)">
           <span aria-hidden="true">&raquo;</span>
           <span class="sr-only">Next</span>
         </a>

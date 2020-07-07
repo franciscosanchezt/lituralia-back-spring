@@ -1,6 +1,6 @@
 package com.campusdual.lituraliaopen.api.mapper;
 
-import com.campusdual.lituraliaopen.api.model.dtos.BookDTO;
+import com.campusdual.lituraliaopen.api.mapper.dtos.BookDTO;
 import com.campusdual.lituraliaopen.domain.Book;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
