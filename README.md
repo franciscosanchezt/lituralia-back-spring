@@ -66,6 +66,7 @@ _Requisitos:_
 Java 8
 Maven 3.6+
 ```
+
 _Descarga el proyecto_
 
 ```
@@ -84,7 +85,7 @@ _Instala dependencias con maven_
 mvn clean install
 ```
 
-El empaquetado del proyecto estara en la ruta: 
+El empaquetado del proyecto estará en la ruta: 
 
 ```
 lituralia-open/target/lituralia-open-0.0.3.jar
