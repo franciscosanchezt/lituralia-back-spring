@@ -27,7 +27,7 @@ Java 8
 
 Descarga el ejecutable (jar) en: [Releases](https://github.com/franciscosanchezt/lituralia-open/releases)
 
-Ultima Version: [0.0.3-SNAPSHOT](https://github.com/franciscosanchezt/lituralia-open/releases/tag/0.0.3)
+Ultima Version: [0.0.4-SNAPSHOT](https://github.com/franciscosanchezt/lituralia-open/releases/tag/0.0.4)
 
 ## Despliegue 📦
    
@@ -39,10 +39,10 @@ PG_USER= usuario de postgres
 PG_PASS= contraseña postgres 
 ```
    
-_Luego ejecutamos el siguiente comando en la ruta del archivo: lituralia-open-0.0.3-SNAPSHOT.jar_
+_Luego ejecutamos el siguiente comando en la ruta del archivo: lituralia-open-0.0.4-SNAPSHOT.jar_
 
 ```
-java -jar lituralia-open-0.0.3-SNAPSHOT.jar
+java -jar lituralia-open-0.0.4-SNAPSHOT.jar
 ```
 
 Este paquete despliega el backend y el frontend en el puerto 33333
@@ -88,7 +88,7 @@ mvn clean install
 El empaquetado del proyecto estará en la ruta: 
 
 ```
-lituralia-open/target/lituralia-open-0.0.3.jar
+lituralia-open/target/lituralia-open-0.0.4.jar
 ```
 
 
